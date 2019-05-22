@@ -90,6 +90,9 @@ function handleView(currentView,isStacked) {
             link.appendChild(backwardsArrow)
             view.appendChild(link)
             break;
+        //Handle Depiction Admob View
+        case "DepictionAdmobView":
+            break;
         //Handle Depiction Stack View
         case "DepictionStackView":
             if (!isStacked) {
