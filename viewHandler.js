@@ -19,6 +19,21 @@ function handleView(currentView,isStacked) {
             break;
         //Handle Label View
         case "DepictionLabelView":
+            /*
+            if (currentView.hasOwnProperty("margins")) {
+                var margins = currentView.margins.replace(/{|}/g,"").split(",")
+                var marginString = ""
+                for (i=0; i<margins.length; i++) {
+                    marginString = marginString + margins[i] + "px "
+                }
+                view.style.margin = marginString
+            }*/
+            if (currentView.hasOwnProperty("textColor")) {
+                view.style.color = currentView.textColor
+            }
+            if (currentView.hasOwnProperty("fontSize")) {
+                view.style.fontSize = currentView.fontSize
+            }
             view.innerText = currentView.text
             break;
         //Handle Markdown Text View
@@ -104,8 +119,11 @@ function handleView(currentView,isStacked) {
                     view.appendChild(stackView)
                 }
             } else {
-                console.log(currentView)
-                console.log("stack in a stack!")
+                //Handle Stacks in Stacks in Stacks (I don't even know how this works anymore)
+                var stackedViewDivs = renderStackedView(currentView.views)
+                for (eachDiv = 0; eachDiv < stackedViewDivs.length; eachDiv++) {
+                    view.appendChild(stackedViewDivs[eachDiv])
+                }
             }
             break;
         //Other Views
@@ -114,4 +132,12 @@ function handleView(currentView,isStacked) {
             view.id = "unsupportedView"
     }
     return(view)
+}
+
+function renderStackedView(stackedViews) {
+    var stackedViewDivs = []
+    for (i = 0; i < stackedViews.length; i++) {
+        stackedViewDivs.push(handleView(stackedViews[i],true))
+    }
+    return stackedViewDivs
 }

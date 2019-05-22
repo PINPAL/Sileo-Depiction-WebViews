@@ -248,6 +248,13 @@ a {
     margin: 18px;
 }
 
+.DepictionLabelView {
+    margin-left: 18px;
+    margin-right: 18px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
 .DepictionHeaderView {
     font-size: 16pt;
     font-weight: bold;
