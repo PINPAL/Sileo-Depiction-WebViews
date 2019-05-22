@@ -21,7 +21,12 @@ if (config.hasOwnProperty('tintColor')) {
     document.getElementsByTagName('html')[0].style.setProperty("--tint-color",config.tintColor)
 }
 //Set Banner Image
-document.getElementById("bannerImage").style.backgroundImage = "url(" + config.headerImage + ")"
+if (config.hasOwnProperty('headerImage')) {
+    document.getElementById("bannerImage").style.backgroundImage = "url(" + config.headerImage + ")"
+    document.getElementById("bannerImage").style.filter = brightness(0.5);
+    document.getElementById("bannerImage").style.webkitFilter = brightness(0.5);
+}
+
 //Generate Tabs
 for (currentTab=0; currentTab<config.tabs.length; currentTab++) {
     //Create Pill Selectors at Top

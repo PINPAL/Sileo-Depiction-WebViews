@@ -25,8 +25,7 @@ body {
 }
 
 #bannerImage {
-    filter: brightness(0.5);
-    -webkit-filter: brightness(0.5);
+    background-image: linear-gradient(#034C4F, #36DBCB);
     position: absolute;
     top: 0;
     left: 0;
