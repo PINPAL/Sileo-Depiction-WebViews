@@ -11,7 +11,7 @@ function loadFile(filename){
 //Get Info from URL
 var tweakPrice = window.location.search.substring(1).split("-")[2]
 //Load Sileo JSON File
-var config = JSON.parse(loadFile("/packages/" + window.location.search.substring(1).split("-")[0] + "/config.json"))
+var config = JSON.parse(loadFile("/packages/" + window.location.search.substring(1).split("-")[0].toLowerCase() + "/config.json"))
 //Set Background Color
 if (config.hasOwnProperty('backgroundColor')) {
     document.getElementsByTagName('html')[0].style.setProperty("--bg-color",config.backgroundColor)
@@ -36,7 +36,7 @@ for (currentTab=0; currentTab<config.tabs.length; currentTab++) {
     tabContent.id = config.tabs[currentTab].tabname + "Content"
     //Add Content Views to Tab
     for (currentViewNum=0; currentViewNum < config.tabs[currentTab].views.length; currentViewNum++) {
-        var view = handleView(config.tabs[currentTab].views[currentViewNum])
+        var view = handleView(config.tabs[currentTab].views[currentViewNum],false)
         tabContent.appendChild(view)
     }
     document.getElementById("mainWrapper").appendChild(tabContent)

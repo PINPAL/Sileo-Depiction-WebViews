@@ -1,5 +1,5 @@
 //Function to Handle Views
-function handleView(currentView) {
+function handleView(currentView,isStacked) {
     var view = document.createElement("div")
     view.className = currentView.class
     switch (view.className) {
@@ -92,12 +92,17 @@ function handleView(currentView) {
             break;
         //Handle Depiction Stack View
         case "DepictionStackView":
-            if (currentView.hasOwnProperty('backgroundColor')) {
-                view.style.backgroundColor = currentView.backgroundColor
-            }
-            for (currentStackedView = 0; currentStackedView < currentView.views.length; currentStackedView++) {
-                var stackView = handleView(currentView.views[currentStackedView])
-                view.appendChild(stackView)
+            if (!isStacked) {
+                if (currentView.hasOwnProperty('backgroundColor')) {
+                    view.style.backgroundColor = currentView.backgroundColor
+                }
+                for (currentStackedView = 0; currentStackedView < currentView.views.length; currentStackedView++) {
+                    var stackView = handleView(currentView.views[currentStackedView],true)
+                    view.appendChild(stackView)
+                }
+            } else {
+                console.log(currentView)
+                console.log("stack in a stack!")
             }
             break;
         //Other Views
