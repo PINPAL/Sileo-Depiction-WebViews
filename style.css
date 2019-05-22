@@ -1,0 +1,340 @@
+@font-face { 
+    font-family: 'San Francisco';
+    src: local('San Francisco'), local('San Francisco'), url('fonts/System\ San\ Francisco\ Display\ Regular.ttf');
+    font-family: 'San Francisco Bold';
+    src: local('San Francisco'), local('San Francisco'), url('fonts/System\ San\ Francisco\ Display\ Bold.ttf');
+}
+
+* {
+    text-align: left;
+    font-family: -apple-system, 'San Francisco', sans-serif;
+}
+html {
+    --navbar-bg-color: #FEFEFE;
+    --bg-color: #FFFFFF;
+    --tint-color: #7887f7;
+    --border-color: #c5c5c5;
+    --light-text-color: #8F8E94;
+    --medium-text-color: #958E80;
+}
+
+body {
+    margin: 0;
+    margin-bottom: 25px;
+    background-color: var(--bg-color);
+}
+
+#bannerImage {
+    filter: brightness(0.5);
+    -webkit-filter: brightness(0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-width: 100%;
+    min-height: 200px;
+    z-index: -999;
+}
+
+/*Navbar Stuff*/
+.navbar {
+    z-index: 999;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: var(--border-color);
+    opacity: 0;
+    background-color: var(--navbar-bg-color);
+    top: 0;
+    left: 0;
+    position: fixed;
+    min-width: 100%;
+    min-height: 45px;
+}
+
+/*Navbar Buttons*/
+.leftNavButton, .rightNavButton {
+    color: var(--tint-color);
+    position: absolute;
+    top: 22px;
+    transform: translateY(-50%);
+}
+.leftNavButton {
+    padding-left: 20px;
+    left: 10px;
+}
+.rightNavButton {
+    right: 20px;
+}
+#bannerWrapper .leftNavButton, #bannerWrapper .rightNavButton {
+    z-index: -998;
+    position: fixed;
+    color: white;
+    -webkit-text-shadow: 10px 10px 22px 4px rgba(0,0,0,0.75);
+    -moz-text-shadow: 10px 10px 22px 4px rgba(0,0,0,0.75);
+    text-shadow: 10px 10px 22px 4px rgba(0,0,0,0.75);
+}
+#bannerWrapper .backArrow {
+    z-index: -998;
+    position: fixed;
+    background-color: white;
+}
+
+.changedNavbarItems {
+    opacity: 0;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+}
+
+.priceButton {
+    color: white;
+    background-color: var(--tint-color);
+    font-weight: 700;
+    padding: 5px 10px 5px 10px;
+    border-radius: 20px;
+}
+
+.backArrow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 20px;
+    min-height: 20px;
+    background-color: var(--tint-color);
+    mask-image: url("assets/back.png");
+    mask-mode: alpha;
+    mask-size: cover;
+}
+.modifyButton {
+    z-index: 99999;
+    cursor: pointer;
+    top: 50%;
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    right: 0;
+    position: absolute;
+    min-width: 25px;
+    min-height: 25px;
+    background-image: url("assets/modify.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#navbarTweakIcon {
+    position: absolute;
+    min-width: 30px;
+    min-height: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/*Top Header Section*/
+.headerSection {
+    position: relative;
+    margin-top: 200px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 90px;
+}
+#tweakIcon {
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#tweakName {
+    margin: 0;
+    font-size: 18pt;
+}
+#developerName {
+    max-width: calc(100% - 80px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 5px 0 0 0;
+    font-weight: 400;
+    font-size: 12pt;
+    color: var(--light-text-color);
+}
+.headerSection .priceButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+}
+
+/*Header Pill Selector (Details/Changelog)*/
+.headerPillSelector {
+    position: relative;
+    min-height: 30px;
+    padding-top: 10px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: var(--border-color);
+}
+.pillText {
+    left: 50%;
+    cursor: pointer;
+    padding-bottom: 10px;
+    transform: translateX(-50%);
+    position: absolute;
+    color: var(--medium-text-color);
+    font-weight: 500;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+}
+.pillSelectorLine {
+    left: 25%;
+    min-width: 100px;
+    min-height: 3px;
+    background-color: var(--tint-color);
+    position: absolute;
+    bottom: 0;
+    transform: translateX(-50%);
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+}
+
+/*Screenshots*/
+.DepictionScreenshotsView {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    overflow-y: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+    object-fit: contain;
+}
+.screenshot {
+    height: 400px;
+    margin-right: 7px;
+    margin-left: 7px;
+    border-radius: 8px;
+}
+
+/*Markdown Style*/
+h1 {
+    font-size: 18pt;
+}
+a {
+    color: var(--tint-color);
+    text-decoration: none;
+}
+
+/*Sections that hold content*/
+.tabContent {
+    display: none;
+}
+
+/*Padded Views*/
+.DepictionSubheaderView, .DepictionHeaderView, .DepictionMarkdownView, .DepictionTableView {
+    margin: 18px;
+}
+
+.DepictionHeaderView {
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+.DepictionImageView {
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+.DepictionSeparatorView {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 1px;
+    max-width: calc(100% - 36px);
+    background-color: var(--border-color);
+}
+
+/*Generic Error View*/
+#unsupportedView {
+    font-size: 10pt;
+    background-image: url(assets/error.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: rgba(0,0,0,.2);
+    padding: 10px 10px 10px 45px;
+    box-sizing: border-box;
+    max-width: calc(100% - 36px);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 10px;
+}
+
+/*Table Views*/
+.depictionTable {
+    margin-left: auto;
+    margin-right: auto;
+    table-layout: fixed;
+    width: calc(100% - 32px);
+}
+.depictionTable td {
+    max-width: 50%;
+    width: 50%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 50%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.depictionTable tr td:first-child {
+    color: var(--light-text-color);
+}
+.depictionTable tr td:last-child {
+    text-align: right;
+}
+
+/*Table Button Views*/
+.DepictionTableButtonView {
+    position: relative;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(100% - 36px);
+}
+.backwardsArrow {
+    transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    position: absolute;
+    top: 8px;
+    right: 0;
+    min-width: 16px;
+    max-width: 16px;
+    min-height: 16px;
+    background-color: var(--tint-color);
+    mask-image: url("assets/back.png");
+    mask-mode: alpha;
+    mask-size: cover;
+}
+.depictionButton {
+    min-width: 100%;
+}

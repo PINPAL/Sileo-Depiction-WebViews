@@ -1,0 +1,50 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title id="websiteTitle">Depiction</title>
+        <link id="websiteIcon" rel="icon">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body onscroll="updateNavbar()">
+
+        <div id="bannerWrapper">
+            <div id="bannerImage"></div>
+            <div id="bannerNavItems">
+                <div class="leftNavButton">
+                    <div class="backArrow"></div>Back
+                </div>
+                <div class="rightNavButton">
+                    <div class="modifyButton"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar">
+            <div class="leftNavButton">
+                <div class="backArrow"></div>Back
+            </div>
+            <div class="changedNavbarItems">
+                <div id="navbarTweakIcon"></div>
+                <div class="rightNavButton">
+                    <div class="priceButton">Free</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="headerSection">
+            <div id="tweakIcon"></div>
+            <h1 id="tweakName">Tweak Name</h1>
+            <h4 id="developerName">Developer</h4>
+            <div class="priceButton">Free</div>
+        </div>
+        <div class="headerPillSelector">
+            <div class="pillSelectorLine"></div>
+        </div>
+
+        <div id="mainWrapper"></div>
+        
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/showdown"></script>
+    <script src="viewHandler.js"></script>
+    <script src="script.js"></script>
+</html>
