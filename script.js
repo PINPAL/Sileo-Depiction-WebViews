@@ -17,7 +17,9 @@ if (config.hasOwnProperty('backgroundColor')) {
     document.getElementsByTagName('html')[0].style.setProperty("--bg-color",config.backgroundColor)
 }
 //Set Tint Color
-document.getElementsByTagName('html')[0].style.setProperty("--tint-color",config.tintColor)
+if (config.hasOwnProperty('tintColor')) {
+    document.getElementsByTagName('html')[0].style.setProperty("--tint-color",config.tintColor)
+}
 //Set Banner Image
 document.getElementById("bannerImage").style.backgroundImage = "url(" + config.headerImage + ")"
 //Generate Tabs
