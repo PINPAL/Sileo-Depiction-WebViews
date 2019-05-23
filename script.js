@@ -14,6 +14,7 @@ var tweakPrice = window.location.search.substring(1).split("-")[2]
 var currentDirectory = window.location.origin + window.location.pathname
 console.log(currentDirectory)
 console.log(loadFile(currentDirectory + "packages/" + window.location.search.substring(1).split("-")[0].toLowerCase() + "/config.json"))
+console.log(typeof(loadFile(currentDirectory + "packages/" + window.location.search.substring(1).split("-")[0].toLowerCase() + "/config.json")))
 var config = JSON.parse((loadFile("/packages/" + window.location.search.substring(1).split("-")[0].toLowerCase() + "/config.json")))
 //Set Background Color
 if (config.hasOwnProperty('backgroundColor')) {
