@@ -152,9 +152,7 @@ const modifyPopup = document.getElementById("modifyPopup")
 const popupButtonWrapper = document.getElementsByClassName('popupButtonWrapper')[0]
 // Modify Button
 function modifyButton() {
-    //Disable Scrolling
     disableScroll()
-    //Show Popup
     modifyPopup.style.visibility = "visible"
     modifyPopup.style.backgroundColor = "rgba(0,0,0,0.6)"
     popupButtonWrapper.style.transform = "translate(-50%, 0%)"
@@ -189,24 +187,15 @@ function preventDefaultForScrollKeys(e) {
     }
 }
 function disableScroll() {
-    //Prevent Touch Scrolling
-    var disableScrollEl = document.createElement("div")
-    disableScrollEl.className = "touchscreenNoScroll"
-    document.getElementsByTagName('body')[0].appendChild(disableScrollEl)
-    //Prevent Mousewheel Scrolling
-    if (window.addEventListener) // older FF
-        window.addEventListener('DOMMouseScroll', preventDefault, false);
-    document.addEventListener('wheel', preventDefault, {passive: false}); // Disable scrolling in Chrome
-    window.onwheel = preventDefault; // modern standard
-    window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
-    window.ontouchmove  = preventDefault; // mobile
-    document.onkeydown  = preventDefaultForScrollKeys;
+  if (window.addEventListener) // older FF
+      window.addEventListener('DOMMouseScroll', preventDefault, false);
+  document.addEventListener('wheel', preventDefault, {passive: false}); // Disable scrolling in Chrome
+  window.onwheel = preventDefault; // modern standard
+  window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+  window.ontouchmove  = preventDefault; // mobile
+  document.onkeydown  = preventDefaultForScrollKeys;
 }
 function enableScroll() {
-    //Enable Touch Scrolling
-    var disableScrollEl = document.getElementsByClassName('touchscreenNoScroll')[0]
-    disableScrollEl.parentElement.removeChild(disableScrollEl)
-    //Enable Mousewheel Scrolling
     if (window.removeEventListener)
         window.removeEventListener('DOMMouseScroll', preventDefault, false);
     document.removeEventListener('wheel', preventDefault, {passive: false}); // Enable scrolling in Chrome
