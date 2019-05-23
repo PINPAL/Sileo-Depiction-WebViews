@@ -21,9 +21,13 @@ html {
 body {
     margin: 0;
     margin-bottom: 25px;
+    scroll-snap-type: mandatory;
+    scroll-snap-points-y: repeat(155px);
+    scroll-snap-type: y mandatory;
 }
 
 .contentWrapper {
+    scroll-snap-align: start;
     background-color: var(--bg-color);
 }
 
