@@ -21,12 +21,15 @@ html {
 body {
     margin: 0;
     margin-bottom: 25px;
+}
+
+.contentWrapper {
     background-color: var(--bg-color);
 }
 
 #bannerImage {
     background-image: linear-gradient(#034C4F, #36DBCB);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     background-repeat: no-repeat;
