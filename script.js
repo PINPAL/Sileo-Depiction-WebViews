@@ -93,6 +93,7 @@ function updateNavbar() {
     var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
     document.getElementsByClassName("navbar")[0].style.opacity = scrollTop / 150
     document.getElementById("bannerNavItems").style.opacity = 1 - (scrollTop / 100)
+    document.getElementById("scrollTopTest").innerText = scrollTop
     if (scrollTop > 1) {
         document.getElementById("bannerImage").style.position = "absolute"
     } else {
