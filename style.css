@@ -29,7 +29,7 @@ body {
 
 #bannerImage {
     background-image: linear-gradient(#034C4F, #36DBCB);
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     background-repeat: no-repeat;
