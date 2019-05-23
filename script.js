@@ -94,10 +94,10 @@ function updateNavbar() {
     document.getElementsByClassName("navbar")[0].style.opacity = scrollTop / 150
     document.getElementById("bannerNavItems").style.opacity = 1 - (scrollTop / 100)
     document.getElementById("scrollTopTest").innerText = scrollTop
-    if (scrollTop > 1) {
+    if (scrollTop >= 0) {
         document.getElementById("bannerImage").style.position = "absolute"
     } else {
-        document.getElementById("bannerImage").style.minHeight = scrollTop+1 * 200 + "px"
+        document.getElementById("bannerImage").style.minHeight = (scrollTop * -1) * 200 + "px"
     }
     if (scrollTop > 150) {
         document.getElementsByClassName("changedNavbarItems")[0].style.opacity  = 1
