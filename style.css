@@ -63,6 +63,8 @@ body {
     transform: translateY(-50%);
 }
 .leftNavButton {
+    font-weight: normal;
+    font-size: 14pt;
     padding-left: 20px;
     left: 10px;
 }
@@ -396,7 +398,7 @@ a {
     border-bottom-style: solid;
     padding: 15px;
     font-size: 14pt;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--tint-color);
     box-sizing: border-box;
     text-align: center;
