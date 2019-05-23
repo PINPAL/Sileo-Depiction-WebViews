@@ -11,6 +11,8 @@ function loadFile(filename){
 //Get Info from URL
 var tweakPrice = window.location.search.substring(1).split("-")[2]
 //Load Sileo JSON File
+console.log(window.location)
+console.log(window.location.pathname)
 console.log(window.location + window.location.pathname)
 console.log(loadFile(window.location.origin + window.location.pathname + "/packages/" + window.location.search.substring(1).split("-")[0].toLowerCase() + "/config.json"))
 var config = JSON.parse((loadFile("/packages/" + window.location.search.substring(1).split("-")[0].toLowerCase() + "/config.json")))
