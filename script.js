@@ -122,7 +122,7 @@ const popupButtonWrapper = document.getElementsByClassName('popupButtonWrapper')
 function modifyButton() {
     modifyPopup.style.visibility = "visible"
     modifyPopup.style.backgroundColor = "rgba(0,0,0,0.6)"
-    popupButtonWrapper.style.transform = "translateY(0%)"
+    popupButtonWrapper.style.transform = "translate(-50%, 0%)"
 }
 //Hide popup when clicking on background ONLY (prevent propagation of onClick)
 modifyPopup.addEventListener("click", function (e) {
@@ -133,7 +133,7 @@ modifyPopup.addEventListener("click", function (e) {
 });
 //Function to hide popup messages
 function hidePopup() {
-    popupButtonWrapper.style.transform = "translateY(calc(100% + 10px))"
+    popupButtonWrapper.style.transform = "translate(-50%, calc(100% + 10px))"
     modifyPopup.style.backgroundColor = "rgba(0,0,0,0)"
     setTimeout(function(){modifyPopup.style.visibility = "hidden"}, 350);
 }

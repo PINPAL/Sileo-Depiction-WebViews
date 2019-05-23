@@ -354,11 +354,11 @@ a {
 /*Modify Popup*/
 #modifyPopup {
     visibility: hidden;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 99999;
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     transition: background-color 0.15s ease;
     -webkit-transition: background-color 0.15s ease;
@@ -367,11 +367,12 @@ a {
     -ms-transition: background-color 0.15s ease;
 }
 .popupButtonWrapper {
-    transform: translateY(calc(100% + 10px));
+    transform: translate(-50%, calc(100% + 10px));
     position: absolute;
     bottom: 10px;
-    left: 0;
-    width: 100%;
+    left: calc(50% - 10px);
+    width: calc(100% - 20px);
+    max-width: 900px;
     transition: transform 0.3s ease;
     -webkit-transition: transform 0.3s ease;
     -moz-transition: transform 0.3s ease;
@@ -388,10 +389,9 @@ a {
     color: var(--tint-color);
     box-sizing: border-box;
     text-align: center;
-    width: calc(100% - 20px);
+    width: 100%;
     margin-left: 10px;
     margin-right: 10px;
-    max-width: 900px;
     background-color: white;
 }
 .popupButton:hover {
