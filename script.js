@@ -48,7 +48,7 @@ document.getElementById("tweakIcon").style.backgroundImage = "url(" + tweakDirec
 //Set Page Title
 document.getElementById("websiteTitle").innerText = tweakName
 //Set Page Icon
-document.getElementById("websiteIcon").href = "/packages/" + tweakDirectory + "/icon.png"
+document.getElementById("websiteIcon").href = tweakDirectory + "/icon.png"
 
 //Generate Tabs
 for (currentTab=0; currentTab<config.tabs.length; currentTab++) {
