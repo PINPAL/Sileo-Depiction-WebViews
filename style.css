@@ -374,11 +374,11 @@ a {
     -ms-transition: background-color 0.15s ease;
 }
 .popupButtonWrapper {
-    transform: translate(-50%, calc(100% + 10px));
+    transform: translate(-50%, calc(100% + 8px));
     position: absolute;
     bottom: 10px;
-    left: calc(50% - 10px);
-    width: calc(100% - 20px);
+    left: calc(50% - 8px);
+    width: calc(100% - 16px);
     max-width: 900px;
     transition: transform 0.3s ease;
     -webkit-transition: transform 0.3s ease;
@@ -398,8 +398,6 @@ a {
     box-sizing: border-box;
     text-align: center;
     width: 100%;
-    margin-left: 10px;
-    margin-right: 10px;
     background-color: white;
 }
 .popupButton:hover {
