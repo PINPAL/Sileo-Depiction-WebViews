@@ -413,3 +413,11 @@ a {
     margin-top: 10px;
     border-radius: 12px;
 }
+
+/*Prevents touch scrolling*/
+.touchscreenNoScroll {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+    position: fixed;
+}
