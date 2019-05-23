@@ -10,6 +10,7 @@ html {
     --light-text-color: #8F8E94;
     --medium-text-color: #958E80;
     scroll-behavior: smooth;
+    touch-action: none;
 }
 
 body {
