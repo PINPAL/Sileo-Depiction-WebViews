@@ -95,8 +95,6 @@ function updateNavbar() {
     var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
     document.getElementsByClassName("navbar")[0].style.opacity = scrollTop / 150
     document.getElementById("bannerNavItems").style.opacity = 1 - (scrollTop / 100)
-    document.getElementById("scrollTopTest").innerText = scrollTop
-    document.getElementById("bannerHeightTest").innerText = 200 + (scrollTop * -1) + "px"
     if (scrollTop >= 0) {
         bannerImage.style.position = "absolute"
         bannerImage.style.minHeight = "200px"
