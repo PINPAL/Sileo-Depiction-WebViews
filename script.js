@@ -94,11 +94,11 @@ function updateNavbar() {
     document.getElementsByClassName("navbar")[0].style.opacity = scrollTop / 150
     document.getElementById("bannerNavItems").style.opacity = 1 - (scrollTop / 100)
     document.getElementById("scrollTopTest").innerText = scrollTop
-    document.getElementById("bannerHeightTest").innerText = (scrollTop * -1) * 200 + "px"
+    document.getElementById("bannerHeightTest").innerText = 200 + (scrollTop * -1) + "px"
     if (scrollTop >= 0) {
         document.getElementById("bannerImage").style.position = "absolute"
     } else {
-        document.getElementById("bannerImage").style.minHeight = (scrollTop * -1) * 200 + "px"
+        document.getElementById("bannerImage").style.minHeight = 200 + (scrollTop * -1) + "px"
     }
     if (scrollTop > 150) {
         document.getElementsByClassName("changedNavbarItems")[0].style.opacity  = 1
