@@ -417,6 +417,7 @@ a {
     border-radius: 0 0 12px 12px;
 }
 .popupButtonWrapper .popupButton:last-child {
+    font-weight: 600;
     margin-top: 10px;
     border-radius: 12px;
 }
