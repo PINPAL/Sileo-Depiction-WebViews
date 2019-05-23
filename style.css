@@ -16,18 +16,15 @@ html {
     --border-color: #c5c5c5;
     --light-text-color: #8F8E94;
     --medium-text-color: #958E80;
+    scroll-behavior: smooth;
 }
 
 body {
     margin: 0;
     margin-bottom: 25px;
-    scroll-snap-type: mandatory;
-    scroll-snap-points-y: repeat(155px);
-    scroll-snap-type: y mandatory;
 }
 
 .contentWrapper {
-    scroll-snap-align: start;
     background-color: var(--bg-color);
 }
 
@@ -239,6 +236,7 @@ body {
     overflow-x: auto;
     white-space: nowrap;
     object-fit: contain;
+    -webkit-overflow-scrolling: touch;
 }
 .screenshot {
     height: 400px;

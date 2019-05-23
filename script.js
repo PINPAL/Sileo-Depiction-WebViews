@@ -1,4 +1,4 @@
-//Function to laod files
+// Function to laod files
 function loadFile(filename){
     if(window.XMLHttpRequest){xhttp=new XMLHttpRequest()}
     else{
@@ -8,53 +8,53 @@ function loadFile(filename){
     xhttp.send();
     return xhttp.responseText;
 }
-//Define BannerImage (Improve Scrolling Animation Responsiveness)
+// Define BannerImage (Improve Scrolling Animation Responsiveness)
 const bannerImage = document.getElementById("bannerImage")
-//Get Info from URL
+// Get Info from URL
 const tweakName = window.location.search.substring(1).split("-")[0]
 const tweakDeveloperName = window.location.search.substring(1).split("-")[1]
 const tweakPrice = window.location.search.substring(1).split("-")[2]
-//Load Sileo JSON File
+// Load Sileo JSON File
 const currentDirectory = window.location.origin + window.location.pathname
 const tweakDirectory = currentDirectory + "packages/" + tweakName.toLowerCase()
 const configFile = loadFile(currentDirectory + "packages/" + tweakName.toLowerCase() + "/config.json")
 const config = JSON.parse(configFile)
-//Set Background Color
+// Set Background Color
 if (config.hasOwnProperty('backgroundColor')) {
     document.getElementsByTagName('html')[0].style.setProperty("--bg-color",config.backgroundColor)
 }
-//Set Tint Color
+// Set Tint Color
 if (config.hasOwnProperty('tintColor')) {
     document.getElementsByTagName('html')[0].style.setProperty("--tint-color",config.tintColor)
 }
-//Set Banner Image
+// Set Banner Image
 if (config.hasOwnProperty('headerImage')) {
     bannerImage.style.backgroundImage = "url(" + config.headerImage + ")"
     bannerImage.style.filter = "brightness(0.5)";
     bannerImage.style.webkitFilter = "brightness(0.5)";
 }
-//Set Navbar Tweak Icon
+// Set Navbar Tweak Icon
 document.getElementById("navbarTweakIcon").style.backgroundImage = "url(" + currentDirectory + "packages/" + tweakName.toLowerCase() + "/icon.png)"
-//Set Price Buttons
+// Set Price Buttons
 for (i=0; i<document.getElementsByClassName("priceButton").length;i++) {
     if (/[+-]?(?=\.\d|\d)(?:\d+)?(?:\.?\d*)(?:[eE][+-]?\d+)?/.test(tweakPrice)) {
         document.getElementsByClassName("priceButton")[i].innerText = "$" + tweakPrice
     }
 }
-//Set Tweak Name
+// Set Tweak Name
 document.getElementById("tweakName").innerText = tweakName
-//Set Developer Name
+// Set Developer Name
 document.getElementById("developerName").innerText = tweakDeveloperName
-//Set Tweak Icon
+// Set Tweak Icon
 document.getElementById("tweakIcon").style.backgroundImage = "url(" + tweakDirectory + "/icon.png)"
-//Set Page Title
+// Set Page Title
 document.getElementById("websiteTitle").innerText = tweakName
-//Set Page Icon
+// Set Page Icon
 document.getElementById("websiteIcon").href = tweakDirectory + "/icon.png"
 
-//Generate Tabs
+// Generate Tabs
 for (currentTab=0; currentTab<config.tabs.length; currentTab++) {
-    //Create Pill Selectors at Top
+    // Create Pill Selectors at Top
     var pillText = document.createElement("div")
     pillText.className = "pillText"
     pillText.id = config.tabs[currentTab].tabname + "Button"
@@ -62,20 +62,20 @@ for (currentTab=0; currentTab<config.tabs.length; currentTab++) {
     pillText.setAttribute("onclick","changePillSelector(this)")
     pillText.style.left = (50 / config.tabs.length) * (2 * currentTab + 1) + "%"
     document.getElementsByClassName("headerPillSelector")[0].appendChild(pillText)
-    //Create Tab for Content to Go In
+    // Create Tab for Content to Go In
     var tabContent = document.createElement("div")
     tabContent.className = "tabContent"
     tabContent.id = config.tabs[currentTab].tabname + "Content"
-    //Add Content Views to Tab
+    // Add Content Views to Tab
     for (currentViewNum=0; currentViewNum < config.tabs[currentTab].views.length; currentViewNum++) {
         var view = handleView(config.tabs[currentTab].views[currentViewNum],false)
         tabContent.appendChild(view)
     }
-    //Handle Landscape Oreintation of StackViews
+    // Handle Landscape Oreintation of StackViews
     var landscapeOrientationObjects = document.getElementsByClassName("landscapeOrientation")
-    //Loop Every Single Landscape StackView
+    // Loop Every Single Landscape StackView
     for (i=0; i<landscapeOrientationObjects.length; i++) {
-        //Loop Every Child View within the StackView
+        // Loop Every Child View within the StackView
         for (j=0; j<landscapeOrientationObjects[i].childNodes.length; j++) {
             landscapeOrientationObjects[i].childNodes[j].style.display = "inline-block"
             landscapeOrientationObjects[i].childNodes[j].style.width = "50%"
@@ -84,18 +84,34 @@ for (currentTab=0; currentTab<config.tabs.length; currentTab++) {
     document.getElementById("mainWrapper").appendChild(tabContent)
 }
 
-//Initial Styling of Pill Selector (Page Load)
+// Initial Styling of Pill Selector (Page Load)
 document.getElementsByClassName("pillText")[0].style.color = "var(--tint-color)"
 document.getElementsByClassName("pillSelectorLine")[0].style.left = (50 / config.tabs.length) + "%"
-//Initial Display of Main Content
+// Initial Display of Main Content
 document.getElementsByClassName("tabContent")[0].style.display = "block"
 
-//Navbar & Banner Scrolling Animation
+// Scroll Snapping to Bottom of Banner
+var isScrolling;
+// Listen for scroll events
+window.addEventListener('scroll', function ( event ) {
+	// Clear our timeout throughout the scroll
+	window.clearTimeout( isScrolling );
+	// Set a timeout to run after scrolling ends
+	isScrolling = setTimeout(function() {
+        // Run the callback
+        var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+        if (scrollTop < 204 && scrollTop > 104) {
+            window.scrollTo(0,154)
+        }
+	}, 66);
+}, false);
+
+// Navbar & Banner Scrolling Animation
 function updateNavbar() {
     var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
     document.getElementsByClassName("navbar")[0].style.opacity = scrollTop / 150
     document.getElementById("bannerNavItems").style.opacity = 1 - (scrollTop / 100)
-    //Banner Enlargement (When Users Scrolls into Negative - Mobile Browsers)
+    // Banner Enlargement (When Users Scrolls into Negative - Mobile Browsers)
     if (scrollTop >= 0) {
         bannerImage.style.position = "absolute"
         bannerImage.style.minHeight = "200px"
@@ -103,7 +119,7 @@ function updateNavbar() {
         bannerImage.style.position = "fixed"
         bannerImage.style.minHeight = 200 + (scrollTop * -1) + "px"
     }
-    //Only show right/center navbar items after 150 pixels of scroll
+    // Only show right/center navbar items after 150 pixels of scroll
     if (scrollTop > 150) {
         document.getElementsByClassName("changedNavbarItems")[0].style.opacity  = 1
     } else {
@@ -111,43 +127,43 @@ function updateNavbar() {
     }
 }
 
-//Switch between Details and Changelog
+// Switch between Details and Changelog
 function changePillSelector(element) {
-    //Reset color of all Pill Texts
+    // Reset color of all Pill Texts
     pillTexts = document.getElementsByClassName("pillText")
     for (i=0; i<pillTexts.length; i++) {
         pillTexts[i].style.color = "var(--medium-text-color)"
     }
-    //Hide all Tab Content
+    // Hide all Tab Content
     tabContents = document.getElementsByClassName("tabContent")
     for (i=0; i<tabContents.length; i++) {
         tabContents[i].style.display = "none"
     }
-    //Move Pill Selector Line
+    // Move Pill Selector Line
     document.getElementsByClassName("pillSelectorLine")[0].style.left = element.style.left
-    //Set Color of Selected Pill text 
+    // Set Color of Selected Pill text 
     element.style.color = "var(--tint-color)"
-    //Show Tab Content
+    // Show Tab Content
     document.getElementById(element.id.slice(0,-6) + "Content").style.display = "block"
 }
 
-//Constant to improve runtime performance (important for animation)
+// Constant to improve runtime performance (important for animation)
 const modifyPopup = document.getElementById("modifyPopup")
 const popupButtonWrapper = document.getElementsByClassName('popupButtonWrapper')[0]
-//Modify Button
+// Modify Button
 function modifyButton() {
     modifyPopup.style.visibility = "visible"
     modifyPopup.style.backgroundColor = "rgba(0,0,0,0.6)"
     popupButtonWrapper.style.transform = "translate(-50%, 0%)"
 }
-//Hide popup when clicking on background ONLY (prevent propagation of onClick)
+// Hide popup when clicking on background ONLY (prevent propagation of onClick)
 modifyPopup.addEventListener("click", function (e) {
     e = window.event || e;
         if (this === e.target) {
             hidePopup()
         }
 });
-//Function to hide popup messages
+// Function to hide popup messages
 function hidePopup() {
     popupButtonWrapper.style.transform = "translate(-50%, calc(100% + 10px))"
     modifyPopup.style.backgroundColor = "rgba(0,0,0,0)"
