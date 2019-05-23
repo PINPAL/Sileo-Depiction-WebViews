@@ -23,8 +23,8 @@ if (config.hasOwnProperty('tintColor')) {
 //Set Banner Image
 if (config.hasOwnProperty('headerImage')) {
     document.getElementById("bannerImage").style.backgroundImage = "url(" + config.headerImage + ")"
-    document.getElementById("bannerImage").style.filter = brightness(0.5);
-    document.getElementById("bannerImage").style.webkitFilter = brightness(0.5);
+    document.getElementById("bannerImage").style.filter = "brightness(0.5)";
+    document.getElementById("bannerImage").style.webkitFilter = "brightness(0.5)";
 }
 
 //Generate Tabs
@@ -45,6 +45,16 @@ for (currentTab=0; currentTab<config.tabs.length; currentTab++) {
     for (currentViewNum=0; currentViewNum < config.tabs[currentTab].views.length; currentViewNum++) {
         var view = handleView(config.tabs[currentTab].views[currentViewNum],false)
         tabContent.appendChild(view)
+    }
+    //Handle Landscape Oreintation of StackViews
+    var landscapeOrientationObjects = document.getElementsByClassName("landscapeOrientation")
+    //Loop Every Single Landscape StackView
+    for (i=0; i<landscapeOrientationObjects.length; i++) {
+        //Loop Every Child View within the StackView
+        for (j=0; j<landscapeOrientationObjects[i].childNodes.length; j++) {
+            landscapeOrientationObjects[i].childNodes[j].style.display = "inline-block"
+            landscapeOrientationObjects[i].childNodes[j].style.width = "50%"
+        }
     }
     document.getElementById("mainWrapper").appendChild(tabContent)
 }
@@ -103,4 +113,27 @@ function changePillSelector(element) {
     element.style.color = "var(--tint-color)"
     //Show Tab Content
     document.getElementById(element.id.slice(0,-6) + "Content").style.display = "block"
+}
+
+//Constant to improve runtime performance (important for animation)
+const modifyPopup = document.getElementById("modifyPopup")
+const popupButtonWrapper = document.getElementsByClassName('popupButtonWrapper')[0]
+//Modify Button
+function modifyButton() {
+    modifyPopup.style.visibility = "visible"
+    modifyPopup.style.backgroundColor = "rgba(0,0,0,0.6)"
+    popupButtonWrapper.style.transform = "translateY(0%)"
+}
+//Hide popup when clicking on background ONLY (prevent propagation of onClick)
+modifyPopup.addEventListener("click", function (e) {
+    e = window.event || e;
+        if (this === e.target) {
+            hidePopup()
+        }
+});
+//Function to hide popup messages
+function hidePopup() {
+    popupButtonWrapper.style.transform = "translateY(calc(100% + 10px))"
+    modifyPopup.style.backgroundColor = "rgba(0,0,0,0)"
+    setTimeout(function(){modifyPopup.style.visibility = "hidden"}, 350);
 }

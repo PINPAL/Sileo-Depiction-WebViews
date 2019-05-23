@@ -28,11 +28,18 @@ function handleView(currentView,isStacked) {
                 }
                 view.style.margin = marginString
             }*/
+            if (currentView.hasOwnProperty("fontWeight")) {
+                if (currentView.fontWeight = "semibold") {
+                    view.style.fontWeight = 600
+                } else {
+                    view.style.fontWeight = currentView.fontWeight
+                }
+            }
             if (currentView.hasOwnProperty("textColor")) {
                 view.style.color = currentView.textColor
             }
             if (currentView.hasOwnProperty("fontSize")) {
-                view.style.fontSize = currentView.fontSize
+                view.style.fontSize = currentView.fontSize + "px"
             }
             view.innerText = currentView.text
             break;
@@ -110,6 +117,11 @@ function handleView(currentView,isStacked) {
             break;
         //Handle Depiction Stack View
         case "DepictionStackView":
+            if (currentView.hasOwnProperty('orientation')) {
+                if (currentView.orientation = "landscape") {
+                    view.classList.add("landscapeOrientation")
+                }
+            }
             if (!isStacked) {
                 if (currentView.hasOwnProperty('backgroundColor')) {
                     view.style.backgroundColor = currentView.backgroundColor
