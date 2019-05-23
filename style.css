@@ -231,7 +231,6 @@ body {
     overflow-x: auto;
     white-space: nowrap;
     object-fit: contain;
-    -webkit-overflow-scrolling: touch;
 }
 .screenshot {
     margin-right: 7px;
