@@ -234,10 +234,8 @@ body {
     -webkit-overflow-scrolling: touch;
 }
 .screenshot {
-    height: 400px;
     margin-right: 7px;
     margin-left: 7px;
-    border-radius: 8px;
 }
 
 /*Markdown Style*/

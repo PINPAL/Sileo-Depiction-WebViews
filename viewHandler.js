@@ -63,10 +63,27 @@ function handleView(currentView,isStacked) {
             view.appendChild(image)
         //Handle Screenshots View
         case "DepictionScreenshotsView":
+            //Set Screenshot Corner Radius
+            var screenshotCornerRadius = 8
+            if (currentView.hasOwnProperty('itemCornerRadius')) {
+                screenshotCornerRadius = currentView.itemCornerRadius
+            }
+            //Set Screenshot View Height
+            var screenshotViewHeight = 400
+            if (currentView.hasOwnProperty('itemSize')) {
+                //Split {x,y} into just y
+                var screenshotViewDimensions = currentView.itemSize
+                screenshotViewHeight = screenshotViewDimensions.substring (
+                    screenshotViewDimensions.lastIndexOf(",") + 1, 
+                    screenshotViewDimensions.lastIndexOf("}")
+                )
+            }
             if (currentView.hasOwnProperty('screenshots')) {
                 for (screenshotNum = 0; screenshotNum < currentView.screenshots.length; screenshotNum++) {
                     var screenshot = document.createElement("img")
+                    screenshot.style.height = screenshotViewHeight + "px"
                     screenshot.className = "screenshot"
+                    screenshot.style.borderRadius = screenshotCornerRadius + "px"
                     screenshot.src = currentView.screenshots[screenshotNum].url
                     view.appendChild(screenshot)
                 }
