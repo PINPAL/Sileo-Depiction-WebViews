@@ -34,6 +34,7 @@ body {
     left: 0;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     min-width: 100%;
     min-height: 200px;
     z-index: -999;
