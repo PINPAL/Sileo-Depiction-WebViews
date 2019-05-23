@@ -8,6 +8,8 @@ function loadFile(filename){
     xhttp.send();
     return xhttp.responseText;
 }
+//Define BannerImage (Improve Scrolling Animation Responsiveness)
+const bannerImage = document.getElementById("bannerImage")
 //Get Info from URL
 const tweakName = window.location.search.substring(1).split("-")[0]
 const tweakDeveloperName = window.location.search.substring(1).split("-")[1]
@@ -27,9 +29,9 @@ if (config.hasOwnProperty('tintColor')) {
 }
 //Set Banner Image
 if (config.hasOwnProperty('headerImage')) {
-    document.getElementById("bannerImage").style.backgroundImage = "url(" + config.headerImage + ")"
-    document.getElementById("bannerImage").style.filter = "brightness(0.5)";
-    document.getElementById("bannerImage").style.webkitFilter = "brightness(0.5)";
+    bannerImage.style.backgroundImage = "url(" + config.headerImage + ")"
+    bannerImage.style.filter = "brightness(0.5)";
+    bannerImage.style.webkitFilter = "brightness(0.5)";
 }
 //Set Navbar Tweak Icon
 document.getElementById("navbarTweakIcon").style.backgroundImage = "url(" + currentDirectory + "packages/" + tweakName.toLowerCase() + "/icon.png)"
@@ -88,16 +90,19 @@ document.getElementsByClassName("pillSelectorLine")[0].style.left = (50 / config
 //Initial Display of Main Content
 document.getElementsByClassName("tabContent")[0].style.display = "block"
 
-//Navbar Scrolling Animation
+//Navbar & Banner Scrolling Animation
 function updateNavbar() {
     var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
     document.getElementsByClassName("navbar")[0].style.opacity = scrollTop / 150
     document.getElementById("bannerNavItems").style.opacity = 1 - (scrollTop / 100)
     document.getElementById("scrollTopTest").innerText = scrollTop
     document.getElementById("bannerHeightTest").innerText = 200 + (scrollTop * -1) + "px"
-    if (scrollTop < 0) {
-        document.getElementById("bannerImage").style.top = scrollTop + "px"
-        document.getElementById("bannerImage").style.minHeight = 200 + (scrollTop * -1) + "px"
+    if (scrollTop >= 0) {
+        bannerImage.style.position = "absolute"
+        bannerImage.style.minHeight = "200px"
+    } else {
+        bannerImage.style.position = "fixed"
+        bannerImage.style.minHeight = 200 + (scrollTop * -1) + "px"
     }
     if (scrollTop > 150) {
         document.getElementsByClassName("changedNavbarItems")[0].style.opacity  = 1
