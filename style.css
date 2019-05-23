@@ -396,6 +396,7 @@ a {
     border-bottom-style: solid;
     padding: 15px;
     font-size: 14pt;
+    font-weight: 600;
     color: var(--tint-color);
     box-sizing: border-box;
     text-align: center;
