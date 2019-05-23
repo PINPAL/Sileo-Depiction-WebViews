@@ -14,6 +14,7 @@ const tweakDeveloperName = window.location.search.substring(1).split("-")[1]
 const tweakPrice = window.location.search.substring(1).split("-")[2]
 //Load Sileo JSON File
 const currentDirectory = window.location.origin + window.location.pathname
+const tweakDirectory = currentDirectory + "packages/" + tweakName.toLowerCase()
 const configFile = loadFile(currentDirectory + "packages/" + tweakName.toLowerCase() + "/config.json")
 const config = JSON.parse(configFile)
 //Set Background Color
@@ -31,7 +32,7 @@ if (config.hasOwnProperty('headerImage')) {
     document.getElementById("bannerImage").style.webkitFilter = "brightness(0.5)";
 }
 //Set Navbar Tweak Icon
-document.getElementById("navbarTweakIcon").style.backgroundImage = "url(" + currentDirectory + tweakName + "/icon.png)"
+document.getElementById("navbarTweakIcon").style.backgroundImage = "url(" + currentDirectory + "packages/" + tweakName.toLowerCase() + "/icon.png)"
 //Set Price Buttons
 for (i=0; i<document.getElementsByClassName("priceButton").length;i++) {
     if (/[+-]?(?=\.\d|\d)(?:\d+)?(?:\.?\d*)(?:[eE][+-]?\d+)?/.test(tweakPrice)) {
@@ -43,11 +44,11 @@ document.getElementById("tweakName").innerText = tweakName
 //Set Developer Name
 document.getElementById("developerName").innerText = tweakDeveloperName
 //Set Tweak Icon
-document.getElementById("tweakIcon").style.backgroundImage = "url(/packages/" + tweakName.toLowerCase() + "/icon.png)"
+document.getElementById("tweakIcon").style.backgroundImage = "url(" + tweakDirectory + "/icon.png)"
 //Set Page Title
 document.getElementById("websiteTitle").innerText = tweakName
 //Set Page Icon
-document.getElementById("websiteIcon").href = "/packages/" + tweakName.toLowerCase() + "/icon.png"
+document.getElementById("websiteIcon").href = "/packages/" + tweakDirectory + "/icon.png"
 
 //Generate Tabs
 for (currentTab=0; currentTab<config.tabs.length; currentTab++) {
