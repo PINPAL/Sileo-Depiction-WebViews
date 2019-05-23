@@ -9,14 +9,12 @@ function loadFile(filename){
     return xhttp.responseText;
 }
 //Get Info from URL
+var tweakName = window.location.search.substring(1).split("-")[0]
+var tweakDeveloperName = window.location.search.substring(1).split("-")[1]
 var tweakPrice = window.location.search.substring(1).split("-")[2]
 //Load Sileo JSON File
 var currentDirectory = window.location.origin + window.location.pathname
-var configFile = loadFile(currentDirectory + "packages/" + window.location.search.substring(1).split("-")[0].toLowerCase() + "/config.json")
-console.log(currentDirectory)
-console.log(configFile)
-console.log("Datatype of File: " + typeof(configFile))
-console.log("First Character or File: " + configFile[0])
+var configFile = loadFile(currentDirectory + "packages/" + tweakName.toLowerCase() + "/config.json")
 var config = JSON.parse(configFile)
 //Set Background Color
 if (config.hasOwnProperty('backgroundColor')) {
@@ -65,7 +63,7 @@ for (currentTab=0; currentTab<config.tabs.length; currentTab++) {
     document.getElementById("mainWrapper").appendChild(tabContent)
 }
 //Set Navbar Tweak Icon
-document.getElementById("navbarTweakIcon").style.backgroundImage = "url(/packages/" + window.location.search.substring(1).split("-")[0] + "/icon.png)"
+document.getElementById("navbarTweakIcon").style.backgroundImage = "url(" + currentDirectory + tweakName + "/icon.png)"
 //Set Price Buttons
 for (i=0; i<document.getElementsByClassName("priceButton").length;i++) {
     if (/[+-]?(?=\.\d|\d)(?:\d+)?(?:\.?\d*)(?:[eE][+-]?\d+)?/.test(tweakPrice)) {
@@ -73,15 +71,15 @@ for (i=0; i<document.getElementsByClassName("priceButton").length;i++) {
     }
 }
 //Set Tweak Name
-document.getElementById("tweakName").innerText = window.location.search.substring(1).split("-")[0]
+document.getElementById("tweakName").innerText = tweakName
 //Set Developer Name
-document.getElementById("developerName").innerText = window.location.search.substring(1).split("-")[1]
+document.getElementById("developerName").innerText = tweakDeveloperName
 //Set Tweak Icon
-document.getElementById("tweakIcon").style.backgroundImage = "url(/packages/" + window.location.search.substring(1).split("-")[0].toLowerCase() + "/icon.png)"
+document.getElementById("tweakIcon").style.backgroundImage = "url(/packages/" + tweakName.toLowerCase() + "/icon.png)"
 //Set Page Title
-document.getElementById("websiteTitle").innerText = window.location.search.substring(1).split("-")[0]
+document.getElementById("websiteTitle").innerText = tweakName
 //Set Page Icon
-document.getElementById("websiteIcon").href = "/packages/" + window.location.search.substring(1).split("-")[0].toLowerCase() + "/icon.png"
+document.getElementById("websiteIcon").href = "/packages/" + tweakName.toLowerCase() + "/icon.png"
 
 //Initial Styling of Pill Selector (Page Load)
 document.getElementsByClassName("pillText")[0].style.color = "var(--tint-color)"
