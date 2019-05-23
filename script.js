@@ -96,7 +96,7 @@ function updateNavbar() {
     document.getElementById("scrollTopTest").innerText = scrollTop
     document.getElementById("bannerHeightTest").innerText = 200 + (scrollTop * -1) + "px"
     if (scrollTop < 0) {
-        document.getElementById("bannerImage").style.top = scrollTop
+        document.getElementById("bannerImage").style.top = scrollTop + "px"
         document.getElementById("bannerImage").style.minHeight = 200 + (scrollTop * -1) + "px"
     }
     if (scrollTop > 150) {
