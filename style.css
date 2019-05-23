@@ -1,13 +1,6 @@
-@font-face { 
-    font-family: 'San Francisco';
-    src: local('San Francisco'), local('San Francisco'), url('fonts/System\ San\ Francisco\ Display\ Regular.ttf');
-    font-family: 'San Francisco Bold';
-    src: local('San Francisco'), local('San Francisco'), url('fonts/System\ San\ Francisco\ Display\ Bold.ttf');
-}
-
 * {
     text-align: left;
-    font-family: -apple-system, 'San Francisco', sans-serif;
+    font-family: -apple-system-font,BlinkMacSystemFont,Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 html {
     --navbar-bg-color: #FEFEFE;
@@ -108,7 +101,9 @@ body {
 
 .backArrow {
     position: absolute;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
     left: 0;
     min-width: 20px;
     min-height: 20px;
