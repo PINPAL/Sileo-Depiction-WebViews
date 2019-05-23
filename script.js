@@ -12,10 +12,12 @@ function loadFile(filename){
 var tweakPrice = window.location.search.substring(1).split("-")[2]
 //Load Sileo JSON File
 var currentDirectory = window.location.origin + window.location.pathname
+var configFile = loadFile(currentDirectory + "packages/" + window.location.search.substring(1).split("-")[0].toLowerCase() + "/config.json")
 console.log(currentDirectory)
-console.log(loadFile(currentDirectory + "packages/" + window.location.search.substring(1).split("-")[0].toLowerCase() + "/config.json"))
-console.log(typeof(loadFile(currentDirectory + "packages/" + window.location.search.substring(1).split("-")[0].toLowerCase() + "/config.json")))
-var config = JSON.parse((loadFile("/packages/" + window.location.search.substring(1).split("-")[0].toLowerCase() + "/config.json")))
+console.log(configFile)
+console.log("Datatype of File: " + typeof(configFile))
+console.log("First Character or File: " + configFile[0])
+var config = JSON.parse(configFile)
 //Set Background Color
 if (config.hasOwnProperty('backgroundColor')) {
     document.getElementsByTagName('html')[0].style.setProperty("--bg-color",config.backgroundColor)
