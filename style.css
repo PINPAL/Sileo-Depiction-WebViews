@@ -107,8 +107,11 @@ body {
     min-height: 20px;
     background-color: var(--tint-color);
     mask-image: url("assets/back.png");
+    -webkit-mask-image: url("assets/back.png");
     mask-mode: alpha;
+    -webkit-mask-mode: alpha;
     mask-size: cover;
+    -webkit-mask-size: cover;
 }
 .modifyButton {
     z-index: 99999;
@@ -344,8 +347,11 @@ a {
     min-height: 16px;
     background-color: var(--tint-color);
     mask-image: url("assets/back.png");
+    -webkit-mask-image: url("assets/back.png");
     mask-mode: alpha;
+    -webkit-mask-mode: alpha;
     mask-size: cover;
+    -webkit-mask-size: cover;
 }
 .depictionButton {
     min-width: 100%;
