@@ -9,13 +9,13 @@ function loadFile(filename){
     return xhttp.responseText;
 }
 //Get Info from URL
-var tweakName = window.location.search.substring(1).split("-")[0]
-var tweakDeveloperName = window.location.search.substring(1).split("-")[1]
-var tweakPrice = window.location.search.substring(1).split("-")[2]
+const tweakName = window.location.search.substring(1).split("-")[0]
+const tweakDeveloperName = window.location.search.substring(1).split("-")[1]
+const tweakPrice = window.location.search.substring(1).split("-")[2]
 //Load Sileo JSON File
-var currentDirectory = window.location.origin + window.location.pathname
-var configFile = loadFile(currentDirectory + "packages/" + tweakName.toLowerCase() + "/config.json")
-var config = JSON.parse(configFile)
+const currentDirectory = window.location.origin + window.location.pathname
+const configFile = loadFile(currentDirectory + "packages/" + tweakName.toLowerCase() + "/config.json")
+const config = JSON.parse(configFile)
 //Set Background Color
 if (config.hasOwnProperty('backgroundColor')) {
     document.getElementsByTagName('html')[0].style.setProperty("--bg-color",config.backgroundColor)
@@ -30,6 +30,24 @@ if (config.hasOwnProperty('headerImage')) {
     document.getElementById("bannerImage").style.filter = "brightness(0.5)";
     document.getElementById("bannerImage").style.webkitFilter = "brightness(0.5)";
 }
+//Set Navbar Tweak Icon
+document.getElementById("navbarTweakIcon").style.backgroundImage = "url(" + currentDirectory + tweakName + "/icon.png)"
+//Set Price Buttons
+for (i=0; i<document.getElementsByClassName("priceButton").length;i++) {
+    if (/[+-]?(?=\.\d|\d)(?:\d+)?(?:\.?\d*)(?:[eE][+-]?\d+)?/.test(tweakPrice)) {
+        document.getElementsByClassName("priceButton")[i].innerText = "$" + tweakPrice
+    }
+}
+//Set Tweak Name
+document.getElementById("tweakName").innerText = tweakName
+//Set Developer Name
+document.getElementById("developerName").innerText = tweakDeveloperName
+//Set Tweak Icon
+document.getElementById("tweakIcon").style.backgroundImage = "url(/packages/" + tweakName.toLowerCase() + "/icon.png)"
+//Set Page Title
+document.getElementById("websiteTitle").innerText = tweakName
+//Set Page Icon
+document.getElementById("websiteIcon").href = "/packages/" + tweakName.toLowerCase() + "/icon.png"
 
 //Generate Tabs
 for (currentTab=0; currentTab<config.tabs.length; currentTab++) {
@@ -62,24 +80,6 @@ for (currentTab=0; currentTab<config.tabs.length; currentTab++) {
     }
     document.getElementById("mainWrapper").appendChild(tabContent)
 }
-//Set Navbar Tweak Icon
-document.getElementById("navbarTweakIcon").style.backgroundImage = "url(" + currentDirectory + tweakName + "/icon.png)"
-//Set Price Buttons
-for (i=0; i<document.getElementsByClassName("priceButton").length;i++) {
-    if (/[+-]?(?=\.\d|\d)(?:\d+)?(?:\.?\d*)(?:[eE][+-]?\d+)?/.test(tweakPrice)) {
-        document.getElementsByClassName("priceButton")[i].innerText = "$" + tweakPrice
-    }
-}
-//Set Tweak Name
-document.getElementById("tweakName").innerText = tweakName
-//Set Developer Name
-document.getElementById("developerName").innerText = tweakDeveloperName
-//Set Tweak Icon
-document.getElementById("tweakIcon").style.backgroundImage = "url(/packages/" + tweakName.toLowerCase() + "/icon.png)"
-//Set Page Title
-document.getElementById("websiteTitle").innerText = tweakName
-//Set Page Icon
-document.getElementById("websiteIcon").href = "/packages/" + tweakName.toLowerCase() + "/icon.png"
 
 //Initial Styling of Pill Selector (Page Load)
 document.getElementsByClassName("pillText")[0].style.color = "var(--tint-color)"
