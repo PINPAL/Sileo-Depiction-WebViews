@@ -1,0 +1,1038 @@
+{
+  "class": "DepictionTabView",
+  "minVersion": "0.7",
+  "tabs": [
+    {
+      "class": "DepictionStackView",
+      "tabname": "Details",
+      "views": [
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "<div style=\"color: #666; font-size: 14px;   text-rendering: optimizeLegibility!important; -webkit-font-smoothing: antialiased!important; font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,-apple-system-font,Helvetica Neue;\">\n<p style=\"background: 0 0; border: 0; box-sizing: inherit; font-size: 14px; font-weight: 400; line-height: 1.4; margin: 0 0 10px; margin-bottom: 0;  outline: 0; padding: 0; vertical-align: baseline;\">A dark mode for iOS 11.<br style=\"border: 0 solid #9aa5b1; box-sizing: inherit; line-height: 2; \"><p style=\"margin-bottom:0px; margin-top: 7px\"></p><strong style=\"background: 0 0; border: 0; box-sizing: inherit; color: #555; font-size: 100%; font-weight: 600; margin: 0;  outline: 0; padding: 0; vertical-align: baseline;\">Features:</strong><br style=\"border: 0 solid #9aa5b1; box-sizing: inherit; line-height: 2; \"><p style=\"margin-bottom:0px; margin-top: 7px\"></p>Includes three modes for apps to darkify your whole device.<br style=\"border: 0 solid #9aa5b1; box-sizing: inherit; line-height: 2; \"><p style=\"margin-bottom:0px; margin-top: 7px\"></p>System, Smart Invert and Compatibility.<br style=\"border: 0 solid #9aa5b1; box-sizing: inherit; line-height: 2; \"><p style=\"margin-bottom:0px; margin-top: 7px\"></p>Includes a control center toggle for easy of access.</p>\n</div>",
+          "useSpacing": true,
+          "useRawFormat": true,
+          "useWebView": true
+        },
+        {
+          "class": "DepictionAdmobView",
+          "adUnitID": "ca-app-pub-3560559626882023/5189989996",
+          "adSize": "SmartBanner",
+          "adAppID": "ca-app-pub-3560559626882023~2811238663",
+          "contentURL": "https://repo.packix.com/package/com.laughingquoll.noctisxi/"
+        },
+        {
+          "class": "DepictionScreenshotsView",
+          "itemCornerRadius": 8,
+          "itemSize": "{127, 275}",
+          "screenshots": [
+            {
+              "accessibilityText": "Screenshot",
+              "url": "https://repo.packix.com/api/Packages/5acc06c4334ace5dcd54d8bf/screenshots/5cc7af8d774b0b0018f35b81/download?size=medium",
+              "fullSizeURL": "https://repo.packix.com/api/Packages/5acc06c4334ace5dcd54d8bf/screenshots/5cc7af8d774b0b0018f35b81/download?size=full"
+            },
+            {
+              "accessibilityText": "Screenshot",
+              "url": "https://repo.packix.com/api/Packages/5acc06c4334ace5dcd54d8bf/screenshots/5cc7af8d774b0b0018f35b86/download?size=medium",
+              "fullSizeURL": "https://repo.packix.com/api/Packages/5acc06c4334ace5dcd54d8bf/screenshots/5cc7af8d774b0b0018f35b86/download?size=full"
+            }
+          ]
+        },
+        {
+          "class": "DepictionStackView",
+          "orientation": "landscape",
+          "views": [
+            {
+              "class": "DepictionStackView",
+              "views": [
+                {
+                  "class": "DepictionLabelView",
+                  "text": "Version",
+                  "textColor": "#777",
+                  "margins": "{16,0,8,0}"
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "1.6.6",
+                  "fontWeight": "semibold",
+                  "fontSize": 17,
+                  "usePadding": false
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "Restrictions",
+                  "textColor": "#777",
+                  "margins": "{16,0,8,0}"
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "Paid, Patreon",
+                  "fontWeight": "semibold",
+                  "fontSize": 17,
+                  "usePadding": false
+                }
+              ]
+            },
+            {
+              "class": "DepictionStackView",
+              "views": [
+                {
+                  "class": "DepictionLabelView",
+                  "text": "Updated",
+                  "textColor": "#777",
+                  "margins": "{16,0,8,0}"
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "January 9, 2019",
+                  "fontWeight": "semibold",
+                  "fontSize": 17,
+                  "usePadding": false
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "iOS Version(s)",
+                  "textColor": "#777",
+                  "margins": "{16,0,8,0}"
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "11.0 - 11.4.1",
+                  "fontWeight": "semibold",
+                  "fontSize": 17,
+                  "usePadding": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "class": "DepictionAdmobView",
+          "adUnitID": "ca-app-pub-3560559626882023/9302014456",
+          "adAppID": "ca-app-pub-3560559626882023~9318306845",
+          "adSize": "LargeBanner",
+          "contentURL": "https://repo.packix.com/package/com.laughingquoll.noctisxi/"
+        }
+      ]
+    },
+    {
+      "class": "DepictionAutoStackView",
+      "tabname": "Changelog",
+      "horizontalSpacing": 0,
+      "views": [
+        {
+          "class": "DepictionStackView",
+          "preferredWidth": 800,
+          "views": [
+            {
+              "class": "DepictionStackView",
+              "orientation": "landscape",
+              "views": [
+                {
+                  "class": "DepictionLabelView",
+                  "text": "1.6.6",
+                  "fontWeight": "semibold",
+                  "fontSize": 19,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{16,0,8,0}"
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "January 9, 2019",
+                  "fontSize": 14,
+                  "useSpacing": false,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{20,0,8,16}",
+                  "textColor": "#999",
+                  "alignment": 2
+                }
+              ]
+            },
+            {
+              "class": "DepictionMarkdownView",
+              "useSpacing": false,
+              "markdown": "No changes were reported."
+            },
+            {
+              "class": "DepictionLabelView",
+              "text": "",
+              "fontSize": 0,
+              "useSpacing": false,
+              "usePadding": true,
+              "useMargins": true,
+              "margins": "{-4,0,0,0}",
+              "textColor": "#999",
+              "alignment": 0
+            },
+            {
+              "class": "DepictionSeparatorView"
+            },
+            {
+              "class": "DepictionStackView",
+              "orientation": "landscape",
+              "views": [
+                {
+                  "class": "DepictionLabelView",
+                  "text": "1.6.5",
+                  "fontWeight": "semibold",
+                  "fontSize": 19,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{16,0,8,0}"
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "January 9, 2019",
+                  "fontSize": 14,
+                  "useSpacing": false,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{20,0,8,16}",
+                  "textColor": "#999",
+                  "alignment": 2
+                }
+              ]
+            },
+            {
+              "class": "DepictionMarkdownView",
+              "useSpacing": false,
+              "markdown": "- Basically 1.6.4 but on time."
+            },
+            {
+              "class": "DepictionLabelView",
+              "text": "",
+              "fontSize": 0,
+              "useSpacing": false,
+              "usePadding": true,
+              "useMargins": true,
+              "margins": "{-4,0,0,0}",
+              "textColor": "#999",
+              "alignment": 0
+            },
+            {
+              "class": "DepictionSeparatorView"
+            },
+            {
+              "class": "DepictionStackView",
+              "orientation": "landscape",
+              "views": [
+                {
+                  "class": "DepictionLabelView",
+                  "text": "1.6.4.2",
+                  "fontWeight": "semibold",
+                  "fontSize": 19,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{16,0,8,0}"
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "January 9, 2019",
+                  "fontSize": 14,
+                  "useSpacing": false,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{20,0,8,16}",
+                  "textColor": "#999",
+                  "alignment": 2
+                }
+              ]
+            },
+            {
+              "class": "DepictionMarkdownView",
+              "useSpacing": false,
+              "markdown": "No changes were reported."
+            },
+            {
+              "class": "DepictionLabelView",
+              "text": "",
+              "fontSize": 0,
+              "useSpacing": false,
+              "usePadding": true,
+              "useMargins": true,
+              "margins": "{-4,0,0,0}",
+              "textColor": "#999",
+              "alignment": 0
+            },
+            {
+              "class": "DepictionSeparatorView"
+            },
+            {
+              "class": "DepictionStackView",
+              "orientation": "landscape",
+              "views": [
+                {
+                  "class": "DepictionLabelView",
+                  "text": "1.6.4.1",
+                  "fontWeight": "semibold",
+                  "fontSize": 19,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{16,0,8,0}"
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "January 9, 2019",
+                  "fontSize": 14,
+                  "useSpacing": false,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{20,0,8,16}",
+                  "textColor": "#999",
+                  "alignment": 2
+                }
+              ]
+            },
+            {
+              "class": "DepictionMarkdownView",
+              "useSpacing": false,
+              "markdown": "No changes were reported."
+            },
+            {
+              "class": "DepictionLabelView",
+              "text": "",
+              "fontSize": 0,
+              "useSpacing": false,
+              "usePadding": true,
+              "useMargins": true,
+              "margins": "{-4,0,0,0}",
+              "textColor": "#999",
+              "alignment": 0
+            },
+            {
+              "class": "DepictionSeparatorView"
+            },
+            {
+              "class": "DepictionStackView",
+              "orientation": "landscape",
+              "views": [
+                {
+                  "class": "DepictionLabelView",
+                  "text": "1.6.4",
+                  "fontWeight": "semibold",
+                  "fontSize": 19,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{16,0,8,0}"
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "January 9, 2019",
+                  "fontSize": 14,
+                  "useSpacing": false,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{20,0,8,16}",
+                  "textColor": "#999",
+                  "alignment": 2
+                }
+              ]
+            },
+            {
+              "class": "DepictionMarkdownView",
+              "useSpacing": false,
+              "markdown": "- Added StackXI Support"
+            },
+            {
+              "class": "DepictionLabelView",
+              "text": "",
+              "fontSize": 0,
+              "useSpacing": false,
+              "usePadding": true,
+              "useMargins": true,
+              "margins": "{-4,0,0,0}",
+              "textColor": "#999",
+              "alignment": 0
+            },
+            {
+              "class": "DepictionSeparatorView"
+            },
+            {
+              "class": "DepictionStackView",
+              "orientation": "landscape",
+              "views": [
+                {
+                  "class": "DepictionLabelView",
+                  "text": "1.6.3",
+                  "fontWeight": "semibold",
+                  "fontSize": 19,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{16,0,8,0}"
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "December 7, 2018",
+                  "fontSize": 14,
+                  "useSpacing": false,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{20,0,8,16}",
+                  "textColor": "#999",
+                  "alignment": 2
+                }
+              ]
+            },
+            {
+              "class": "DepictionMarkdownView",
+              "useSpacing": false,
+              "markdown": "- Minor bug fixes."
+            },
+            {
+              "class": "DepictionLabelView",
+              "text": "",
+              "fontSize": 0,
+              "useSpacing": false,
+              "usePadding": true,
+              "useMargins": true,
+              "margins": "{-4,0,0,0}",
+              "textColor": "#999",
+              "alignment": 0
+            },
+            {
+              "class": "DepictionSeparatorView"
+            },
+            {
+              "class": "DepictionStackView",
+              "orientation": "landscape",
+              "views": [
+                {
+                  "class": "DepictionLabelView",
+                  "text": "1.6.2",
+                  "fontWeight": "semibold",
+                  "fontSize": 19,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{16,0,8,0}"
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "October 8, 2018",
+                  "fontSize": 14,
+                  "useSpacing": false,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{20,0,8,16}",
+                  "textColor": "#999",
+                  "alignment": 2
+                }
+              ]
+            },
+            {
+              "class": "DepictionMarkdownView",
+              "useSpacing": false,
+              "markdown": "- Fixed App Store crash."
+            },
+            {
+              "class": "DepictionLabelView",
+              "text": "",
+              "fontSize": 0,
+              "useSpacing": false,
+              "usePadding": true,
+              "useMargins": true,
+              "margins": "{-4,0,0,0}",
+              "textColor": "#999",
+              "alignment": 0
+            },
+            {
+              "class": "DepictionSeparatorView"
+            },
+            {
+              "class": "DepictionStackView",
+              "orientation": "landscape",
+              "views": [
+                {
+                  "class": "DepictionLabelView",
+                  "text": "1.6.1",
+                  "fontWeight": "semibold",
+                  "fontSize": 19,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{16,0,8,0}"
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "October 8, 2018",
+                  "fontSize": 14,
+                  "useSpacing": false,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{20,0,8,16}",
+                  "textColor": "#999",
+                  "alignment": 2
+                }
+              ]
+            },
+            {
+              "class": "DepictionMarkdownView",
+              "useSpacing": false,
+              "markdown": "- Improved in app instant toggle system.\n- Fixed Messages mini application bar colour.\n- Minor blur adjustment on darker wallpapers."
+            },
+            {
+              "class": "DepictionLabelView",
+              "text": "",
+              "fontSize": 0,
+              "useSpacing": false,
+              "usePadding": true,
+              "useMargins": true,
+              "margins": "{-4,0,0,0}",
+              "textColor": "#999",
+              "alignment": 0
+            },
+            {
+              "class": "DepictionSeparatorView"
+            },
+            {
+              "class": "DepictionStackView",
+              "orientation": "landscape",
+              "views": [
+                {
+                  "class": "DepictionLabelView",
+                  "text": "1.6",
+                  "fontWeight": "semibold",
+                  "fontSize": 19,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{16,0,8,0}"
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "August 25, 2018",
+                  "fontSize": 14,
+                  "useSpacing": false,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{20,0,8,16}",
+                  "textColor": "#999",
+                  "alignment": 2
+                }
+              ]
+            },
+            {
+              "class": "DepictionMarkdownView",
+              "useSpacing": false,
+              "markdown": "- Added new preferences panel: Patches\n- Added better Eclipse support\n- Bug fixes and improvements"
+            },
+            {
+              "class": "DepictionLabelView",
+              "text": "",
+              "fontSize": 0,
+              "useSpacing": false,
+              "usePadding": true,
+              "useMargins": true,
+              "margins": "{-4,0,0,0}",
+              "textColor": "#999",
+              "alignment": 0
+            },
+            {
+              "class": "DepictionSeparatorView"
+            },
+            {
+              "class": "DepictionStackView",
+              "orientation": "landscape",
+              "views": [
+                {
+                  "class": "DepictionLabelView",
+                  "text": "1.5.4",
+                  "fontWeight": "semibold",
+                  "fontSize": 19,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{16,0,8,0}"
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "July 20, 2018",
+                  "fontSize": 14,
+                  "useSpacing": false,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{20,0,8,16}",
+                  "textColor": "#999",
+                  "alignment": 2
+                }
+              ]
+            },
+            {
+              "class": "DepictionMarkdownView",
+              "useSpacing": false,
+              "markdown": "- Readded dependancies."
+            },
+            {
+              "class": "DepictionLabelView",
+              "text": "",
+              "fontSize": 0,
+              "useSpacing": false,
+              "usePadding": true,
+              "useMargins": true,
+              "margins": "{-4,0,0,0}",
+              "textColor": "#999",
+              "alignment": 0
+            },
+            {
+              "class": "DepictionSeparatorView"
+            },
+            {
+              "class": "DepictionStackView",
+              "orientation": "landscape",
+              "views": [
+                {
+                  "class": "DepictionLabelView",
+                  "text": "1.5.3",
+                  "fontWeight": "semibold",
+                  "fontSize": 19,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{16,0,8,0}"
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "July 14, 2018",
+                  "fontSize": 14,
+                  "useSpacing": false,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{20,0,8,16}",
+                  "textColor": "#999",
+                  "alignment": 2
+                }
+              ]
+            },
+            {
+              "class": "DepictionMarkdownView",
+              "useSpacing": false,
+              "markdown": "- Fixed App Store Text\n- Fixed Messages Quick Bar"
+            },
+            {
+              "class": "DepictionLabelView",
+              "text": "",
+              "fontSize": 0,
+              "useSpacing": false,
+              "usePadding": true,
+              "useMargins": true,
+              "margins": "{-4,0,0,0}",
+              "textColor": "#999",
+              "alignment": 0
+            },
+            {
+              "class": "DepictionSeparatorView"
+            },
+            {
+              "class": "DepictionStackView",
+              "orientation": "landscape",
+              "views": [
+                {
+                  "class": "DepictionLabelView",
+                  "text": "1.5.2",
+                  "fontWeight": "semibold",
+                  "fontSize": 19,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{16,0,8,0}"
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "July 14, 2018",
+                  "fontSize": 14,
+                  "useSpacing": false,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{20,0,8,16}",
+                  "textColor": "#999",
+                  "alignment": 2
+                }
+              ]
+            },
+            {
+              "class": "DepictionMarkdownView",
+              "useSpacing": false,
+              "markdown": "- Modified preferences failed to load error directing installation of said dependancies."
+            },
+            {
+              "class": "DepictionLabelView",
+              "text": "",
+              "fontSize": 0,
+              "useSpacing": false,
+              "usePadding": true,
+              "useMargins": true,
+              "margins": "{-4,0,0,0}",
+              "textColor": "#999",
+              "alignment": 0
+            },
+            {
+              "class": "DepictionSeparatorView"
+            },
+            {
+              "class": "DepictionStackView",
+              "orientation": "landscape",
+              "views": [
+                {
+                  "class": "DepictionLabelView",
+                  "text": "1.5.1",
+                  "fontWeight": "semibold",
+                  "fontSize": 19,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{16,0,8,0}"
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "July 14, 2018",
+                  "fontSize": 14,
+                  "useSpacing": false,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{20,0,8,16}",
+                  "textColor": "#999",
+                  "alignment": 2
+                }
+              ]
+            },
+            {
+              "class": "DepictionMarkdownView",
+              "useSpacing": false,
+              "markdown": "- Fixed Preferences Typo"
+            },
+            {
+              "class": "DepictionLabelView",
+              "text": "",
+              "fontSize": 0,
+              "useSpacing": false,
+              "usePadding": true,
+              "useMargins": true,
+              "margins": "{-4,0,0,0}",
+              "textColor": "#999",
+              "alignment": 0
+            },
+            {
+              "class": "DepictionSeparatorView"
+            },
+            {
+              "class": "DepictionStackView",
+              "orientation": "landscape",
+              "views": [
+                {
+                  "class": "DepictionLabelView",
+                  "text": "1.5",
+                  "fontWeight": "semibold",
+                  "fontSize": 19,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{16,0,8,0}"
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "July 14, 2018",
+                  "fontSize": 14,
+                  "useSpacing": false,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{20,0,8,16}",
+                  "textColor": "#999",
+                  "alignment": 2
+                }
+              ]
+            },
+            {
+              "class": "DepictionMarkdownView",
+              "useSpacing": false,
+              "markdown": "- + Added Blur Tint Configuration\n- + Added PrefixUI Preferences\n- + Bug Fixes for >11.2"
+            },
+            {
+              "class": "DepictionLabelView",
+              "text": "",
+              "fontSize": 0,
+              "useSpacing": false,
+              "usePadding": true,
+              "useMargins": true,
+              "margins": "{-4,0,0,0}",
+              "textColor": "#999",
+              "alignment": 0
+            },
+            {
+              "class": "DepictionSeparatorView"
+            },
+            {
+              "class": "DepictionStackView",
+              "orientation": "landscape",
+              "views": [
+                {
+                  "class": "DepictionLabelView",
+                  "text": "1.4.3.1",
+                  "fontWeight": "semibold",
+                  "fontSize": 19,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{16,0,8,0}"
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "July 9, 2018",
+                  "fontSize": 14,
+                  "useSpacing": false,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{20,0,8,16}",
+                  "textColor": "#999",
+                  "alignment": 2
+                }
+              ]
+            },
+            {
+              "class": "DepictionMarkdownView",
+              "useSpacing": false,
+              "markdown": "- Adjusted package dependancies.\n- Minor enhancements."
+            },
+            {
+              "class": "DepictionLabelView",
+              "text": "",
+              "fontSize": 0,
+              "useSpacing": false,
+              "usePadding": true,
+              "useMargins": true,
+              "margins": "{-4,0,0,0}",
+              "textColor": "#999",
+              "alignment": 0
+            },
+            {
+              "class": "DepictionSeparatorView"
+            },
+            {
+              "class": "DepictionStackView",
+              "orientation": "landscape",
+              "views": [
+                {
+                  "class": "DepictionLabelView",
+                  "text": "1.4.3",
+                  "fontWeight": "semibold",
+                  "fontSize": 19,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{16,0,8,0}"
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "July 9, 2018",
+                  "fontSize": 14,
+                  "useSpacing": false,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{20,0,8,16}",
+                  "textColor": "#999",
+                  "alignment": 2
+                }
+              ]
+            },
+            {
+              "class": "DepictionMarkdownView",
+              "useSpacing": false,
+              "markdown": "No changes were reported."
+            },
+            {
+              "class": "DepictionLabelView",
+              "text": "",
+              "fontSize": 0,
+              "useSpacing": false,
+              "usePadding": true,
+              "useMargins": true,
+              "margins": "{-4,0,0,0}",
+              "textColor": "#999",
+              "alignment": 0
+            },
+            {
+              "class": "DepictionSeparatorView"
+            },
+            {
+              "class": "DepictionStackView",
+              "orientation": "landscape",
+              "views": [
+                {
+                  "class": "DepictionLabelView",
+                  "text": "1.4.2",
+                  "fontWeight": "semibold",
+                  "fontSize": 19,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{16,0,8,0}"
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "May 29, 2018",
+                  "fontSize": 14,
+                  "useSpacing": false,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{20,0,8,16}",
+                  "textColor": "#999",
+                  "alignment": 2
+                }
+              ]
+            },
+            {
+              "class": "DepictionMarkdownView",
+              "useSpacing": false,
+              "markdown": "- Removed effect on x icons in wiggle mode.\n- Added effect to widget edit button.\n- Improved resposiveness on older devices."
+            },
+            {
+              "class": "DepictionLabelView",
+              "text": "",
+              "fontSize": 0,
+              "useSpacing": false,
+              "usePadding": true,
+              "useMargins": true,
+              "margins": "{-4,0,0,0}",
+              "textColor": "#999",
+              "alignment": 0
+            },
+            {
+              "class": "DepictionSeparatorView"
+            },
+            {
+              "class": "DepictionStackView",
+              "orientation": "landscape",
+              "views": [
+                {
+                  "class": "DepictionLabelView",
+                  "text": "1.4",
+                  "fontWeight": "semibold",
+                  "fontSize": 19,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{16,0,8,0}"
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "May 20, 2018",
+                  "fontSize": 14,
+                  "useSpacing": false,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{20,0,8,16}",
+                  "textColor": "#999",
+                  "alignment": 2
+                }
+              ]
+            },
+            {
+              "class": "DepictionMarkdownView",
+              "useSpacing": false,
+              "markdown": "No changes were reported."
+            },
+            {
+              "class": "DepictionLabelView",
+              "text": "",
+              "fontSize": 0,
+              "useSpacing": false,
+              "usePadding": true,
+              "useMargins": true,
+              "margins": "{-4,0,0,0}",
+              "textColor": "#999",
+              "alignment": 0
+            },
+            {
+              "class": "DepictionSeparatorView"
+            },
+            {
+              "class": "DepictionStackView",
+              "orientation": "landscape",
+              "views": [
+                {
+                  "class": "DepictionLabelView",
+                  "text": "1.3.2",
+                  "fontWeight": "semibold",
+                  "fontSize": 19,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{16,0,8,0}"
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "April 29, 2018",
+                  "fontSize": 14,
+                  "useSpacing": false,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{20,0,8,16}",
+                  "textColor": "#999",
+                  "alignment": 2
+                }
+              ]
+            },
+            {
+              "class": "DepictionMarkdownView",
+              "useSpacing": false,
+              "markdown": "- Reverted and added Messages dark mode switch"
+            },
+            {
+              "class": "DepictionLabelView",
+              "text": "",
+              "fontSize": 0,
+              "useSpacing": false,
+              "usePadding": true,
+              "useMargins": true,
+              "margins": "{-4,0,0,0}",
+              "textColor": "#999",
+              "alignment": 0
+            },
+            {
+              "class": "DepictionSeparatorView"
+            },
+            {
+              "class": "DepictionStackView",
+              "orientation": "landscape",
+              "views": [
+                {
+                  "class": "DepictionLabelView",
+                  "text": "1.3.1",
+                  "fontWeight": "semibold",
+                  "fontSize": 19,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{16,0,8,0}"
+                },
+                {
+                  "class": "DepictionLabelView",
+                  "text": "April 10, 2018",
+                  "fontSize": 14,
+                  "useSpacing": false,
+                  "usePadding": true,
+                  "useMargins": true,
+                  "margins": "{20,0,8,16}",
+                  "textColor": "#999",
+                  "alignment": 2
+                }
+              ]
+            },
+            {
+              "class": "DepictionMarkdownView",
+              "useSpacing": false,
+              "markdown": "No changes were reported."
+            },
+            {
+              "class": "DepictionLabelView",
+              "text": "",
+              "fontSize": 0,
+              "useSpacing": false,
+              "usePadding": true,
+              "useMargins": true,
+              "margins": "{-4,0,0,0}",
+              "textColor": "#999",
+              "alignment": 0
+            },
+            {
+              "class": "DepictionSeparatorView"
+            },
+            {
+              "class": "DepictionAdmobView",
+              "adUnitID": "ca-app-pub-3560559626882023/5189989996",
+              "adSize": "SmartBanner",
+              "adAppID": "ca-app-pub-3560559626882023~2811238663",
+              "contentURL": "https://repo.packix.com/package/com.laughingquoll.noctisxi/changes"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -147,6 +147,15 @@ function changePillSelector(element) {
     document.getElementById(element.id.slice(0,-6) + "Content").style.display = "block"
 }
 
+// Set Dark Mode Cookie if non-existant
+if (!document.cookie) {
+    setCookie("enableDarkMode",false)
+}
+// Load Dark Mode from Cookie
+if (getCookie("enableDarkMode")) {
+    toggleDarkMode(true)
+}
+
 // Constant to improve runtime performance (important for animation)
 const modifyPopup = document.getElementById("modifyPopup")
 const popupButtonWrapper = document.getElementsByClassName('popupButtonWrapper')[0]
@@ -216,6 +225,9 @@ function displayOverlayPopup(element) {
         largerScreenshot.style.cursor = "auto"
         largerScreenshot.classList.add("largerScreenshot")
         document.getElementById("overlayPopupContent").appendChild(largerScreenshot)
+    } else if (element.innerText == "Configure") {
+        document.getElementById("configureSettings").style.display = "block"
+        hidePopup()
     }
     disableScroll()
     document.getElementById("everythingWrapper").classList.add("blurred")
@@ -226,7 +238,79 @@ function hideOverlayPopup() {
     setTimeout(function(){
         document.getElementById("overlayPopupContent").innerHTML = ""
         document.getElementById("aboutInfo").removeAttribute("style")
+        document.getElementById("configureSettings").removeAttribute("style")
     }, 350);
     document.getElementById("everythingWrapper").classList.remove("blurred")
     document.getElementById("overlayPopup").style.transform = "translateY(100%)"
+}
+
+// Function for sharing the package
+function sharePackage() {
+    navigator.share({
+        title: tweakName,
+        text: "Get " + tweakName,
+        url: window.location.href,
+    });
+}
+
+// Function for toggling settings
+function toggleSetting(element) {
+    if (element.className == "toggleSwitch enabledToggle") {
+        // Make Toggle Disabled
+        element.classList.remove("enabledToggle")
+        // If Dark Mode
+        if (element.id == "enableDarkMode") {
+            setCookie("enableDarkMode",false)
+            toggleDarkMode(false)
+
+        }
+    } else {
+        // Make Toggle Enabled
+        element.classList.add("enabledToggle")
+        // If Dark Mode
+        if (element.id == "enableDarkMode") {
+            setCookie("enableDarkMode",true)
+            toggleDarkMode(true)
+        }
+    }
+}
+
+//Function to enable/disable Dark Mode
+function toggleDarkMode(enable) {
+    if (enable) {
+        if (!config.hasOwnProperty('backgroundColor')) {
+            document.getElementsByTagName('html')[0].style.setProperty("--bg-color","#282828")
+        }
+        document.getElementsByTagName('html')[0].style.setProperty("--text-color","#FFFFFF")
+        document.getElementsByTagName('html')[0].style.setProperty("--navbar-bg-color","#1E1E1E")
+        document.getElementsByTagName('html')[0].style.setProperty("--border-color","#303030")
+    } else {
+        if (!config.hasOwnProperty('backgroundColor')) {
+            document.getElementsByTagName('html')[0].style.setProperty("--bg-color","#FFFFFF")
+        }
+        document.getElementsByTagName('html')[0].style.setProperty("--text-color","#000000")
+        document.getElementsByTagName('html')[0].style.setProperty("--navbar-bg-color","#FEFEFE")
+        document.getElementsByTagName('html')[0].style.setProperty("--border-color","#c5c5c5")
+    }
+}
+
+//Function to set cookie
+function setCookie(name,value) {
+    var expires = "";
+    var date = new Date();
+    date.setTime(date.getTime() + 999999999);
+    expires = "; expires=" + date.toUTCString();
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+
+//Function to get cookie
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
 }

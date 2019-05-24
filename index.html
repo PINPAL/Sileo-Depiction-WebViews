@@ -34,14 +34,23 @@
                     <p>Github<br><span>PINPAL</span></p>
                 </a>
             </div>
+            <div id="configureSettings">
+                <h1 style="font-size: 24pt; margin-top: 0">Settings</h1>
+                <div class="settingsTableCell">
+                    Dark Mode
+                    <div class="toggleSwitch" id="enableDarkMode" onclick="toggleSetting(this)">
+                        <div class="toggleSwitchKnob"></div>
+                    </div>
+                </div>
+            </div>
             <div id="overlayPopupContent"></div>
         </div>
 
         <div id="modifyPopup">
             <div class="popupButtonWrapper">
                 <div class="popupButton" onClick="displayOverlayPopup(this)">About</div>
-                <div class="popupButton">Button2</div>
-                <div class="popupButton">Button3</div>
+                <div class="popupButton" onClick="sharePackage()">Share Package</div>
+                <div class="popupButton" onClick="displayOverlayPopup(this)">Configure</div>
                 <div class="popupButton" onclick="hidePopup()">Cancel</div>
             </div>
         </div>
