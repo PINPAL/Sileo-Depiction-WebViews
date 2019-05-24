@@ -68,6 +68,9 @@ body {
 .rightNavButton .priceButton {
     cursor: pointer;
 }
+#bannerWrapper {
+    min-height: 200px;
+}
 #bannerWrapper .leftNavButton, #bannerWrapper .rightNavButton {
     z-index: -998;
     position: fixed;
@@ -145,7 +148,6 @@ body {
 /*Top Header Section*/
 .headerSection {
     position: relative;
-    margin-top: 200px;
     padding-top: 20px;
     padding-bottom: 20px;
     padding-left: 90px;
@@ -233,6 +235,7 @@ body {
     object-fit: contain;
 }
 .screenshot {
+    cursor: pointer;
     margin-right: 7px;
     margin-left: 7px;
 }
@@ -412,4 +415,95 @@ a {
     font-weight: 600;
     margin-top: 10px;
     border-radius: 12px;
+}
+
+/*Overlay Popup (Screenshot Large Preview / About Page) */
+#overlayPopup {
+    transform: translateY(100%);
+    background-color: var(--bg-color);
+    opacity: .9;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+    height: 100%;
+    width: 100vw;
+    transition: transform 0.3s ease;
+    -webkit-transition: transform 0.3s ease;
+    -moz-transition: transform 0.3s ease;
+    -o-transition: transform 0.3s ease;
+    -ms-transition: transform 0.3s ease;
+}
+#overlayPopupContent, #aboutInfo {
+    font-size: 12pt;
+    margin-top: 45px;
+    padding: 18px;
+}
+#aboutInfo {
+    display: none;
+}
+.doneButton {
+    cursor: pointer;
+    color: var(--tint-color);
+    position: absolute;
+    top: 22px;
+    transform: translateY(-50%);
+    font-weight: normal;
+    font-size: 14pt;
+    right: 22px;
+}
+.doneButton:hover {
+    opacity: .6;
+}
+.largerScreenshot {
+    margin: 0 !important;
+    display: block;
+    position: absolute;
+    top: calc(50% + 18px);
+    left: 50%;
+    min-height: calc(100% - 72px);
+    transform: translate(-50%, -50%);
+}
+
+/*Wrapper for all content (excluding popups)*/
+#everythingWrapper {
+    transition: filter 0.15s ease;
+    -webkit-transition: filter 0.15s ease;
+    -moz-transition: filter 0.15s ease;
+    -o-transition: filter 0.15s ease;
+    -ms-transition: filter 0.15s ease; 
+}
+.blurred {
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+}
+
+/*Social Icons - For About Page*/
+.socialLink {
+    border-width: 1px;
+    border-color: var(--border-color);
+    border-top-style: solid;
+    position: relative;
+    min-height: 65px;
+    max-height: 65px;
+    background-size: 65px;
+    background-repeat: no-repeat;
+    background-position: 0 center;
+    width: 100%;
+    display: block;
+}
+.socialLink:last-child {
+    border-bottom-style: solid;
+}
+.socialLink p {
+    color: black;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 90px;
+    transform: translateY(-50%);
+    line-height: normal;
+}
+.socialLink p span {
+    color: var(--medium-text-color);
 }

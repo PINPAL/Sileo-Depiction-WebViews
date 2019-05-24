@@ -74,13 +74,14 @@ function handleView(currentView,isStacked) {
                 //Split {x,y} into just y
                 var screenshotViewDimensions = currentView.itemSize
                 screenshotViewHeight = screenshotViewDimensions.substring (
-                    screenshotViewDimensions.lastIndexOf(",") + 1, 
+                    screenshotViewDimensions.lastIndexOf(",") + 1,
                     screenshotViewDimensions.lastIndexOf("}")
                 )
             }
             if (currentView.hasOwnProperty('screenshots')) {
                 for (screenshotNum = 0; screenshotNum < currentView.screenshots.length; screenshotNum++) {
                     var screenshot = document.createElement("img")
+                    screenshot.setAttribute("onclick","displayOverlayPopup(this)")
                     screenshot.style.height = screenshotViewHeight + "px"
                     screenshot.className = "screenshot"
                     screenshot.style.borderRadius = screenshotCornerRadius + "px"

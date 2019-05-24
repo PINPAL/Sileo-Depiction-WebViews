@@ -9,32 +9,70 @@
     </head>
     <body onscroll="updateNavbar()">
 
-        <div id="bannerWrapper">
-            <div id="bannerImage"></div>
-            <div id="bannerNavItems">
+        <div id="overlayPopup">
+            <div class="doneButton" onclick="hideOverlayPopup()">Done</div>
+            <div id="aboutInfo">
+                <h1 style="font-size: 24pt; margin-top: 0">About</h1>
+                <h2 style="font-size: 16pt">Sileo Depiction WebView</h2>
+                <h4>Generate Websites using Sileo Depiction Files!</h4>
+                <p>This project was created and maintained by PINPAL.</p>
+                <p>If you found a bug or issue, or simply want to contact me you can do so here:</p>
+                <a href="https://twitter.com/TPinpal" class="socialLink" 
+                style="background-image: url('https://pinpal.github.io/assets/social-icons/Discord.png')">
+                    <p>Twitter<br><span>@TPINPAL</span></p>
+                </a>
+                <a href="https://discordapp.com/channels/@me" class="socialLink" 
+                style="background-image: url('https://pinpal.github.io/assets/social-icons/Twitter.png')">
+                    <p>Discord<br><span>PINPAL#2591</span></p>
+                </a>
+                <a href="https://www.reddit.com/user/THE_PINPAL614" class="socialLink" 
+                style="background-image: url('https://pinpal.github.io/assets/social-icons/Reddit.png')">
+                    <p>Reddit<br><span>PINPAL</span></p>
+                </a>
+                <a href="https://github.com/PINPAL/" class="socialLink"
+                style="background-image: url('https://pinpal.github.io/assets/social-icons/Github.png')">
+                    <p>Github<br><span>PINPAL</span></p>
+                </a>
+            </div>
+            <div id="overlayPopupContent"></div>
+        </div>
+
+        <div id="modifyPopup">
+            <div class="popupButtonWrapper">
+                <div class="popupButton" onClick="displayOverlayPopup(this)">About</div>
+                <div class="popupButton">Button2</div>
+                <div class="popupButton">Button3</div>
+                <div class="popupButton" onclick="hidePopup()">Cancel</div>
+            </div>
+        </div>
+
+        <div id="everythingWrapper">
+            <div id="bannerWrapper">
+                <div id="bannerImage"></div>
+                <div id="bannerNavItems">
+                    <div class="leftNavButton">
+                        <div class="backArrow"></div>Back
+                    </div>
+                    <div class="rightNavButton">
+                        <div class="modifyButton"></div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="navbar">
                 <div class="leftNavButton">
                     <div class="backArrow"></div>Back
                 </div>
-                <div class="rightNavButton">
-                    <div class="modifyButton"></div>
+                <div class="changedNavbarItems">
+                    <div id="navbarTweakIcon"></div>
+                    <div class="rightNavButton">
+                        <div class="priceButton" onclick="modifyButton()">Free</div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="navbar">
-            <div class="leftNavButton">
-                <div class="backArrow"></div>Back
-            </div>
-            <div class="changedNavbarItems">
-                <div id="navbarTweakIcon"></div>
-                <div class="rightNavButton">
-                    <div class="priceButton" onclick="modifyButton()">Free</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="contentWrapper">
-            <div class="headerSection">
+    
+            <div class="contentWrapper">
+                <div class="headerSection">
                     <div id="tweakIcon"></div>
                     <h1 id="tweakName">Tweak Name</h1>
                     <h4 id="developerName">Developer</h4>
@@ -43,17 +81,8 @@
                 <div class="headerPillSelector">
                     <div class="pillSelectorLine"></div>
                 </div>
-        
                 <div id="mainWrapper"></div>
-        
-                <div id="modifyPopup">
-                    <div class="popupButtonWrapper">
-                        <div class="popupButton">Button1</div>
-                        <div class="popupButton">Button2</div>
-                        <div class="popupButton">Button3</div>
-                        <div class="popupButton" onclick="hidePopup()">Cancel</div>
-                    </div>
-                </div>
+            </div>
         </div>
         
     </body>

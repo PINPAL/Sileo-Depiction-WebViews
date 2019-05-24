@@ -202,5 +202,31 @@ function enableScroll() {
     window.onmousewheel = document.onmousewheel = null; 
     window.onwheel = null; 
     window.ontouchmove = null;  
-    document.onkeydown = null;  
+    document.onkeydown = null; 
+}
+
+//Function for displaying overlay popup
+function displayOverlayPopup(element) {
+    if (element.innerText == "About") {
+        document.getElementById("aboutInfo").style.display = "block"
+        hidePopup()
+    } else if (element.className == "screenshot") {
+        var largerScreenshot = element.cloneNode(true)
+        largerScreenshot.removeAttribute("onclick")
+        largerScreenshot.style.cursor = "auto"
+        largerScreenshot.classList.add("largerScreenshot")
+        document.getElementById("overlayPopupContent").appendChild(largerScreenshot)
+    }
+    disableScroll()
+    document.getElementById("everythingWrapper").classList.add("blurred")
+    document.getElementById("overlayPopup").style.transform = "translateY(0%)"
+}
+function hideOverlayPopup() {
+    enableScroll()
+    setTimeout(function(){
+        document.getElementById("overlayPopupContent").innerHTML = ""
+        document.getElementById("aboutInfo").removeAttribute("style")
+    }, 350);
+    document.getElementById("everythingWrapper").classList.remove("blurred")
+    document.getElementById("overlayPopup").style.transform = "translateY(100%)"
 }
