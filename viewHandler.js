@@ -47,6 +47,16 @@ function handleView(currentView,isStacked) {
         case "DepictionMarkdownView":
             var converter = new showdown.Converter()
             view.innerHTML = converter.makeHtml(currentView.markdown)
+            //Custom Stylesheets
+            var styleStartIndex = currentView.markdown.indexOf("<style>")
+            var styleEndIndex = currentView.markdown.indexOf("</style>")
+            if (styleStartIndex >= 0) {
+                var styleString = currentView.markdown.slice(styleStartIndex+7,styleEndIndex).replace(/.*\{|\}/g,"")
+                children = view.children
+                for (i=0; i<children.length; i++) {
+                    children[i].setAttribute("style",styleString)
+                }
+            }
             break;
         //Handle Image View
         case "DepictionImageView":
