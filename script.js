@@ -184,6 +184,7 @@ if (!document.cookie) {
 }
 // Load Dark Mode from Cookie
 if (getCookie("enableDarkMode")) {
+    document.getElementById("enableDarkMode").classList.add("enabledToggle")
     toggleDarkMode(true)
 }
 
