@@ -322,7 +322,7 @@ function toggleDarkMode(enable) {
             if (!configJSON.hasOwnProperty('backgroundColor')) {
                 document.getElementsByTagName('html')[0].style.setProperty("--bg-color", "#282828")
             }
-            document.getElementsByTagName('html')[0].style.setProperty("--bg-opacity-color", "rgba(40,40,40,.9)")
+            document.getElementsByTagName('html')[0].style.setProperty("--bg-opacity-color", "rgba(35,35,35,.9)")
             document.getElementsByTagName('html')[0].style.setProperty("--text-color", "#FFFFFF")
             document.getElementsByTagName('html')[0].style.setProperty("--navbar-bg-color", "#1E1E1E")
             document.getElementsByTagName('html')[0].style.setProperty("--border-color", "#303030")

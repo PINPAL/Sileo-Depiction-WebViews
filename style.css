@@ -472,9 +472,25 @@ a {
     -o-transition: transform 0.3s ease;
     -ms-transition: transform 0.3s ease;
 }
+#overlayPopup h1:first-child {
+    top: 0;
+    left: 0;
+    padding: 45px 18px 18px 18px;
+    position: absolute;
+    font-size: 24pt;
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-color: #c5c5c5; /*fallback for IE*/
+    border-color: var(--border-color);
+    background-color: #FFFFFF; /*fallback for IE*/
+    background-color: var(--bg-color);
+}
 #overlayPopupContent, #aboutInfo, #configureSettings {
     font-size: 12pt;
-    margin-top: 45px;
+    margin-top: 110px;
     padding: 18px;
 }
 #aboutInfo, #configureSettings {
@@ -537,7 +553,8 @@ a {
     border-bottom-style: solid;
 }
 .socialLink p {
-    color: black;
+    color: #000000; /*fallback for IE*/
+    color: var(--text-color);
     margin: 0;
     position: absolute;
     top: 50%;
@@ -551,25 +568,6 @@ a {
     }
 
 /*Settings*/
-#configureSettings h1:first-child{
-    top: 0;
-    left: 0;
-    padding: 45px 18px 18px 18px;
-    position: absolute;
-    font-size: 24pt;
-    margin: 0;
-    box-sizing: border-box;
-    width: 100%;
-    border-bottom-style: solid;
-    border-width: 1px;
-    border-color: #c5c5c5; /*fallback for IE*/
-    border-color: var(--border-color);
-    background-color: #FFFFFF; /*fallback for IE*/
-    background-color: var(--bg-color);
-}
-#configureSettings {
-    margin-top: 110px;
-}
 .settingsCapsText {
     text-transform: uppercase;
     font-size: 8pt;
