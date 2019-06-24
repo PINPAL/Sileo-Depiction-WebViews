@@ -8,6 +8,9 @@ function loadFile(filename){
     xhttp.send();
     return xhttp.responseText;
 }
+// Define Popup (Improve Popup Responsiveness)
+const modifyPopup = document.getElementById("modifyPopup")
+const popupButtonWrapper = document.getElementsByClassName('popupButtonWrapper')[0]
 // Define BannerImage (Improve Scrolling Animation Responsiveness)
 const bannerImage = document.getElementById("bannerImage")
 // Get Info from URL
@@ -15,24 +18,17 @@ const tweakName = window.location.search.substring(1).split("-")[0]
 const tweakDeveloperName = window.location.search.substring(1).split("-")[1]
 const tweakPrice = window.location.search.substring(1).split("-")[2]
 // Load Sileo JSON File
-const currentDirectory = window.location.origin + window.location.pathname
+const currentDirectory = window.location.origin + window.location.pathname.replace("index.html","")
 const tweakDirectory = currentDirectory + "packages/" + tweakName.toLowerCase()
-const configFile = loadFile(currentDirectory + "packages/" + tweakName.toLowerCase() + "/config.json")
-const config = JSON.parse(configFile)
-// Set Background Color
-if (config.hasOwnProperty('backgroundColor')) {
-    document.getElementsByTagName('html')[0].style.setProperty("--bg-color",config.backgroundColor)
+try {
+    const configFile = loadFile(tweakDirectory + "/config.json")
+    var configJSON = JSON.parse(configFile)
+} catch (err) {
+    alert("Failed to load config")
+    var configJSON = ""
 }
-// Set Tint Color
-if (config.hasOwnProperty('tintColor')) {
-    document.getElementsByTagName('html')[0].style.setProperty("--tint-color",config.tintColor)
-}
-// Set Banner Image
-if (config.hasOwnProperty('headerImage')) {
-    bannerImage.style.backgroundImage = "url(" + config.headerImage + ")"
-    bannerImage.style.filter = "brightness(0.5)";
-    bannerImage.style.webkitFilter = "brightness(0.5)";
-}
+// Set Settings Config URL placeholder
+document.getElementById("customConfigUrl").setAttribute("placeholder", tweakDirectory + "/config.json")
 // Set Navbar Tweak Icon
 document.getElementById("navbarTweakIcon").style.backgroundImage = "url(" + currentDirectory + "packages/" + tweakName.toLowerCase() + "/icon.png)"
 // Set Price Buttons
@@ -51,44 +47,64 @@ document.getElementById("tweakIcon").style.backgroundImage = "url(" + tweakDirec
 document.getElementById("websiteTitle").innerText = tweakName
 // Set Page Icon
 document.getElementById("websiteIcon").href = tweakDirectory + "/icon.png"
-
-// Generate Tabs
-for (currentTab=0; currentTab<config.tabs.length; currentTab++) {
-    // Create Pill Selectors at Top
-    var pillText = document.createElement("div")
-    pillText.className = "pillText"
-    pillText.id = config.tabs[currentTab].tabname + "Button"
-    pillText.innerText = config.tabs[currentTab].tabname
-    pillText.setAttribute("onclick","changePillSelector(this)")
-    pillText.style.left = (50 / config.tabs.length) * (2 * currentTab + 1) + "%"
-    document.getElementsByClassName("headerPillSelector")[0].appendChild(pillText)
-    // Create Tab for Content to Go In
-    var tabContent = document.createElement("div")
-    tabContent.className = "tabContent"
-    tabContent.id = config.tabs[currentTab].tabname + "Content"
-    // Add Content Views to Tab
-    for (currentViewNum=0; currentViewNum < config.tabs[currentTab].views.length; currentViewNum++) {
-        var view = handleView(config.tabs[currentTab].views[currentViewNum],false)
-        tabContent.appendChild(view)
-    }
-    // Handle Landscape Oreintation of StackViews
-    var landscapeOrientationObjects = document.getElementsByClassName("landscapeOrientation")
-    // Loop Every Single Landscape StackView
-    for (i=0; i<landscapeOrientationObjects.length; i++) {
-        // Loop Every Child View within the StackView
-        for (j=0; j<landscapeOrientationObjects[i].childNodes.length; j++) {
-            landscapeOrientationObjects[i].childNodes[j].style.display = "inline-block"
-            landscapeOrientationObjects[i].childNodes[j].style.width = "50%"
-        }
-    }
-    document.getElementById("mainWrapper").appendChild(tabContent)
+//Render
+if (configJSON != "") {
+    renderFromConfig(configJSON)
 }
 
-// Initial Styling of Pill Selector (Page Load)
-document.getElementsByClassName("pillText")[0].style.color = "var(--tint-color)"
-document.getElementsByClassName("pillSelectorLine")[0].style.left = (50 / config.tabs.length) + "%"
-// Initial Display of Main Content
-document.getElementsByClassName("tabContent")[0].style.display = "block"
+//Generate from Config Function
+function renderFromConfig(config) {
+        // Set Background Color
+        if (config.hasOwnProperty('backgroundColor')) {
+            document.getElementsByTagName('html')[0].style.setProperty("--bg-color", config.backgroundColor)
+        }
+        // Set Tint Color
+        if (config.hasOwnProperty('tintColor')) {
+            document.getElementsByTagName('html')[0].style.setProperty("--tint-color", config.tintColor)
+        }
+        // Set Banner Image
+        if (config.hasOwnProperty('headerImage')) {
+            bannerImage.style.backgroundImage = "url(" + config.headerImage + ")"
+            bannerImage.style.filter = "brightness(0.5)";
+            bannerImage.style.webkitFilter = "brightness(0.5)";
+        }
+        // Generate Tabs
+        for (currentTab = 0; currentTab < config.tabs.length; currentTab++) {
+            // Create Pill Selectors at Top
+            var pillText = document.createElement("div")
+            pillText.className = "pillText"
+            pillText.id = config.tabs[currentTab].tabname + "Button"
+            pillText.innerText = config.tabs[currentTab].tabname
+            pillText.setAttribute("onclick", "changePillSelector(this)")
+            pillText.style.left = (50 / config.tabs.length) * (2 * currentTab + 1) + "%"
+            document.getElementsByClassName("headerPillSelector")[0].appendChild(pillText)
+            // Create Tab for Content to Go In
+            var tabContent = document.createElement("div")
+            tabContent.className = "tabContent"
+            tabContent.id = config.tabs[currentTab].tabname + "Content"
+            // Add Content Views to Tab
+            for (currentViewNum = 0; currentViewNum < config.tabs[currentTab].views.length; currentViewNum++) {
+                var view = handleView(config.tabs[currentTab].views[currentViewNum], false)
+                tabContent.appendChild(view)
+            }
+            // Handle Landscape Oreintation of StackViews
+            var landscapeOrientationObjects = document.getElementsByClassName("landscapeOrientation")
+            // Loop Every Single Landscape StackView
+            for (i = 0; i < landscapeOrientationObjects.length; i++) {
+                // Loop Every Child View within the StackView
+                for (j = 0; j < landscapeOrientationObjects[i].childNodes.length; j++) {
+                    landscapeOrientationObjects[i].childNodes[j].style.display = "inline-block"
+                    landscapeOrientationObjects[i].childNodes[j].style.width = "50%"
+                }
+            }
+            document.getElementById("mainWrapper").appendChild(tabContent)
+            // Initial Styling of Pill Selector (Page Load)
+            document.getElementsByClassName("pillText")[0].style.color = "var(--tint-color)"
+            document.getElementsByClassName("pillSelectorLine")[0].style.left = (50 / config.tabs.length) + "%"
+            // Initial Display of Main Content
+            document.getElementsByClassName("tabContent")[0].style.display = "block"
+        }
+}
 
 // Scroll Snapping to Bottom of Banner
 var isScrolling;
@@ -105,6 +121,12 @@ window.addEventListener('scroll', function ( event ) {
         }
 	}, 66);
 }, false);
+
+//Reload Config from Custom URL (Developer Option)
+function reloadConfig() {
+    configJSON = JSON.parse(loadFile(document.getElementById("customConfigUrl").value))
+    renderFromConfig(configJSON)
+}
 
 // Navbar & Banner Scrolling Animation
 function updateNavbar() {
@@ -156,9 +178,6 @@ if (getCookie("enableDarkMode")) {
     toggleDarkMode(true)
 }
 
-// Constant to improve runtime performance (important for animation)
-const modifyPopup = document.getElementById("modifyPopup")
-const popupButtonWrapper = document.getElementsByClassName('popupButtonWrapper')[0]
 // Modify Button
 function modifyButton() {
     disableScroll()
@@ -262,7 +281,11 @@ function toggleSetting(element) {
         if (element.id == "enableDarkMode") {
             setCookie("enableDarkMode",false)
             toggleDarkMode(false)
-
+        }
+        // If Custom Config (Developer)
+        if (element.id == "enableCustomConfig") {
+            document.getElementById("customConfigUrl").setAttribute("readonly")
+            document.getElementById("customConfigSettings").classList.add("settingsNotEditable")
         }
     } else {
         // Make Toggle Enabled
@@ -272,25 +295,35 @@ function toggleSetting(element) {
             setCookie("enableDarkMode",true)
             toggleDarkMode(true)
         }
+        // If Custom Config (Developer)
+        if (element.id == "enableCustomConfig") {
+            document.getElementById("customConfigUrl").removeAttribute("readonly")
+            document.getElementById("customConfigSettings").classList.remove("settingsNotEditable")
+        }
     }
 }
 
 //Function to enable/disable Dark Mode
 function toggleDarkMode(enable) {
-    if (enable) {
-        if (!config.hasOwnProperty('backgroundColor')) {
-            document.getElementsByTagName('html')[0].style.setProperty("--bg-color","#282828")
+    //Check Browser is not IE
+    if (navigator.userAgent.indexOf("Trident") < 0) {
+        if (enable) {
+            if (!configJSON.hasOwnProperty('backgroundColor')) {
+                document.getElementsByTagName('html')[0].style.setProperty("--bg-color", "#282828")
+            }
+            document.getElementsByTagName('html')[0].style.setProperty("--text-color", "#FFFFFF")
+            document.getElementsByTagName('html')[0].style.setProperty("--navbar-bg-color", "#1E1E1E")
+            document.getElementsByTagName('html')[0].style.setProperty("--border-color", "#303030")
+        } else {
+            if (!configJSON.hasOwnProperty('backgroundColor')) {
+                document.getElementsByTagName('html')[0].style.setProperty("--bg-color", "#FFFFFF")
+            }
+            document.getElementsByTagName('html')[0].style.setProperty("--text-color", "#000000")
+            document.getElementsByTagName('html')[0].style.setProperty("--navbar-bg-color", "#FEFEFE")
+            document.getElementsByTagName('html')[0].style.setProperty("--border-color", "#c5c5c5")
         }
-        document.getElementsByTagName('html')[0].style.setProperty("--text-color","#FFFFFF")
-        document.getElementsByTagName('html')[0].style.setProperty("--navbar-bg-color","#1E1E1E")
-        document.getElementsByTagName('html')[0].style.setProperty("--border-color","#303030")
     } else {
-        if (!config.hasOwnProperty('backgroundColor')) {
-            document.getElementsByTagName('html')[0].style.setProperty("--bg-color","#FFFFFF")
-        }
-        document.getElementsByTagName('html')[0].style.setProperty("--text-color","#000000")
-        document.getElementsByTagName('html')[0].style.setProperty("--navbar-bg-color","#FEFEFE")
-        document.getElementsByTagName('html')[0].style.setProperty("--border-color","#c5c5c5")
+        alert("Sorry Internet Explorer does not support this feature!")
     }
 }
 

@@ -109,7 +109,7 @@ function handleView(currentView,isStacked) {
             depictionTableColumnLeft.innerText = currentView.title
             var depictionTableColumnRight = document.createElement("td")
             depictionTableColumnRight.innerText = currentView.text
-            depictionTableRow.append(depictionTableColumnLeft, depictionTableColumnRight)
+            depictionTableRow.appendChild(depictionTableColumnLeft, depictionTableColumnRight)
             //Add Row to Table and Table to View
             depictionTable.appendChild(depictionTableRow)
             view.appendChild(depictionTable)

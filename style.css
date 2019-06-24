@@ -10,12 +10,14 @@ html {
 }
 
 * {
+    color: #000000; /*fallback for IE*/
     color: var(--text-color);
     text-align: left;
     font-family: -apple-system-font,BlinkMacSystemFont,Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 
 body {
+    background-color: #FFFFFF; /*fallback for IE*/
     background-color: var(--bg-color);
     margin: 0;
     margin-bottom: 25px;
@@ -26,6 +28,7 @@ body {
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
+    background-color: #FFFFFF; /*fallback for IE*/
     background-color: var(--bg-color);
 }
 
@@ -47,8 +50,10 @@ body {
     z-index: 999;
     border-bottom-style: solid;
     border-bottom-width: 1px;
+    border-bottom-color: #c5c5c5; /*fallback for IE*/
     border-bottom-color: var(--border-color);
     opacity: 0;
+    background-color: #FEFEFE; /*fallback for IE*/
     background-color: var(--navbar-bg-color);
     top: 0;
     left: 0;
@@ -59,6 +64,7 @@ body {
 
 /*Navbar Buttons*/
 .leftNavButton, .rightNavButton {
+    color: #2CB1BE; /*fallback for IE*/
     color: var(--tint-color);
     position: absolute;
     top: 22px;
@@ -107,6 +113,7 @@ body {
 
 .priceButton {
     color: white;
+    background-color: #2CB1BE; /*fallback for IE*/ 
     background-color: var(--tint-color);
     font-weight: 700;
     padding: 5px 10px 5px 10px;
@@ -121,6 +128,7 @@ body {
     left: 0;
     min-width: 20px;
     min-height: 20px;
+    background-color: #2CB1BE; /*fallback for IE*/
     background-color: var(--tint-color);
     mask-image: url("assets/back.png");
     -webkit-mask-image: url("assets/back.png");
@@ -158,6 +166,7 @@ body {
 
 /*Top Header Section*/
 .headerSection {
+    color: color: #000000; /*fallback for IE*/
     color: var(--text-color);
     position: relative;
     padding-top: 20px;
@@ -186,6 +195,7 @@ body {
     margin: 5px 0 0 0;
     font-weight: 400;
     font-size: 12pt;
+    color: #8F8E94; /*fallback for IE*/
     color: var(--light-text-color);
 }
 .headerSection .priceButton {
@@ -202,6 +212,7 @@ body {
     padding-top: 10px;
     border-bottom-style: solid;
     border-bottom-width: 1px;
+    border-bottom-color: #c5c5c5; /*fallback for IE*/
     border-bottom-color: var(--border-color);
 }
 .pillText {
@@ -210,6 +221,7 @@ body {
     padding-bottom: 10px;
     transform: translateX(-50%);
     position: absolute;
+    color: #958E80; /*fallback for IE*/
     color: var(--medium-text-color);
     font-weight: 500;
     transition: all 0.5s ease;
@@ -222,6 +234,7 @@ body {
     left: 25%;
     min-width: 100px;
     min-height: 3px;
+    background-color: #2CB1BE; /*fallback for IE*/
     background-color: var(--tint-color);
     position: absolute;
     bottom: 0;
@@ -257,6 +270,7 @@ h1 {
     font-size: 18pt;
 }
 a {
+    color: #2CB1BE; /*fallback for IE*/
     color: var(--tint-color);
     text-decoration: none;
 }
@@ -296,6 +310,7 @@ a {
     margin-right: auto;
     min-height: 1px;
     max-width: calc(100% - 36px);
+    background-color: #c5c5c5; /*fallback for IE*/
     background-color: var(--border-color);
 }
 
@@ -336,8 +351,9 @@ a {
     padding-bottom: 8px;
 }
 .depictionTable tr td:first-child {
-    color: var(--light-text-color);
-}
+        color: #8F8E94; /*fallback for IE*/
+        color: var(--light-text-color);
+    }
 .depictionTable tr td:last-child {
     text-align: right;
 }
@@ -360,6 +376,7 @@ a {
     min-width: 16px;
     max-width: 16px;
     min-height: 16px;
+    background-color: #2CB1BE; /*fallback for IE*/
     background-color: var(--tint-color);
     mask-image: url("assets/back.png");
     -webkit-mask-image: url("assets/back.png");
@@ -402,16 +419,19 @@ a {
 }
 .popupButton {
     cursor: pointer;
+    border-color: #c5c5c5; /*fallback for IE*/
     border-color: var(--border-color);
     border-width: 1px;
     border-bottom-style: solid;
     padding: 15px;
     font-size: 14pt;
     font-weight: 500;
+    color: #2CB1BE; /*fallback for IE*/
     color: var(--tint-color);
     box-sizing: border-box;
     text-align: center;
     width: 100%;
+    background-color: #FFFFFF; /*fallback for IE*/
     background-color: var(--bg-color);
 }
 .popupButton:hover {
@@ -429,9 +449,10 @@ a {
     border-radius: 12px;
 }
 
-/*Overlay Popup (Screenshot Large Preview / About Page) */
+/*Overlay Popup (Screenshot Large Preview / About Page / Settings) */
 #overlayPopup {
     transform: translateY(100%);
+    background-color: #FFFFFF; /*fallback for IE*/
     background-color: var(--bg-color);
     opacity: .9;
     position: fixed;
@@ -457,6 +478,7 @@ a {
 }
 .doneButton {
     cursor: pointer;
+    color: #2CB1BE; /*fallback for IE*/
     color: var(--tint-color);
     position: absolute;
     top: 22px;
@@ -494,6 +516,7 @@ a {
 /*Social Icons - For About Page*/
 .socialLink {
     border-width: 1px;
+    border-color: #c5c5c5; /*fallback for IE*/
     border-color: var(--border-color);
     border-top-style: solid;
     position: relative;
@@ -517,43 +540,74 @@ a {
     transform: translateY(-50%);
     line-height: normal;
 }
-.socialLink p span {
+    .socialLink p span {
+        color: #958E80; /*fallback for IE*/
+        color: var(--medium-text-color);
+    }
+
+/*Settings*/
+.settingsCapsText {
+    text-transform: uppercase;
+    font-size: 8pt;
+    margin-bottom: 8px;
+    color: #958E80; /*fallback for IE*/
     color: var(--medium-text-color);
+}
+.settingsTextField {
+    background: none;
+    width: calc(100% - 150px);
+    float: right;
+    border: none;
+    text-align: right;
+}
+.settingsButtonCell .settingsTableCell {
+    color: #2CB1BE; /*fallback for IE*/
+    color: var(--tint-color) !important;
+    text-align: center;
+    cursor: pointer;
+}
+.settingsNotEditable {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    opacity: 0.4;
 }
 
 /*Settings Toggles*/
 .settingsTableCell {
+    overflow: hidden;
+    background-color: #FFFFFF; /*fallback for IE*/
     background-color: var(--bg-color);
     padding-top: 20px;
     padding-bottom: 20px;
     position: relative;
     width: 100%;
     border-width: 1px;
+    border-color: #c5c5c5; /*fallback for IE*/
     border-color: var(--border-color);
     border-top-style: solid;
 }
-.settingsTableCell:last-child {
+.settingsTableArray .settingsTableCell:last-child {
     border-bottom-style: solid;
 }
 .toggleSwitch {
-	border-radius: 38px;
-	border-style: solid;
-	border-color: var(--light-text-color);
-	border-width: 1px;
-	box-sizing: border-box;
-	max-width: 56px;
-	min-width: 56px;
-	min-height: 33px;
-	max-height: 33px;
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	right: 7px;
-	transition: all 0.25s ease;
+    border-radius: 38px;
+    border-style: solid;
+    border-color: #8F8E94; /*fallback for IE*/
+    border-color: var(--light-text-color);
+    border-width: 1px;
+    box-sizing: border-box;
+    max-width: 56px;
+    min-width: 56px;
+    min-height: 33px;
+    max-height: 33px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 7px;
+    transition: all 0.25s ease;
     -webkit-transition: all 0.25s ease;
     -moz-transition: all 0.25s ease;
     -o-transition: all 0.25s ease;
-    -ms-transition: all 0.25s ease;
 }
 .enabledToggle {
 	background: #6EDC5F;
@@ -576,7 +630,6 @@ a {
     -webkit-transition: all 0.25s ease;
     -moz-transition: all 0.25s ease;
     -o-transition: all 0.25s ease;
-    -ms-transition: all 0.25s ease;
 }
 .enabledToggle .toggleSwitchKnob {
 	left: 24px;
