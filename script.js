@@ -72,6 +72,11 @@ function renderFromConfig(config) {
             bannerImage.style.filter = "brightness(0.5)";
             bannerImage.style.webkitFilter = "brightness(0.5)";
         }
+        // Clear Tabs
+        var pillTextsArray = document.getElementsByClassName("pillText")
+        for (i=0; i<pillTextsArray.length; i++) {
+            pillTextsArray[i].parentElement.removeChild(pillTextsArray[i])
+        }
         // Generate Tabs
         for (currentTab = 0; currentTab < config.tabs.length; currentTab++) {
             // Create Pill Selectors at Top
