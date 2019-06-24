@@ -31,6 +31,10 @@ body {
     background-color: #FFFFFF; /*fallback for IE*/
     background-color: var(--bg-color);
 }
+.mainWrapper {
+    max-width: 100vw;
+    overflow: hidden;
+}
 
 #bannerImage {
     background-image: linear-gradient(#034C4F, #36DBCB);
