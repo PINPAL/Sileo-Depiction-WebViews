@@ -481,6 +481,7 @@ a {
     display: none;
 }
 .doneButton {
+    z-index: 999;
     cursor: pointer;
     color: #2CB1BE; /*fallback for IE*/
     color: var(--tint-color);
@@ -550,6 +551,25 @@ a {
     }
 
 /*Settings*/
+#configureSettings h1:first-child{
+    top: 0;
+    left: 0;
+    padding: 45px 18px 18px 18px;
+    position: absolute;
+    font-size: 24pt;
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-color: #c5c5c5; /*fallback for IE*/
+    border-color: var(--border-color);
+    background-color: #FFFFFF; /*fallback for IE*/
+    background-color: var(--bg-color);
+}
+#configureSettings {
+    margin-top: 110px;
+}
 .settingsCapsText {
     text-transform: uppercase;
     font-size: 8pt;
@@ -573,7 +593,12 @@ a {
 .settingsNotEditable {
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
-    opacity: 0.4;
+    opacity: .65;
+}
+.settingsNotEditable * {
+    color: #8F8E94; /*fallback for IE*/
+    color: var(--light-text-color) !important;
+    cursor: not-allowed !important;
 }
 
 /*Settings Toggles*/

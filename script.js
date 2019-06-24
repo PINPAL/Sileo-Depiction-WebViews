@@ -294,6 +294,7 @@ function toggleSetting(element) {
         // If Custom Config (Developer)
         if (element.id == "enableCustomConfig") {
             document.getElementById("customConfigUrl").setAttribute("readonly","")
+            document.getElementById("reloadConfigButton").removeAttribute("onclick")
             document.getElementById("customConfigSettings").classList.add("settingsNotEditable")
         }
     } else {
@@ -307,6 +308,7 @@ function toggleSetting(element) {
         // If Custom Config (Developer)
         if (element.id == "enableCustomConfig") {
             document.getElementById("customConfigUrl").removeAttribute("readonly")
+            document.getElementById("reloadConfigButton").setAttribute("onclick","reloadConfig()")
             document.getElementById("customConfigSettings").classList.remove("settingsNotEditable")
         }
     }
