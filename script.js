@@ -128,8 +128,13 @@ window.addEventListener('scroll', function ( event ) {
 
 //Reload Config from Custom URL (Developer Option)
 function reloadConfig() {
-    configJSON = JSON.parse(loadFile(document.getElementById("customConfigUrl").value))
-    renderFromConfig(configJSON)
+    try {
+        configJSON = JSON.parse(loadFile(document.getElementById("customConfigUrl").value))
+        renderFromConfig(configJSON)
+    } catch(err) {
+        alert("Invalid Config! Failed to load!")
+    }
+    
 }
 
 // Navbar & Banner Scrolling Animation
@@ -288,7 +293,7 @@ function toggleSetting(element) {
         }
         // If Custom Config (Developer)
         if (element.id == "enableCustomConfig") {
-            document.getElementById("customConfigUrl").setAttribute("readonly")
+            document.getElementById("customConfigUrl").setAttribute("readonly","")
             document.getElementById("customConfigSettings").classList.add("settingsNotEditable")
         }
     } else {
@@ -315,6 +320,7 @@ function toggleDarkMode(enable) {
             if (!configJSON.hasOwnProperty('backgroundColor')) {
                 document.getElementsByTagName('html')[0].style.setProperty("--bg-color", "#282828")
             }
+            document.getElementsByTagName('html')[0].style.setProperty("--bg-opacity-color", "rgba(40,40,40,.9)")
             document.getElementsByTagName('html')[0].style.setProperty("--text-color", "#FFFFFF")
             document.getElementsByTagName('html')[0].style.setProperty("--navbar-bg-color", "#1E1E1E")
             document.getElementsByTagName('html')[0].style.setProperty("--border-color", "#303030")
@@ -322,6 +328,7 @@ function toggleDarkMode(enable) {
             if (!configJSON.hasOwnProperty('backgroundColor')) {
                 document.getElementsByTagName('html')[0].style.setProperty("--bg-color", "#FFFFFF")
             }
+            document.getElementsByTagName('html')[0].style.setProperty("--bg-opacity-color", "rgba(255,255,255,.9)")
             document.getElementsByTagName('html')[0].style.setProperty("--text-color", "#000000")
             document.getElementsByTagName('html')[0].style.setProperty("--navbar-bg-color", "#FEFEFE")
             document.getElementsByTagName('html')[0].style.setProperty("--border-color", "#c5c5c5")

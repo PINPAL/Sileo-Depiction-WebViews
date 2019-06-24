@@ -2,6 +2,7 @@ html {
     --text-color: #000000;
     --navbar-bg-color: #FEFEFE;
     --bg-color: #FFFFFF;
+    --bg-opacity-color: rgba(255,255,255,.9);
     --tint-color: #2CB1BE;
     --border-color: #c5c5c5;
     --light-text-color: #8F8E94;
@@ -457,8 +458,7 @@ a {
 #overlayPopup {
     transform: translateY(100%);
     background-color: #FFFFFF; /*fallback for IE*/
-    background-color: var(--bg-color);
-    opacity: .9;
+    background-color: var(--bg-opacity-color);
     position: fixed;
     top: 0;
     left: 0;
@@ -579,8 +579,6 @@ a {
 /*Settings Toggles*/
 .settingsTableCell {
     overflow: hidden;
-    background-color: #FFFFFF; /*fallback for IE*/
-    background-color: var(--bg-color);
     padding-top: 20px;
     padding-bottom: 20px;
     position: relative;
