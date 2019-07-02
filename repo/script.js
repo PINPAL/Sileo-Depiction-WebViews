@@ -13,7 +13,7 @@ function loadFile(filename){
 const repoURL = window.location.search.substring(1)
 // Set Page Icon and Title
 document.getElementById("websiteIcon").href  = repoURL.toLowerCase() + "/CydiaIcon.png"
-document.getElementById("websiteTitle").innerText  = repoURL.toLowerCase() + " Repo"
+document.getElementById("websiteTitle").innerText  = repoURL + " Repo"
 document.getElementById("repositoryName").innerText  = repoURL
 // Get Sileo Featured JSON
 try {
