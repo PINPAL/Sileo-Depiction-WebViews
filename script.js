@@ -56,6 +56,11 @@ if (configJSON != "") {
     renderFromConfig(configJSON)
 }
 
+//Set Back Arrows 
+for (i=0; i<2; i++) {
+    document.getElementsByClassName("backURL")[i].href = document.referrer
+}
+
 //Generate from Config Function
 function renderFromConfig(config) {
         // Set Background Color
@@ -178,9 +183,9 @@ function changePillSelector(element) {
     // Move Pill Selector Line
     document.getElementsByClassName("pillSelectorLine")[0].style.left = element.style.left
     // Set Color of Selected Pill text 
-    element.style.color = "var(--tint-color)"
+    element.style.color = "#487cdc"
     // Show Tab Content
-    document.getElementById(element.id.slice(0,-6) + "Content").style.display = "block"
+    
 }
 
 // Set Dark Mode Cookie if non-existant
