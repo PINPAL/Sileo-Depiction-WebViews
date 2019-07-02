@@ -1,13 +1,3 @@
-// Function to laod files
-function loadFile(filename){
-    if(window.XMLHttpRequest){xhttp=new XMLHttpRequest()}
-    else{
-        xhttp = new ActiveXObject("Microsoft.XMLHTTP")
-    }
-    xhttp.open("GET", filename, false);
-    xhttp.send();
-    return xhttp.responseText;
-}
 // Define Popup (Improve Popup Responsiveness)
 const modifyPopup = document.getElementById("modifyPopup")
 const popupButtonWrapper = document.getElementsByClassName('popupButtonWrapper')[0]
@@ -18,21 +8,31 @@ const navbar = document.getElementsByClassName("navbar")[0]
 const bannerNavItems = document.getElementById("bannerNavItems")
 const changedNavbarItems = document.getElementsByClassName("changedNavbarItems")[0]
 // Get Info from URL
-const tweakName = window.location.search.substring(1).split("-")[0]
-const tweakDeveloperName = window.location.search.substring(1).split("-")[1]
-const tweakPrice = window.location.search.substring(1).split("-")[2]
-// Load Sileo JSON File
+var tweakName = "Tweak Name"
+if (getQueryVariable("name") != null) {
+    tweakName = getQueryVariable("name")
+}
+const tweakDeveloperName = getQueryVariable("dev")
+const tweakPrice = getQueryVariable("price")
+// Set File Directories
 const currentDirectory = window.location.origin + window.location.pathname.replace("index.html","")
 const tweakDirectory = currentDirectory + "packages/" + tweakName.toLowerCase()
+// Set JSON File Directory
+var jsonDirectory = tweakDirectory + "/config.json"
+// Check if JSON File Directory specified in URL and set accordinly
+if (getQueryVariable("json") != null) {
+    jsonDirectory = getQueryVariable("json")
+}
+// Load Sileo JSON File
 try {
-    const configFile = loadFile(tweakDirectory + "/config.json")
+    const configFile = loadFile(jsonDirectory)
     var configJSON = JSON.parse(configFile)
 } catch (err) {
     alert("Failed to load config")
     var configJSON = ""
 }
 // Set Settings Config URL placeholder
-document.getElementById("customConfigUrl").setAttribute("placeholder", tweakDirectory + "/config.json")
+document.getElementById("customConfigUrl").setAttribute("placeholder", jsonDirectory)
 // Set Navbar Tweak Icon
 document.getElementById("navbarTweakIcon").style.backgroundImage = "url(" + currentDirectory + "packages/" + tweakName.toLowerCase() + "/icon.png)"
 // Set Price Buttons

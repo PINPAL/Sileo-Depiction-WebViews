@@ -1,14 +1,3 @@
-// Function to laod files
-function loadFile(filename){
-    if(window.XMLHttpRequest){xhttp=new XMLHttpRequest()}
-    else{
-        xhttp = new ActiveXObject("Microsoft.XMLHTTP")
-    }
-    xhttp.open("GET", filename, false);
-    xhttp.send();
-    return xhttp.responseText;
-}
-
 // Define featuredBannersView
 const featuredBannersView = document.getElementById("FeaturedBannersView")
 
