@@ -3,14 +3,13 @@ const featuredBannersView = document.getElementById("FeaturedBannersView")
 
 // Get Repo from URL
 const currentDirectory = window.location.origin + window.location.pathname.replace("index.html","")
-var repoURL = window.location.search.substring(1)
-if (!repoURL.match(/https/)) {
-    // Set Repo Name in Window Title / Navbar (Only if not a URL)
-    document.getElementById("websiteTitle").innerText  = repoURL + " Repo"
-    document.getElementById("repositoryName").innerText  = repoURL
-    // Redefine RepoURL as a full URL
-    repoURL = currentDirectory + repoURL
-}
+var repoURL = getQueryVariable("repo")
+
+// Fetch Repo Title from Cydia's Release File
+var repoTitle = loadFile(repoURL + "/Release").match(/Label:.*/)[0].replace(/Label:\s/g,"")
+// Set Repo Title
+document.getElementById("websiteTitle").innerText  = repoTitle
+document.getElementById("repositoryName").innerText  = repoTitle
 
 // Set Page Icon
 document.getElementById("websiteIcon").href  = repoURL.toLowerCase() + "/CydiaIcon.png"
@@ -19,7 +18,6 @@ document.getElementById("websiteIcon").href  = repoURL.toLowerCase() + "/CydiaIc
 try {
     var sileoFeaturedJSON = JSON.parse(loadFile(repoURL.toLowerCase() + "/sileo-featured.json"))
 } catch (err) {
-    alert("Failed to load Sileo Featured!")
     var sileoFeaturedJSON = ""
 }
 
@@ -98,7 +96,7 @@ for (i=0; i<sileoFeaturedJSON.banners.length; i++) {
                 bannerURL = bannerURL.replace(/SileoDepiction:\s/g,"")
                 // Create Link Element around BannerImage
                 var bannerImageLink = document.createElement("a")
-                bannerImageLink.href = bannerURL
+                bannerImageLink.href = "../?json=" + bannerURL + "&name=" + sileoFeaturedJSON.banners[i].title
                 bannerImageLink.appendChild(bannerImageClone)
                 // Append to Featured View
                 featuredBannersView.appendChild(bannerImageLink)
