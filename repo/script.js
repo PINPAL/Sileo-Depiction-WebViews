@@ -12,7 +12,7 @@ try {
     var packagesFile = loadFile(repoURL + "Packages")
 } catch (error) {
     validPackagesFile = false
-}   
+}
 
 // Fetch Repo Title from Cydia's Release File
 var repoTitle = "Repo Title"
@@ -44,7 +44,7 @@ if (validPackagesFile) {
     document.getElementById("totalPackages").innerText = numOfPackages
 
     // Render other categories and tweak counts
-    var categories = returnCategoryCount(packagesFile.match(/Section:.*/g))
+    var categories = returnCategoryCount(packages)
     for (i=0; i<categories[0].length; i++) {
         // Define TableButtonView
         var tableButtonView = document.createElement("div")

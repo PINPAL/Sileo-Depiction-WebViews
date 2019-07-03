@@ -1,12 +1,12 @@
 // Function to return all different categories and amount of tweaks in them
-function returnCategoryCount(categoriesDump) {
+function returnCategoryCount(packages) {
     // Define Variables
     let categories = []
     let count = []
     let contains = false
     // Loop through all categories dump (duplicates in one giant array)
-    for (i=0; i<categoriesDump.length; i++) {
-        var tempCategoryName = categoriesDump[i].replace(/Section:\s/g,"")
+    for (i=0; i<packages.length; i++) {
+        var tempCategoryName = packages[i].Section
         contains = false
         // Loop through existing categories
         for (j=0; j<categories.length; j++) {
