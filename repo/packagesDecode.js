@@ -29,9 +29,11 @@ function returnCategoryCount(categoriesDump) {
 // Function to decode Packages File
 function decodePackagesFile(packagesFile) {
     // Clean empty lines out of packages File
+    console.log(packagesFile)
     packagesFile = packagesFile.replace(/^\s*[\r\n]/gm,"")
     // Split PackagesFile into Packages
     let packages = packagesFile.split("Package:")
+    console.log(packages)
     // Remove first blank from Packages
     packages.shift()
     console.log(packages)
@@ -53,9 +55,14 @@ function decodePackagesFile(packagesFile) {
             // Extract Property Value from after first colon
             let propertyValue = properties[i].substring(properties[i].indexOf(":") + 2, properties[i].length)
             // Set the property within the object
-            Object.defineProperty(package, propertyName, {
-                value: propertyValue
-            })
+            // Try catch incase repo maintainer accidently wrote a property twice
+            try {
+                Object.defineProperty(package, propertyName, {
+                    value: propertyValue
+                })
+            } catch (error) {
+                console.log("Note to developer: Your packages file is messed up!")
+            }
         }
         // Convert the package from string into new object
         packages[packageNum] = package
