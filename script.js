@@ -10,10 +10,10 @@ const changedNavbarItems = document.getElementsByClassName("changedNavbarItems")
 // Get Info from URL
 var tweakName = "Tweak Name"
 if (getQueryVariable("name") != null) {
-    tweakName = getQueryVariable("name")
+    tweakName = decodeURI(getQueryVariable("name"))
 }
-const tweakDeveloperName = getQueryVariable("dev")
-const tweakPrice = getQueryVariable("price")
+const tweakDeveloperName = decodeURI(getQueryVariable("dev"))
+const tweakPrice = decodeURI(getQueryVariable("price"))
 // Set File Directories
 const currentDirectory = window.location.origin + window.location.pathname.replace("index.html","")
 const tweakDirectory = currentDirectory + "packages/" + tweakName.toLowerCase()
