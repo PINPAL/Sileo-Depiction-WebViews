@@ -46,7 +46,12 @@ document.getElementById("tweakName").innerText = tweakName
 // Set Developer Name
 document.getElementById("developerName").innerText = tweakDeveloperName
 // Set Tweak Icon
-document.getElementById("tweakIcon").style.backgroundImage = "url(" + tweakDirectory + "/icon.png)"
+if (imageExists(tweakDirectory + "/icon.png")) {
+    document.getElementById("tweakIcon").style.backgroundImage = "url(" + tweakDirectory + "/icon.png)"
+} else {
+    document.getElementById("tweakIcon").parentNode.removeChild(document.getElementById("tweakIcon"))
+    document.getElementsByClassName("headerSection")[0].style.paddingLeft = "40px"
+}
 // Set Page Title
 document.getElementById("websiteTitle").innerText = tweakName
 // Set Page Icon
