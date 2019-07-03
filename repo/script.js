@@ -6,7 +6,12 @@ const currentDirectory = window.location.origin + window.location.pathname.repla
 var repoURL = getQueryVariable("repo")
 
 // Fetch Repo Title from Cydia's Release File
-var repoTitle = loadFile(repoURL + "/Release").match(/Label:.*/)[0].replace(/Label:\s/g,"")
+try {
+    var repoTitle = loadFile(repoURL + "/Release").match(/Label:.*/)[0].replace(/Label:\s/g,"")
+} catch (error) {
+    var repoTitle = "Repo Title"
+}
+
 // Set Repo Title
 document.getElementById("websiteTitle").innerText  = repoTitle
 document.getElementById("repositoryName").innerText  = repoTitle
