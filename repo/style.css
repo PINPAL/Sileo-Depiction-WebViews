@@ -85,6 +85,7 @@ body {
     cursor: pointer;
     margin-right: 6px;
     margin-left: 6px;
+    box-shadow: inset rgba(0,0,0,.65) 0 -70px 70px;
 }
 
 .bannerTweakName {
@@ -94,10 +95,10 @@ body {
     font-size: 17pt;
     color: white;
     font-weight: 600;
-    text-shadow: rgba(0,0,0,.5) 10px 10px 10px,
-                rgba(0,0,0,.5) 10px -10px 10px,
-                rgba(0,0,0,.5) -10px 10px 10px,
-                rgba(0,0,0,.5) -10px -10px 10px;
+    text-shadow: rgba(0,0,0,.25) 10px 10px 10px,
+                rgba(0,0,0,.25) 10px -10px 10px,
+                rgba(0,0,0,.25) -10px 10px 10px,
+                rgba(0,0,0,.25) -10px -10px 10px;
 }
 
 #mainWrapper {

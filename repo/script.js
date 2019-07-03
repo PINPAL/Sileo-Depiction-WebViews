@@ -88,7 +88,9 @@ if (validSileoFeatured) {
         var bannerTweakName = document.createElement("div")
         bannerTweakName.className = "bannerTweakName"
         bannerTweakName.innerText = sileoFeaturedJSON.banners[i].title
+        // Disable Shadow (If Specified in JSON)
         if (sileoFeaturedJSON.banners[i].hideShadow) {
+            bannerImageClone.style.boxShadow = "none"
             bannerTweakName.style.textShadow = "none"
         }
         // Append Tweak Name Text to BannerImage
