@@ -28,6 +28,13 @@ try {
     validSileoFeatured = false
 }
 
+// Define Constants
+const featuredBannersView = document.getElementById("FeaturedBannersView")
+const categoryExpandView = document.getElementById("categoryExpandView")
+const categoryList = document.getElementById("categoryList")
+const backArrow = document.getElementsByClassName("backArrow")[0]
+const backArrowText = document.getElementById("backArrowText")
+
 // Set Repo Title
 document.getElementById("websiteTitle").innerText  = repoTitle
 document.getElementById("repositoryName").innerText  = repoTitle
@@ -49,6 +56,8 @@ if (validPackagesFile) {
         // Define TableButtonView
         var tableButtonView = document.createElement("div")
         tableButtonView.className = "tableButtonView"
+        tableButtonView.id = "categoryName" + i
+        tableButtonView.setAttribute("onclick","openCategory(this)")
         tableButtonView.innerHTML = '<div class="backwardsArrow"></div>'
         // Create Category Title
         var categoryTitle = document.createElement("span")
@@ -61,7 +70,41 @@ if (validPackagesFile) {
         categoryTweakCount.innerText = categories[1][i]
         tableButtonView.appendChild(categoryTweakCount)
         // Append TableButtonView to TableList
-        document.getElementById("tableList").appendChild(tableButtonView)
+        categoryList.appendChild(tableButtonView)
+    }
+
+    // Render other categories sub pages
+    for (i=0; i<categories[0].length; i++) {
+        var categorySubView = document.createElement("div")
+        categorySubView.className = "categorySubView"
+        categorySubView.id = "categorySubView" + i
+        // Iterate through all packages
+        for (j=0; j<packages.length; j++) {
+            // Select Packages that are of specific category
+            if (packages[j].Section == categories[0][i]) {
+                // Define TableButtonView
+                var tableButtonView = document.createElement("div")
+                tableButtonView.className = "tableButtonView"
+                tableButtonView.innerHTML = '<div class="backwardsArrow"></div>'
+                // Create Link Element around TableButtonView
+                var tableCellLink = document.createElement("a")
+                // Set the link HREF
+                tableCellLink.href = 
+                    "../?json=" + packages[j].SileoDepiction
+                    + "&name=" + packages[j].Name
+                    + "&dev=" + packages[j].Author.replace(/\<.*\>/g,"") //Replace to remove emails in triangular brackets
+                // Append to Featured View
+                tableCellLink.appendChild(tableButtonView)
+                categorySubView.appendChild(tableCellLink)
+                // Create Tweak Title
+                var tweakTitle = document.createElement("span")
+                tweakTitle.className = "left"
+                tweakTitle.innerText = packages[j].Name
+                tableButtonView.appendChild(tweakTitle)
+            }
+        }
+        // Append TableCell to CategorySubView Page
+        categoryExpandView.appendChild(categorySubView)
     }
 }
 
@@ -75,9 +118,6 @@ if (validSileoFeatured) {
         style.width = sileoFeaturedJSON.itemSize.replace(/\{|\,.*\}/g,"") + "px"
         style.height = sileoFeaturedJSON.itemSize.replace(/\{.*\,|\}|\s/g,"") + "px"
     }
-
-    // Define featuredBannersView
-    const featuredBannersView = document.getElementById("FeaturedBannersView")
 
     // Generate Sileo Featured as HTML
     for (i=0; i<sileoFeaturedJSON.banners.length; i++) {
@@ -120,4 +160,28 @@ if (validSileoFeatured) {
             featuredBannersView.appendChild(bannerImageClone)
         }
     }
+}
+
+// Function triggered when user taps on category
+function openCategory(element) {
+    var categoryID = element.id
+    categoryID = categoryID.substring(categoryID.length - 1)
+    document.getElementById("categorySubView" + categoryID).style.display = "inline-block"
+    document.getElementById("repositoryName").innerText = element.innerText.substring(0, element.innerText.length - 1)
+    featuredBannersView.style.transform = "translateX(-100vw)"
+    categoryExpandView.style.transform = "translateX(0)"
+    categoryList.style.transform = "translateX(-100vw)"
+    backArrowText.style.transform = "translateX(0)"
+    backArrow.style.opacity = 1
+    backArrowText.style.opacity = 1
+}
+
+function back() {
+    document.getElementById("repositoryName").innerText = repoTitle
+    featuredBannersView.style.transform = "translateX(0)"
+    categoryExpandView.style.transform = "translateX(100vw)"
+    categoryList.style.transform = "translateX(0)"
+    backArrowText.style.transform = "translateX(35px)"
+    backArrow.style.opacity = 0
+    backArrowText.style.opacity = 0
 }
