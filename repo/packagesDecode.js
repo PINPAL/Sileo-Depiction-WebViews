@@ -29,14 +29,11 @@ function returnCategoryCount(categoriesDump) {
 // Function to decode Packages File
 function decodePackagesFile(packagesFile) {
     // Clean empty lines out of packages File
-    console.log(packagesFile)
     packagesFile = packagesFile.replace(/^\s*[\r\n]/gm,"")
     // Split PackagesFile into Packages
     let packages = packagesFile.split("Package:")
-    console.log(packages)
     // Remove first blank from Packages
     packages.shift()
-    console.log(packages)
     // Loop through packages and convert them to objects
     for (packageNum = 0; packageNum < packages.length; packageNum++) {
         // Define the package
@@ -67,6 +64,5 @@ function decodePackagesFile(packagesFile) {
         // Convert the package from string into new object
         packages[packageNum] = package
     }
-    console.log(packages)
     return packages
 }
