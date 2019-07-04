@@ -184,11 +184,33 @@ if (validSileoFeatured) {
                 if (packages[packageNum].Package == sileoFeaturedJSON.banners[i].package) {
                     // Create Link Element around BannerImage
                     var bannerImageLink = document.createElement("a")
-                    // Set the link HREF
-                    bannerImageLink.href = 
-                        "../?json=" + packages[packageNum].SileoDepiction 
-                        + "&name=" + packages[packageNum].Name
-                        + "&dev=" + packages[packageNum].Author.replace(/\<.*\>/g,"") //Replace to remove emails in triangular brackets
+                    // Add Sileo Depiction JSON URL to HREF
+                    if (packages[packageNum].hasOwnProperty("SileoDepiction")) {
+                        bannerImageLink.href = "../?json=" + packages[packageNum].SileoDepiction
+                        // Add Package Name to HREF
+                        if (packages[packageNum].hasOwnProperty("Name")) {
+                            bannerImageLink.href += "&name=" + packages[packageNum].Name
+                        }
+                        // Add Section to HREF
+                        if (packages[packageNum].hasOwnProperty("Section")) {
+                            bannerImageLink.href += "&section=" + packages[packageNum].Section
+                        }
+                        // Add Developer to HREF
+                        if (packages[packageNum].hasOwnProperty("Author")) {
+                            //Replace to remove emails in triangular brackets
+                            bannerImageLink.href += "&dev=" + packages[packageNum].Author.replace(/\<.*\>/g,"") 
+                        }
+                        // Add Icon to HREF
+                        if (packages[packageNum].hasOwnProperty("Icon")) {
+                            bannerImageLink.href += "&icon=" + packages[packageNum].Icon
+                        }
+                    } 
+                    // Add Regular Depiction link to HREF (if no SileoDepiction found)
+                    else {
+                        if (packages[packageNum].hasOwnProperty("Depiction")) {
+                            bannerImageLink.href = packages[packageNum].Depiction
+                        }
+                    }
                     // Append to Featured View
                     bannerImageLink.appendChild(bannerImageClone)
                     featuredBannersView.appendChild(bannerImageLink)
