@@ -63,13 +63,18 @@ if (validPackagesFile) {
         var categoryTitle = document.createElement("span")
         categoryTitle.className = "left"
         categoryTitle.innerText = categories[0][i]
-        tableButtonView.appendChild(categoryTitle)
+        // Create Category Icon 
+        var categoryIcon = document.createElement("img")
+        categoryIcon.className = "tweakIcon"
+        categoryIcon.src = returnIcon(categories[0][i])       
         // Create Category Tweak Count
         var categoryTweakCount = document.createElement("span")
         categoryTweakCount.className = "right"
         categoryTweakCount.innerText = categories[1][i]
-        tableButtonView.appendChild(categoryTweakCount)
         // Append TableButtonView to TableList
+        tableButtonView.appendChild(categoryIcon)
+        tableButtonView.appendChild(categoryTitle)
+        tableButtonView.appendChild(categoryTweakCount)
         categoryList.appendChild(tableButtonView)
     }
 
