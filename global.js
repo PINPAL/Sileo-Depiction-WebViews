@@ -20,11 +20,3 @@ function loadFile(filename){
     xhttp.send();
     return xhttp.responseText;
 }
-
-// Function to check image exists
-function imageExists(image_url){
-    var http = new XMLHttpRequest();
-    http.open('HEAD', image_url, false);
-    http.send();
-    return http.status != 404;
-}
