@@ -6,6 +6,8 @@ function returnIcon(tweakSection) {
         return imagesDirectory + "Theme.png"
     } else if (tweakSection.match(/.*(addons)|(addon).*/) ) {
         return imagesDirectory + "Addons.png"
+    } else if (tweakSection.match(/.*(activator).*/) ) {
+        return imagesDirectory + "Activator.png"
     } else if (tweakSection.match(/.*(admin)|(adminstration).*/) ) {
         return imagesDirectory + "Administration.png"
     } else if (tweakSection.match(/.*(adult)|(xxx)|(nsfw).*/) ) {
@@ -48,6 +50,8 @@ function returnIcon(tweakSection) {
         return imagesDirectory + "Localization.png"
     } else if (tweakSection.match(/.*(lock info)|(lockinfo).*/) ) {
         return imagesDirectory + "LockInfo.png"
+    } else if (tweakSection.match(/.*(legacy)|(classic).*/) ) {
+        return imagesDirectory + "Legacy.png"
     } else if (tweakSection.match(/.*(lockscreen)|(coversheet).*/) ) {
         return imagesDirectory + "Lockscreen.png"
     } else if (tweakSection.match(/.*(messaging)|(message).*/) ) {
