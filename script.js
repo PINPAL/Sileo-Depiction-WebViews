@@ -7,11 +7,18 @@ const bannerImage = document.getElementById("bannerImage")
 const navbar = document.getElementsByClassName("navbar")[0]
 const bannerNavItems = document.getElementById("bannerNavItems")
 const changedNavbarItems = document.getElementsByClassName("changedNavbarItems")[0]
-// Get Info from URL
+// Get Tweak Name from URL
 var tweakName = "Tweak Name"
 if (getQueryVariable("name") != null) {
     tweakName = decodeURI(getQueryVariable("name"))
 }
+// Generate Tweak Icon from Section in URL
+var tweakIcon = returnIcon(getQueryVariable("section"))
+// Get Tweak Icon from URL
+if (getQueryVariable("icon") != null) {
+    tweakIcon = decodeURI(getQueryVariable("icon"))
+}
+// Get Developer and Price from URL
 const tweakDeveloperName = decodeURI(getQueryVariable("dev"))
 const tweakPrice = decodeURI(getQueryVariable("price"))
 // Set File Directories
@@ -28,13 +35,13 @@ try {
     const configFile = loadFile(jsonDirectory)
     var configJSON = JSON.parse(configFile)
 } catch (err) {
-    alert("Failed to load config")
+    alert("Failed to load SileoDepiction JSON File")
     var configJSON = ""
 }
 // Set Settings Config URL placeholder
 document.getElementById("customConfigUrl").setAttribute("placeholder", jsonDirectory)
 // Set Navbar Tweak Icon
-document.getElementById("navbarTweakIcon").style.backgroundImage = "url(" + currentDirectory + "packages/" + tweakName.toLowerCase() + "/icon.png)"
+document.getElementById("navbarTweakIcon").style.backgroundImage = "url(" + tweakIcon + ")"
 // Set Price Buttons
 for (i=0; i<document.getElementsByClassName("priceButton").length;i++) {
     if (/[+-]?(?=\.\d|\d)(?:\d+)?(?:\.?\d*)(?:[eE][+-]?\d+)?/.test(tweakPrice)) {
@@ -46,12 +53,7 @@ document.getElementById("tweakName").innerText = tweakName
 // Set Developer Name
 document.getElementById("developerName").innerText = tweakDeveloperName
 // Set Tweak Icon
-if (imageExists(tweakDirectory + "/icon.png")) {
-    document.getElementById("tweakIcon").style.backgroundImage = "url(" + tweakDirectory + "/icon.png)"
-} else {
-    document.getElementById("tweakIcon").parentNode.removeChild(document.getElementById("tweakIcon"))
-    document.getElementsByClassName("headerSection")[0].style.paddingLeft = "40px"
-}
+document.getElementById("tweakIcon").style.backgroundImage = "url(" + tweakIcon + ")"
 // Set Page Title
 document.getElementById("websiteTitle").innerText = tweakName
 // Set Page Icon

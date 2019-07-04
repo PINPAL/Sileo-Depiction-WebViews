@@ -1,7 +1,13 @@
 const imagesDirectory = "https://pinpal.github.io/Sileo-Depiction-WebViews/assets/categories/"
 
 function returnIcon(tweakSection) {
-    tweakSection = tweakSection.toLowerCase()
+    // Validate TweakSection (prevent crash if null)
+    if (tweakSection) {
+        tweakSection = tweakSection.toLowerCase()
+    } else {
+        tweakSection = "null"
+    }
+    // Select Image (very yuck code I'm sorry)
     if (tweakSection.match(/.*(themes)|(winterboard)|(ithemer)|(snowboard)|(winterboard)|(anemone).*/) ) {
         return imagesDirectory + "Theme.png"
     } else if (tweakSection.match(/.*(addons)|(addon).*/) ) {
