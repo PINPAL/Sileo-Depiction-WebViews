@@ -35,8 +35,13 @@ try {
     const configFile = loadFile(jsonDirectory)
     var configJSON = JSON.parse(configFile)
 } catch (err) {
-    alert("Failed to load SileoDepiction JSON File")
     var configJSON = ""
+    document.getElementsByClassName("headerPillSelector")[0].style.display = "none"
+    //Create Error Warning Message at top of content
+    var errorWarning = document.createElement("div")
+        errorWarning.className = "errorWarning"
+        errorWarning.innerText = "Failed to load SileoDepiction JSON File"
+    document.getElementById("mainWrapper").appendChild(errorWarning)
 }
 // Set Settings Config URL placeholder
 document.getElementById("customConfigUrl").setAttribute("placeholder", jsonDirectory)

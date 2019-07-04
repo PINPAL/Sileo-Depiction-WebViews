@@ -205,7 +205,7 @@ if (validSileoFeatured) {
                             bannerImageLink.href += "&icon=" + packages[packageNum].Icon
                         }
                     } 
-                    // Add Regular Depiction link to HREF (if no SileoDepiction found)
+                    // Add Regular Depiction link to HREF (if no SileoDepiction found
                     else {
                         if (packages[packageNum].hasOwnProperty("Depiction")) {
                             bannerImageLink.href = packages[packageNum].Depiction
