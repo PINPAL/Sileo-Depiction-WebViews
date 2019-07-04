@@ -10,7 +10,7 @@
 
 This can be used to generate a WebView depiction for Cydia using just your SileoDepiction.json file!
 
-###Repo Viewer
+### Repo Viewer Docs
 
 Available [here](https://pinpal.github.io/Sileo-Depiction-WebViews/repo/)
 <br/>
@@ -25,7 +25,7 @@ https://pinpal.github.io/Sileo-Depiction-WebViews/repo/?repo=https://pinpal.gith
 | ------------- | ------------- |
 | repo          | URL of Cydia Repo  |
 
-###Depiction Viewer
+### Depiction Viewer Docs
 
 Available [here](https://pinpal.github.io/Sileo-Depiction-WebViews/repo/)
 <br/>
