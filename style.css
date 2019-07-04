@@ -684,6 +684,7 @@ a {
 
 /* Error Warning at top of Depiction */
 .errorWarning {
+    margin-top: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
     background-color: #f74848;

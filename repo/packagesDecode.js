@@ -27,7 +27,7 @@ function returnCategoryCount(packages) {
 }
 
 // Function to decode Packages File
-function decodePackagesFile(packagesFile) {
+async function decodePackagesFile(packagesFile) {
     // Clean empty lines out of packages File
     packagesFile = packagesFile.replace(/^\s*[\r\n]/gm,"")
     // Split PackagesFile into Packages

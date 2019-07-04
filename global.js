@@ -28,3 +28,17 @@ function imageExists(image_url){
     http.send();
     return http.status != 404;
 }
+
+// Function to load files (async) (bypass cross-origin [CORS] errors)
+async function corsBypass(URL) {
+    function getData(URL) {
+        return fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(URL)}`)
+                            .then(response => {
+                            if (response.ok) return response.json()
+                            throw new Error('Network response was not ok.')
+                            })
+    }
+    var data = await getData(URL)
+    data = data.contents
+    return data
+}
