@@ -34,7 +34,7 @@ function returnIcon(tweakSection) {
         return imagesDirectory + "eBooks.png"
     } else if (tweakSection.match(/.*(education)|(learn).*/) ) {
         return imagesDirectory + "Education.png"
-    } else if (tweakSection.match(/.*(entertain)|(entertainment)).*/) ) {
+    } else if (tweakSection.match(/.*(entertain)|(entertainment).*/) ) {
         return imagesDirectory + "Entertainment.png"
     } else if (tweakSection.match(/.*(fonts)|(bytafont).*/) ) {
         return imagesDirectory + "Fonts.png"
