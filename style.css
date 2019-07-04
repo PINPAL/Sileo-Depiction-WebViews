@@ -202,12 +202,17 @@ body {
     position: absolute;
     width: 60px;
     height: 60px;
+    border-radius: 16px;
     background-repeat: no-repeat;
     background-size: cover;
 }
 #tweakName {
     margin: 0;
-    font-size: 18pt;
+    font-size: 16pt;
+    white-space: nowrap;
+    max-width: calc(100% - 90px);
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 #developerName {
     max-width: calc(100% - 80px);

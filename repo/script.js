@@ -93,11 +93,33 @@ if (validPackagesFile) {
                 tableButtonView.innerHTML = '<div class="backwardsArrow"></div>'
                 // Create Link Element around TableButtonView
                 var tableCellLink = document.createElement("a")
-                // Set the link HREF
-                tableCellLink.href = 
-                    "../?json=" + packages[j].SileoDepiction
-                    + "&name=" + packages[j].Name
-                    + "&dev=" + packages[j].Author.replace(/\<.*\>/g,"") //Replace to remove emails in triangular brackets
+                // Add Sileo Depiction JSON URL to HREF
+                if (packages[j].hasOwnProperty("SileoDepiction")) {
+                    tableCellLink.href = "../?json=" + packages[j].SileoDepiction
+                    // Add Package Name to HREF
+                    if (packages[j].hasOwnProperty("Name")) {
+                        tableCellLink.href += "&name=" + packages[j].Name
+                    }
+                    // Add Section to HREF
+                    if (packages[j].hasOwnProperty("Section")) {
+                        tableCellLink.href += "&section=" + packages[j].Section
+                    }
+                    // Add Developer to HREF
+                    if (packages[j].hasOwnProperty("Author")) {
+                        //Replace to remove emails in triangular brackets
+                        tableCellLink.href += "&dev=" + packages[j].Author.replace(/\<.*\>/g,"") 
+                    }
+                    // Add Icon to HREF
+                    if (packages[j].hasOwnProperty("Icon")) {
+                        tableCellLink.href += "&icon=" + packages[j].Icon
+                    }
+                } 
+                // Add Regular Depiction link to HREF (if no SileoDepiction found)
+                else {
+                    if (packages[j].hasOwnProperty("Depiction")) {
+                        tableCellLink.href = packages[j].Depiction
+                    }
+                }
                 // Create Tweak Title
                 var tweakTitle = document.createElement("span")
                 tweakTitle.className = "left"
