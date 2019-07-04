@@ -93,24 +93,27 @@ if (validPackagesFile) {
                     "../?json=" + packages[j].SileoDepiction
                     + "&name=" + packages[j].Name
                     + "&dev=" + packages[j].Author.replace(/\<.*\>/g,"") //Replace to remove emails in triangular brackets
-                // Create Tweak Icon (If applicable)
-                if (packages[j].hasOwnProperty("Icon")) {
-                    var tweakIcon = document.createElement("img")
-                    tweakIcon.className = "tweakIcon"
-                    tweakIcon.src = packages[j].Icon
-                    tableButtonView.appendChild(tweakIcon)
-                }
                 // Create Tweak Title
                 var tweakTitle = document.createElement("span")
                 tweakTitle.className = "left"
                 tweakTitle.innerText = packages[j].Name
-                tableButtonView.appendChild(tweakTitle)
+                // Create Tweak Icon 
+                var tweakIcon = document.createElement("img")
+                tweakIcon.className = "tweakIcon"
+                // Set Tweak Icon Source (If applicable)
+                if (packages[j].hasOwnProperty("Icon")) {
+                    tweakIcon.src = packages[j].Icon
+                } else {
+                    tweakIcon.src = returnIcon(packages[j].Section)
+                }
                 // Create Tweak Version
                 var tweakVersion = document.createElement("span")
                 tweakVersion.className = "right"
                 tweakVersion.innerText = packages[j].Version
-                tableButtonView.appendChild(tweakVersion)
                 // Append to Featured View
+                tableButtonView.appendChild(tweakTitle)
+                tableButtonView.appendChild(tweakVersion)
+                tableButtonView.appendChild(tweakIcon)
                 tableCellLink.appendChild(tableButtonView)
                 categorySubView.appendChild(tableCellLink)
             }
