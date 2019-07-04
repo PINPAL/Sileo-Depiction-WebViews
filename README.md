@@ -11,8 +11,9 @@
 This can be used to generate a WebView depiction for Cydia using just your SileoDepiction.json file!
 
 ###Repo Viewer
+
 Available [here](https://pinpal.github.io/Sileo-Depiction-WebViews/repo/)
-\n
+<br/>
 Simply Specify your Repo's URL in the addresss. 
 For example you can view my Cydia repo in using the following arguement:
 
@@ -25,8 +26,9 @@ https://pinpal.github.io/Sileo-Depiction-WebViews/repo/?repo=https://pinpal.gith
 | repo          | URL of Cydia Repo  |
 
 ###Depiction Viewer
+
 Available [here](https://pinpal.github.io/Sileo-Depiction-WebViews/repo/)
-\n
+<br/>
 Simply Specify your SileoDepiction JSON file in the address.
 You can also add other optional arguements seperated by an and (&) symbol for a more complete depiction eg:
 ```
