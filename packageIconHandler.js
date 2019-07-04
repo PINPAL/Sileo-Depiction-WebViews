@@ -98,7 +98,7 @@ function returnIcon(tweakSection) {
         return imagesDirectory + "Widgets.png"
     } else if (tweakSection.match(/.*(zeppelin)|(xeon).*/) ) {
         return imagesDirectory + "Zeppelin.png"
-    } else if (tweakSection.match(/.*(themes)|(winterboard)|(ithemer)|(snowboard)|(winterboard)|(anemone).*/) ) {
+    } else if (tweakSection.match(/.*(theme)|(winterboard)|(ithemer)|(snowboard)|(winterboard)|(anemone).*/) ) {
         return imagesDirectory + "Theme.png"
     } else if (tweakSection.match(/.*(addons)|(addon).*/) ) {
         return imagesDirectory + "Addons.png"
