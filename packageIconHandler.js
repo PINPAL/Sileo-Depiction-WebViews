@@ -60,6 +60,12 @@ function returnIcon(tweakSection) {
         return imagesDirectory + "Network.png"
     } else if (tweakSection.match(/.*(packaging).*/) ) {
         return imagesDirectory + "Packaging.png"
+    } else if (tweakSection.match(/.*(productiv).*/) ) {
+        return imagesDirectory + "Productivity.png"
+    } else if (tweakSection.match(/.*(ringtone)|(ring tone).*/) ) {
+        return imagesDirectory + "Ringtones.png"
+    } else if (tweakSection.match(/.*(security)|(secure).*/) ) {
+        return imagesDirectory + "Security.png"
     } else if (tweakSection.match(/.*(preferences)|(prefs)|(settings).*/) ) {
         return imagesDirectory + "Settings.png"
     } else if (tweakSection.match(/.*(social).*/) ) {
