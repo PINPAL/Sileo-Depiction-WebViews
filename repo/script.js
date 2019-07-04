@@ -93,14 +93,26 @@ if (validPackagesFile) {
                     "../?json=" + packages[j].SileoDepiction
                     + "&name=" + packages[j].Name
                     + "&dev=" + packages[j].Author.replace(/\<.*\>/g,"") //Replace to remove emails in triangular brackets
-                // Append to Featured View
-                tableCellLink.appendChild(tableButtonView)
-                categorySubView.appendChild(tableCellLink)
+                // Create Tweak Icon (If applicable)
+                if (packages[j].hasOwnProperty("Icon")) {
+                    var tweakIcon = document.createElement("img")
+                    tweakIcon.className = "tweakIcon"
+                    tweakIcon.src = packages[j].Icon
+                    tableButtonView.appendChild(tweakIcon)
+                }
                 // Create Tweak Title
                 var tweakTitle = document.createElement("span")
                 tweakTitle.className = "left"
                 tweakTitle.innerText = packages[j].Name
                 tableButtonView.appendChild(tweakTitle)
+                // Create Tweak Version
+                var tweakVersion = document.createElement("span")
+                tweakVersion.className = "right"
+                tweakVersion.innerText = packages[j].Version
+                tableButtonView.appendChild(tweakVersion)
+                // Append to Featured View
+                tableCellLink.appendChild(tableButtonView)
+                categorySubView.appendChild(tableCellLink)
             }
         }
         // Append TableCell to CategorySubView Page
@@ -165,9 +177,10 @@ if (validSileoFeatured) {
 // Function triggered when user taps on category
 function openCategory(element) {
     var categoryID = element.id
-    categoryID = categoryID.substring(categoryID.length - 1)
+    categoryID = categoryID.substring(12, categoryID.length)
+    document.getElementsByClassName("leftNavButton")[0].setAttribute("onclick","back(" + categoryID + ")")
     document.getElementById("categorySubView" + categoryID).style.display = "inline-block"
-    document.getElementById("repositoryName").innerText = element.innerText.substring(0, element.innerText.length - 1)
+    document.getElementById("repositoryName").innerText = element.getElementsByClassName("left")[0].innerText
     featuredBannersView.style.transform = "translateX(-100vw)"
     categoryExpandView.style.transform = "translateX(0)"
     categoryList.style.transform = "translateX(-100vw)"
@@ -176,7 +189,8 @@ function openCategory(element) {
     backArrowText.style.opacity = 1
 }
 
-function back() {
+function back(categoryID) {
+    document.getElementById("categorySubView" + categoryID).style.display = "none"
     document.getElementById("repositoryName").innerText = repoTitle
     featuredBannersView.style.transform = "translateX(0)"
     categoryExpandView.style.transform = "translateX(100vw)"
