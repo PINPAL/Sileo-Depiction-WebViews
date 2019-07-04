@@ -8,11 +8,7 @@ function returnIcon(tweakSection) {
         tweakSection = "null"
     }
     // Select Image (very yuck code I'm sorry)
-    if (tweakSection.match(/.*(themes)|(winterboard)|(ithemer)|(snowboard)|(winterboard)|(anemone).*/) ) {
-        return imagesDirectory + "Theme.png"
-    } else if (tweakSection.match(/.*(addons)|(addon).*/) ) {
-        return imagesDirectory + "Addons.png"
-    } else if (tweakSection.match(/.*(activator).*/) ) {
+    if (tweakSection.match(/.*(activator).*/) ) {
         return imagesDirectory + "Activator.png"
     } else if (tweakSection.match(/.*(admin)|(adminstration).*/) ) {
         return imagesDirectory + "Administration.png"
@@ -102,6 +98,10 @@ function returnIcon(tweakSection) {
         return imagesDirectory + "Widgets.png"
     } else if (tweakSection.match(/.*(zeppelin)|(xeon).*/) ) {
         return imagesDirectory + "Zeppelin.png"
+    } else if (tweakSection.match(/.*(themes)|(winterboard)|(ithemer)|(snowboard)|(winterboard)|(anemone).*/) ) {
+        return imagesDirectory + "Theme.png"
+    } else if (tweakSection.match(/.*(addons)|(addon).*/) ) {
+        return imagesDirectory + "Addons.png"
     } else {
         return imagesDirectory + "Tweaks.png"
     }
