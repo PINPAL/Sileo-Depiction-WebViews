@@ -62,7 +62,7 @@ async function main() {
     // Set Page Title
     document.getElementById("websiteTitle").innerText = tweakName
     // Set Page Icon
-    document.getElementById("websiteIcon").href = tweakDirectory + "/icon.png"
+    document.getElementById("websiteIcon").href = tweakIcon
     //Render
     if (configJSON != "") {
         renderFromConfig(configJSON)
