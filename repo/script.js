@@ -5,6 +5,7 @@ const categoryExpandView = document.getElementById("categoryExpandView")
 const categoryList = document.getElementById("categoryList")
 const backArrow = document.getElementsByClassName("backArrow")[0]
 const backArrowText = document.getElementById("backArrowText")
+const reloadingRepoText = document.getElementById("reloadingRepoText")
 
 async function main() {
     // Get Repo from URL
@@ -14,26 +15,19 @@ async function main() {
         repoURL += "/"
     }
 
-    // Fetch Repo Packages File
-    var validPackagesFile = true
-    try {
-        var packagesFile = corsBypass(repoURL + "Packages")
-    } catch (error) {
-        validPackagesFile = false
-    }
-
     // Fetch Repo Title from Cydia's Release File
     var repoTitle = "Repo Title"
     try {
         var repoTitle = (await corsBypass(repoURL + "Release")).match(/Origin:.*/)[0].replace(/Origin:\s/g,"")
+        reloadingRepoText.innerText = "Fetching Packages"
     } catch (error) {}
 
-    // Fetch Sileo Featured JSON from Repo
-    var validSileoFeatured = true
+    // Fetch Repo Packages File
+    var validPackagesFile = true
     try {
-        var sileoFeaturedJSON = JSON.parse((await corsBypass(repoURL + "sileo-featured.json")))
+        var packagesFile = (await corsBypass(repoURL + "Packages"))
     } catch (error) {
-        validSileoFeatured = false
+        validPackagesFile = false
     }
 
     // Set Repo Title
@@ -46,14 +40,15 @@ async function main() {
 
     // Render Packages File
     if (validPackagesFile) {
-        var packages = decodePackagesFile(await packagesFile)
+        var packages = decodePackagesFile(packagesFile)
+        reloadingRepoText.innerText = "Fetching SileoFeatured"
 
         // Set total packages (All Categories)
-        const numOfPackages = (await packagesFile).match(/Package:/g).length
+        const numOfPackages = packages.length
         document.getElementById("totalPackages").innerText = numOfPackages
 
         // Render other categories and tweak counts
-        var categories = returnCategoryCount(await packages)
+        var categories = returnCategoryCount(packages)
         for (i=0; i<categories[0].length; i++) {
             // Define TableButtonView
             var tableButtonView = document.createElement("div")
@@ -152,8 +147,17 @@ async function main() {
         }
     }
 
+    // Fetch Sileo Featured JSON from Repo
+    var validSileoFeatured = true
+    try {
+        var sileoFeaturedJSON = JSON.parse((await corsBypass(repoURL + "sileo-featured.json")))
+    } catch (error) {
+        validSileoFeatured = false
+    }
+
     // Render Sileo Featured
     if (validSileoFeatured) {
+        reloadingRepoText.innerText = "Loading"
         // Define Banner Image
         var bannerImage = document.createElement("div")
         with (bannerImage) {
@@ -227,7 +231,7 @@ async function main() {
             }
         }
     }
-
+    document.getElementById("reloadingRepoWrapper").display = "none"
 }
 
 main()
