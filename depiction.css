@@ -133,6 +133,7 @@
 }
 
 #navbarTweakIcon {
+    border-radius: 7px;
     position: absolute;
     min-width: 30px;
     min-height: 30px;
