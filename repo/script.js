@@ -7,7 +7,7 @@ const backArrow = document.getElementsByClassName("backArrow")[0]
 const backArrowText = document.getElementById("backArrowText")
 const reloadingRepoText = document.getElementById("reloadingRepoText")
 
-// Function to Fetch Packages File from Repo
+// Function to Fetch Content from Repo
 async function getRepo(repoURL) {
     // Fetch Repo Title from Repo Release File
     var repoTitle = "Repo Title"
