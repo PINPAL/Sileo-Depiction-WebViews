@@ -1,45 +1,3 @@
-html {
-    --text-color: #000000;
-    --navbar-bg-color: #FEFEFE;
-    --bg-color: #FFFFFF;
-    --bg-opacity-color: rgba(255,255,255,.9);
-    --tint-color: #2CB1BE;
-    --border-color: #c5c5c5;
-    --light-text-color: #8F8E94;
-    --medium-text-color: #958E80;
-    scroll-behavior: smooth;
-}
-
-/* Scrollbars */
-::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
-}
-::-webkit-scrollbar-track {
-    background: rgba(0,0,0,0.08);
-    border-radius: 10px;
-}
-::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,0.20);
-    border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: rgba(0,0,0,0.25);
-}
-
-* {
-    color: #000000; /*fallback for IE*/
-    color: var(--text-color);
-    text-align: left;
-    font-family: -apple-system-font,BlinkMacSystemFont,Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
-}
-
-body {
-    background-color: #FFFFFF; /*fallback for IE*/
-    background-color: var(--bg-color);
-    margin: 0;
-    margin-bottom: 25px;
-}
 
 .contentWrapper {
     width: 100%;
@@ -234,6 +192,7 @@ body {
 
 /*Header Pill Selector (Details/Changelog)*/
 .headerPillSelector {
+    visibility: hidden;
     position: relative;
     min-height: 30px;
     padding-top: 10px;

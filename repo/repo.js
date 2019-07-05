@@ -23,19 +23,19 @@ async function getRepo(repoURL) {
     // Fetch Packages File from Repo
     var packages = null
     try {
-    packages = decodePackagesFile(await corsBypass(repoURL + "Packages"))
+        packages = decodePackagesFile(await corsBypass(repoURL + "Packages"))
+        // Render Packages Cateogories
+        renderPackagesFile(packages)
     } catch (error) {}
-    // Render Packages Cateogories
-    renderPackagesFile(packages)
     // Update Loading Progress Text
     reloadingRepoText.innerText = "Fetching Sileo Featured"
     // Fetch Sileo Featured JSON from Repo
     var sileoFeaturedJSON = null
     try {
         sileoFeaturedJSON = JSON.parse((await corsBypass(repoURL + "sileo-featured.json")))
+        // Render Sileo Featured
+        renderSileoFeatured(sileoFeaturedJSON, packages)
     } catch (error) {}
-    // Render Sileo Featured
-    renderSileoFeatured(sileoFeaturedJSON, packages)
     // Hide the reloading indicator
     document.getElementById("reloadingRepoWrapper").style.display = "none"
 }

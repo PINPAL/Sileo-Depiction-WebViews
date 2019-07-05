@@ -1,137 +1,143 @@
 // Define Popup (Improve Popup Responsiveness)
 const modifyPopup = document.getElementById("modifyPopup")
 const popupButtonWrapper = document.getElementsByClassName('popupButtonWrapper')[0]
+
 // Define Navbar Items (Improve Scrolling Animation Responsiveness)
 const navbar = document.getElementsByClassName("navbar")[0]
 const bannerNavItems = document.getElementById("bannerNavItems")
 const changedNavbarItems = document.getElementsByClassName("changedNavbarItems")[0]
+
 // Define BannerImage (Improve Scrolling Animation Responsiveness)
 const bannerImage = document.getElementById("bannerImage")
 
-async function main() {
-    // Get Tweak Name from URL
-    var tweakName = "Tweak Name"
-    if (getQueryVariable("name") != null) {
-        tweakName = decodeURI(getQueryVariable("name"))
-    }
-    // Generate Tweak Icon from Section in URL
-    var tweakIcon = returnIcon(getQueryVariable("section"))
-    // Get Tweak Icon from URL
-    if (getQueryVariable("icon") != null) {
-        tweakIcon = decodeURI(getQueryVariable("icon"))
-    }
-    // Get Developer and Price from URL
-    const tweakDeveloperName = decodeURI(getQueryVariable("dev"))
-    const tweakPrice = decodeURI(getQueryVariable("price"))
-    // Set File Directories
-    const currentDirectory = window.location.origin + window.location.pathname.replace("index.html","")
-    const tweakDirectory = currentDirectory + "packages/" + tweakName.toLowerCase()
-    // Set JSON File Directory
-    var jsonDirectory = tweakDirectory + "/config.json"
-    // Check if JSON File Directory specified in URL and set accordinly
-    if (getQueryVariable("json") != null) {
-        jsonDirectory = getQueryVariable("json")
-    }
-    // Load Sileo JSON File
+// Get Tweak Name from URL
+var tweakName = "Tweak Name"
+if (getQueryVariable("name") != null) {
+    tweakName = decodeURI(getQueryVariable("name"))
+}
+// Generate Tweak Icon from Section in URL
+var tweakIcon = returnIcon(getQueryVariable("section"))
+
+// Get Tweak Icon from URL
+if (getQueryVariable("icon") != null) {
+    tweakIcon = decodeURI(getQueryVariable("icon"))
+}
+
+// Get Developer and Price from URL
+const tweakDeveloperName = decodeURI(getQueryVariable("dev"))
+const tweakPrice = decodeURI(getQueryVariable("price"))
+
+// Get Sileo Depiction JSON URL from URL Arguement
+const jsonDirectory = getQueryVariable("json")
+// Fetch Sileo Depiction JSON and Render it
+getSileoDepiction(jsonDirectory)
+
+// Function to Load Sileo JSON File (Async)
+async function getSileoDepiction(URL) {
+    var sileoDepictionJSON = null
     try {
-        const configFile = await corsBypass(jsonDirectory)
-        var configJSON = JSON.parse(await configFile)
-    } catch (err) {
-        var configJSON = ""
-        document.getElementsByClassName("headerPillSelector")[0].style.display = "none"
-        //Create Error Warning Message at top of content
+        sileoDepictionJSON = JSON.parse((await corsBypass(URL)))
+        // Render Sileo Depiction
+        renderSileoDepiction(sileoDepictionJSON)
+    } catch (error) {
+        // Create Error Warning Message at top of content
         var errorWarning = document.createElement("div")
             errorWarning.className = "errorWarning"
             errorWarning.innerText = "Failed to load SileoDepiction JSON File"
-            document.getElementById("mainWrapper").appendChild(errorWarning)
+        document.getElementById("mainWrapper").appendChild(errorWarning)
     }
-    // Set Navbar Tweak Icon
-    document.getElementById("navbarTweakIcon").style.backgroundImage = "url(" + tweakIcon + ")"
-    // Set Price Buttons
-    for (i=0; i<document.getElementsByClassName("priceButton").length;i++) {
-        if (/[+-]?(?=\.\d|\d)(?:\d+)?(?:\.?\d*)(?:[eE][+-]?\d+)?/.test(tweakPrice)) {
-            document.getElementsByClassName("priceButton")[i].innerText = "$" + tweakPrice
-        }
-    }
-    // Set Tweak Name
-    document.getElementById("tweakName").innerText = tweakName
-    // Set Developer Name
-    document.getElementById("developerName").innerText = tweakDeveloperName
-    // Set Tweak Icon
-    document.getElementById("tweakIcon").style.backgroundImage = "url(" + tweakIcon + ")"
-    // Set Page Title
-    document.getElementById("websiteTitle").innerText = tweakName
-    // Set Page Icon
-    document.getElementById("websiteIcon").href = tweakIcon
-    //Render
-    if (configJSON != "") {
-        renderFromConfig(configJSON)
-    }
+    // Hide the reloading indicator
+    document.getElementById("reloadingRepoWrapper").style.display = "none"
+}
 
-    //Set Back Arrows 
-    for (i=0; i<2; i++) {
-        document.getElementsByClassName("backURL")[i].href = document.referrer
-    }
+// Set Navbar Tweak Icon
+document.getElementById("navbarTweakIcon").style.backgroundImage = "url(" + tweakIcon + ")"
 
-    //Generate from Config Function
-    function renderFromConfig(config) {
-            // Set Background Color
-            if (config.hasOwnProperty('backgroundColor')) {
-                document.getElementsByTagName('html')[0].style.setProperty("--bg-color", config.backgroundColor)
-            }
-            // Set Tint Color
-            if (config.hasOwnProperty('tintColor')) {
-                document.getElementsByTagName('html')[0].style.setProperty("--tint-color", config.tintColor)
-            }
-            // Set Banner Image
-            if (config.hasOwnProperty('headerImage')) {
-                bannerImage.style.backgroundImage = "url(" + config.headerImage + ")"
-                bannerImage.style.filter = "brightness(0.5)";
-                bannerImage.style.webkitFilter = "brightness(0.5)";
-            }
-            // Clear Tabs
-            var pillTextsArray = document.getElementsByClassName("pillText")
-            for (i=0; i<pillTextsArray.length; i++) {
-                pillTextsArray[i].parentElement.removeChild(pillTextsArray[i])
-            }
-            // Generate Tabs
-            for (currentTab = 0; currentTab < config.tabs.length; currentTab++) {
-                // Create Pill Selectors at Top
-                var pillText = document.createElement("div")
-                pillText.className = "pillText"
-                pillText.id = config.tabs[currentTab].tabname + "Button"
-                pillText.innerText = config.tabs[currentTab].tabname
-                pillText.setAttribute("onclick", "changePillSelector(this)")
-                pillText.style.left = (50 / config.tabs.length) * (2 * currentTab + 1) + "%"
-                document.getElementsByClassName("headerPillSelector")[0].appendChild(pillText)
-                // Create Tab for Content to Go In
-                var tabContent = document.createElement("div")
-                tabContent.className = "tabContent"
-                tabContent.id = config.tabs[currentTab].tabname + "Content"
-                // Add Content Views to Tab
-                for (currentViewNum = 0; currentViewNum < config.tabs[currentTab].views.length; currentViewNum++) {
-                    var view = handleView(config.tabs[currentTab].views[currentViewNum], false)
-                    tabContent.appendChild(view)
-                }
-                // Handle Landscape Oreintation of StackViews
-                var landscapeOrientationObjects = document.getElementsByClassName("landscapeOrientation")
-                // Loop Every Single Landscape StackView
-                for (i = 0; i < landscapeOrientationObjects.length; i++) {
-                    // Loop Every Child View within the StackView
-                    for (j = 0; j < landscapeOrientationObjects[i].childNodes.length; j++) {
-                        landscapeOrientationObjects[i].childNodes[j].style.display = "inline-block"
-                        landscapeOrientationObjects[i].childNodes[j].style.width = "50%"
-                    }
-                }
-                document.getElementById("mainWrapper").appendChild(tabContent)
-                // Initial Styling of Pill Selector (Page Load)
-                document.getElementsByClassName("pillText")[0].style.color = "var(--tint-color)"
-                document.getElementsByClassName("pillSelectorLine")[0].style.left = (50 / config.tabs.length) + "%"
-                // Initial Display of Main Content
-                document.getElementsByClassName("tabContent")[0].style.display = "block"
-            }
+// Set Price Buttons
+for (i=0; i<document.getElementsByClassName("priceButton").length;i++) {
+    if (/[+-]?(?=\.\d|\d)(?:\d+)?(?:\.?\d*)(?:[eE][+-]?\d+)?/.test(tweakPrice)) {
+        document.getElementsByClassName("priceButton")[i].innerText = "$" + tweakPrice
     }
 }
+
+// Set Tweak Name
+document.getElementById("tweakName").innerText = tweakName
+// Set Developer Name
+document.getElementById("developerName").innerText = tweakDeveloperName
+// Set Tweak Icon
+document.getElementById("tweakIcon").style.backgroundImage = "url(" + tweakIcon + ")"
+// Set Page Title
+document.getElementById("websiteTitle").innerText = tweakName
+// Set Page Icon
+document.getElementById("websiteIcon").href = tweakIcon
+
+//Set Back Arrows 
+for (i=0; i<2; i++) {
+    document.getElementsByClassName("backURL")[i].href = document.referrer
+}
+
+//Generate from Config Function
+function renderSileoDepiction(config) {
+        // Show Pill Selector
+        document.getElementsByClassName("headerPillSelector")[0].style.visibility = "visible"
+        // Set Background Color
+        if (config.hasOwnProperty('backgroundColor')) {
+            document.getElementsByTagName('html')[0].style.setProperty("--bg-color", config.backgroundColor)
+        }
+        // Set Tint Color
+        if (config.hasOwnProperty('tintColor')) {
+            document.getElementsByTagName('html')[0].style.setProperty("--tint-color", config.tintColor)
+        }
+        // Set Banner Image
+        if (config.hasOwnProperty('headerImage')) {
+            bannerImage.style.backgroundImage = "url(" + config.headerImage + ")"
+            bannerImage.style.filter = "brightness(0.5)";
+            bannerImage.style.webkitFilter = "brightness(0.5)";
+        }
+        // Clear Tabs
+        var pillTextsArray = document.getElementsByClassName("pillText")
+        for (i=0; i<pillTextsArray.length; i++) {
+            pillTextsArray[i].parentElement.removeChild(pillTextsArray[i])
+        }
+        // Generate Tabs
+        for (currentTab = 0; currentTab < config.tabs.length; currentTab++) {
+            // Create Pill Selectors at Top
+            var pillText = document.createElement("div")
+            pillText.className = "pillText"
+            pillText.id = config.tabs[currentTab].tabname + "Button"
+            pillText.innerText = config.tabs[currentTab].tabname
+            pillText.setAttribute("onclick", "changePillSelector(this)")
+            pillText.style.left = (50 / config.tabs.length) * (2 * currentTab + 1) + "%"
+            document.getElementsByClassName("headerPillSelector")[0].appendChild(pillText)
+            // Create Tab for Content to Go In
+            var tabContent = document.createElement("div")
+            tabContent.className = "tabContent"
+            tabContent.id = config.tabs[currentTab].tabname + "Content"
+            // Add Content Views to Tab
+            for (currentViewNum = 0; currentViewNum < config.tabs[currentTab].views.length; currentViewNum++) {
+                var view = handleView(config.tabs[currentTab].views[currentViewNum], false)
+                tabContent.appendChild(view)
+            }
+            // Handle Landscape Oreintation of StackViews
+            var landscapeOrientationObjects = document.getElementsByClassName("landscapeOrientation")
+            // Loop Every Single Landscape StackView
+            for (i = 0; i < landscapeOrientationObjects.length; i++) {
+                // Loop Every Child View within the StackView
+                for (j = 0; j < landscapeOrientationObjects[i].childNodes.length; j++) {
+                    landscapeOrientationObjects[i].childNodes[j].style.display = "inline-block"
+                    landscapeOrientationObjects[i].childNodes[j].style.width = "50%"
+                }
+            }
+            // Add Tab Content to MainWrapper
+            document.getElementById("mainWrapper").appendChild(tabContent)
+            // Initial Styling of Pill Selector (Page Load)
+            document.getElementsByClassName("pillText")[0].style.color = "var(--tint-color)"
+            document.getElementsByClassName("pillSelectorLine")[0].style.left = (50 / config.tabs.length) + "%"
+            // Initial Display of Main Content
+            document.getElementsByClassName("tabContent")[0].style.display = "block"
+        }
+}
+
 
 // Scroll Snapping to Bottom of Banner
 var isScrolling;
@@ -314,5 +320,3 @@ function toggleSetting(element) {
         }
     }
 }
-
-main()
