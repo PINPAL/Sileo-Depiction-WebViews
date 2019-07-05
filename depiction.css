@@ -147,8 +147,6 @@
 
 /*Top Header Section*/
 .headerSection {
-    color: color: #000000; /*fallback for IE*/
-    color: var(--text-color);
     position: relative;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -535,8 +533,6 @@ a {
     border-bottom-style: solid;
 }
 .socialLink p {
-    color: #000000; /*fallback for IE*/
-    color: var(--text-color);
     margin: 0;
     position: absolute;
     top: 50%;
