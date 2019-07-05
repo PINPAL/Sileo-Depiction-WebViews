@@ -256,7 +256,7 @@ function changePillSelector(element) {
     // Move Pill Selector Line
     document.getElementsByClassName("pillSelectorLine")[0].style.left = element.style.left
     // Set Color of Selected Pill text 
-    element.style.color = "#487cdc"
+    element.style.color = "var(--tint-color)"
     // Show Tab Content
     document.getElementById(element.id.slice(0,-6) + "Content").style.display = "block"
 }
