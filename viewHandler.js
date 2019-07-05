@@ -45,8 +45,6 @@ function handleView(currentView,isStacked) {
             break;
         //Handle Markdown Text View
         case "DepictionMarkdownView":
-            var converter = new showdown.Converter()
-            view.innerHTML = converter.makeHtml(currentView.markdown)
             // useSpacing property - enable/disable veritcal spacing
             if (currentView.hasOwnProperty("useSpacing")) {
                 if (!currentView.useSpacing) {
@@ -54,14 +52,31 @@ function handleView(currentView,isStacked) {
                     view.style.marginBottom = 0
                 }
             }
-            //Custom Stylesheets
+            // Get Custom Stylesheet Info
             var styleStartIndex = currentView.markdown.indexOf("<style>")
             var styleEndIndex = currentView.markdown.indexOf("</style>")
             if (styleStartIndex >= 0) {
                 var styleString = currentView.markdown.slice(styleStartIndex+7,styleEndIndex).replace(/.*\{|\}/g,"")
-                children = view.children
+            }
+            // Remove Custom Stylesheet from markdown property
+            var markdownInner = currentView.markdown.replace(/\<style\>.*\<\/style\>/g,"")
+            // Add Markdown View's Inner Text into View
+            var converter = new showdown.Converter()
+            view.innerHTML = converter.makeHtml(markdownInner)
+            // Apply Custom Stylesheet Info
+            if (styleStartIndex >= 0) {
+                applyStyleToChildren(view, styleString)
+            }
+            // Functin to apply a style to all children of element (for recursion)
+            function applyStyleToChildren(element, styleString) {
+                let children = element.children
+                // Iterate through all child elements in element
                 for (i=0; i<children.length; i++) {
                     children[i].setAttribute("style",styleString)
+                    // Recursivly call this function untill all children of children etc have been styled
+                    if (children[i].children.length > 0) {
+                        applyStyleToChildren(children[i], styleString)
+                    }
                 }
             }
             break;
