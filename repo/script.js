@@ -7,41 +7,54 @@ const backArrow = document.getElementsByClassName("backArrow")[0]
 const backArrowText = document.getElementById("backArrowText")
 const reloadingRepoText = document.getElementById("reloadingRepoText")
 
-async function main() {
-    // Get Repo from URL
-    var repoURL = getQueryVariable("repo")
-    // Append slash to end of repo URL (if required)
-    if (repoURL.slice(-1) != "/") {
-        repoURL += "/"
-    }
-
-    // Fetch Repo Title from Cydia's Release File
+// Function to Fetch Packages File from Repo
+async function getRepo(repoURL) {
+    // Fetch Repo Title from Repo Release File
     var repoTitle = "Repo Title"
     try {
-        var repoTitle = (await corsBypass(repoURL + "Release")).match(/Origin:.*/)[0].replace(/Origin:\s/g,"")
-        reloadingRepoText.innerText = "Fetching Packages"
+        repoTitle = (await corsBypass(repoURL + "Release")).match(/Origin:.*/)[0].replace(/Origin:\s/g,"")
     } catch (error) {}
-
-    // Fetch Repo Packages File
-    var validPackagesFile = true
-    try {
-        var packagesFile = (await corsBypass(repoURL + "Packages"))
-    } catch (error) {
-        validPackagesFile = false
-    }
-
     // Set Repo Title
     document.getElementById("websiteTitle").innerText  = repoTitle
     document.getElementById("repositoryName").innerText  = repoTitle
     document.getElementsByClassName("leftNavButton")[0].id = repoTitle
+    // Update Loading Progress Text
+    reloadingRepoText.innerText = "Fetching Packages"
+    // Fetch Packages File from Repo
+    var packages = null
+    try {
+    packages = decodePackagesFile(await corsBypass(repoURL + "Packages"))
+    } catch (error) {}
+    // Render Packages Cateogories
+    renderPackagesFile(packages)
+    // Update Loading Progress Text
+    reloadingRepoText.innerText = "Fetching Sileo Featured"
+    // Fetch Sileo Featured JSON from Repo
+    var sileoFeaturedJSON = null
+    try {
+        sileoFeaturedJSON = JSON.parse((await corsBypass(repoURL + "sileo-featured.json")))
+    } catch (error) {}
+    // Render Sileo Featured
+    renderSileoFeatured(sileoFeaturedJSON, packages)
+    // Hide the reloading indicator
+    document.getElementById("reloadingRepoWrapper").style.display = "none"
+}
 
-    // Set Page Icon
-    document.getElementById("websiteIcon").href  = repoURL + "CydiaIcon.png"
+// Get Repo URL from URL Variable
+var repoURL = getQueryVariable("repo")
+// Append slash to end of repo URL (if required)
+if (repoURL.slice(-1) != "/") {
+    repoURL += "/"
+}
+// Fetch Contents of Repo (Asyncronously)
+getRepo(repoURL)
 
-    // Render Packages File
-    if (validPackagesFile) {
-        var packages = decodePackagesFile(packagesFile)
-        reloadingRepoText.innerText = "Fetching SileoFeatured"
+// Set Page Icon
+document.getElementById("websiteIcon").href  = repoURL + "CydiaIcon.png"
+
+// Render Packages File
+function renderPackagesFile(packages) {
+    if (packages != null) {
 
         // Set total packages (All Categories)
         const numOfPackages = packages.length
@@ -146,18 +159,11 @@ async function main() {
             categoryExpandView.appendChild(categorySubView)
         }
     }
+}
 
-    // Fetch Sileo Featured JSON from Repo
-    var validSileoFeatured = true
-    try {
-        var sileoFeaturedJSON = JSON.parse((await corsBypass(repoURL + "sileo-featured.json")))
-    } catch (error) {
-        validSileoFeatured = false
-    }
-
-    // Render Sileo Featured
-    if (validSileoFeatured) {
-        reloadingRepoText.innerText = "Loading"
+// Render Sileo Featured
+function renderSileoFeatured(sileoFeaturedJSON, packages) {
+    if (sileoFeaturedJSON != null) {
         // Define Banner Image
         var bannerImage = document.createElement("div")
         with (bannerImage) {
@@ -185,7 +191,7 @@ async function main() {
             bannerImageClone.appendChild(bannerTweakName)
             // Get HREF URL from Packages File
             var alreadyAppended = false
-            if (validPackagesFile) {
+            if (packages != null) {
                 for (packageNum=0; packageNum<packages.length; packageNum++) {
                     if (packages[packageNum].Package == sileoFeaturedJSON.banners[i].package) {
                         // Create Link Element around BannerImage
@@ -231,10 +237,8 @@ async function main() {
             }
         }
     }
-    document.getElementById("reloadingRepoWrapper").display = "none"
 }
 
-main()
 
 // Function triggered when user taps on category
 function openCategory(element) {
