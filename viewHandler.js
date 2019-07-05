@@ -47,6 +47,13 @@ function handleView(currentView,isStacked) {
         case "DepictionMarkdownView":
             var converter = new showdown.Converter()
             view.innerHTML = converter.makeHtml(currentView.markdown)
+            // useSpacing property - enable/disable veritcal spacing
+            if (currentView.hasOwnProperty("useSpacing")) {
+                if (!currentView.useSpacing) {
+                    view.style.marginTop = 0
+                    view.style.marginBottom = 0
+                }
+            }
             //Custom Stylesheets
             var styleStartIndex = currentView.markdown.indexOf("<style>")
             var styleEndIndex = currentView.markdown.indexOf("</style>")
@@ -134,10 +141,16 @@ function handleView(currentView,isStacked) {
             var linkContents = document.createElement("div")
             linkContents.className = "depictionButton"
             linkContents.innerText = currentView.title
-            link.appendChild(linkContents)
             //Create the arrow
             var backwardsArrow = document.createElement("div")
             backwardsArrow.className = "backwardsArrow"
+            //Set Custom Tint Color
+            if (currentView.hasOwnProperty('tintColor')) {
+                linkContents.style.color = currentView.tintColor
+                backwardsArrow.style.backgroundColor = currentView.tintColor
+            }
+            //Append TableCell and Contents to View
+            link.appendChild(linkContents)
             link.appendChild(backwardsArrow)
             view.appendChild(link)
             break;

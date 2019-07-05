@@ -268,6 +268,12 @@ a {
 /*Padded Views*/
 .DepictionSubheaderView, .DepictionHeaderView, .DepictionMarkdownView, .DepictionTableView {
     margin: 18px;
+    overflow: hidden;
+}
+
+.DepictionMarkdownView p {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .DepictionLabelView {
@@ -346,17 +352,17 @@ a {
 /*Table Button Views*/
 .DepictionTableButtonView {
     position: relative;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 11px;
+    padding-bottom: 11px;
     margin-left: auto;
     margin-right: auto;
     width: calc(100% - 36px);
 }
 .backwardsArrow {
-    transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
+    transform: rotate(180deg) translateY(50%);
+    -ms-transform: rotate(180deg) translateY(50%);
     position: absolute;
-    top: 8px;
+    top: 50%;
     right: 0;
     min-width: 16px;
     max-width: 16px;
