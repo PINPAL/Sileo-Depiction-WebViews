@@ -233,7 +233,7 @@
 
 /*Screenshots*/
 .DepictionScreenshotsView {
-    max-width: 100vw;
+    max-width: 100%;
     margin-bottom: 8px;
     margin-top: 8px;
     padding-top: 10px;
