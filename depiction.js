@@ -176,6 +176,11 @@ window.addEventListener('scroll', function updateNavbar() {
     }
 })
 
+// Hide Back Button in Cydia
+if (navigator.userAgent.toLowerCase().includes("cydia")) {
+    document.getElementsByClassName("leftNavButton")[0].style.display = "none"
+}
+
 // Set Dark Mode Cookie if non-existant
 if (!document.cookie) {
     setCookie("enableDarkMode",false)
