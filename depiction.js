@@ -176,9 +176,10 @@ window.addEventListener('scroll', function updateNavbar() {
     }
 })
 
-// Hide Back Button in Cydia
+// Fixes for Cydia's WebView
 if (navigator.userAgent.toLowerCase().includes("cydia")) {
     document.getElementsByClassName("leftNavButton")[0].style.display = "none"
+    popupButtonWrapper.style.bottom = "calc(100% - 300px)"
 }
 
 // Set Dark Mode Cookie if non-existant
