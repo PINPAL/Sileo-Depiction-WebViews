@@ -45,6 +45,7 @@ async function getSileoDepiction(URL) {
             errorWarning.className = "errorWarning"
             errorWarning.innerText = "Failed to load SileoDepiction JSON File"
         document.getElementById("mainWrapper").appendChild(errorWarning)
+        console.log(error)
     }
     // Hide the reloading indicator
     document.getElementById("reloadingRepoWrapper").style.display = "none"
