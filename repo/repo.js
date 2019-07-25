@@ -42,15 +42,22 @@ async function getRepo(repoURL) {
 
 // Get Repo URL from URL Variable
 var repoURL = getQueryVariable("repo")
-// Append slash to end of repo URL (if required)
-if (repoURL.slice(-1) != "/") {
-    repoURL += "/"
+// Validate Repo URL
+if (repoURL) {
+    // Show the reloading indicator
+    document.getElementById("reloadingRepoWrapper").style.display = "inline"
+    // Append slash to end of repo URL (if required)
+    if (repoURL.slice(-1) != "/") {
+        repoURL += "/"
+    }
+    // Fetch Contents of Repo (Asyncronously)
+    getRepo(repoURL)
+    // Set Page Icon
+    document.getElementById("websiteIcon").href  = repoURL + "CydiaIcon.png"
+} else {
+    // If Repo URL not set show welcome message
+    document.getElementById("welcomeWrapper").style.display = "inline"
 }
-// Fetch Contents of Repo (Asyncronously)
-getRepo(repoURL)
-
-// Set Page Icon
-document.getElementById("websiteIcon").href  = repoURL + "CydiaIcon.png"
 
 // Render Packages File
 function renderPackagesFile(packages) {

@@ -23,7 +23,8 @@
     top: 0;
     left: 0;
     position: fixed;
-    min-width: 100%;
+    min-width: 100vw;
+    max-width: 100vw;
     min-height: 45px;
     line-height: 45px;
 }
@@ -222,4 +223,63 @@ a {
     -moz-transition: transform 0.3s ease, opacity 0.3s ease;
     -o-transition: transform 0.3s ease, opacity 0.3s ease;
     -ms-transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Welcome Message */
+#welcomeWrapper {
+    z-index: 1000;
+    background-color: rgba(0,0,0,.65);
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#welcomeMessage {
+    box-shadow: 5px 5px 10px rgba(0,0,0,.15);
+    width: calc(95vw - 10px);
+    max-width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    background-color: var(--navbar-bg-color);
+    padding: 20px;
+    box-sizing: border-box;
+}
+#welcomeMessage img {
+    display: block;
+    width: 25vw;
+    max-width: 100px;
+    height: 25vw;
+    max-height: 100px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#welcomeMessage * {
+    text-align: center;
+}
+#welcomeMessage button {
+    cursor: pointer;
+    width: 100%;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    padding: 14px;
+    font-weight: 600;
+    font-size: 11pt;
+    color: white;
+    background-color: #017AFF;
+}
+#welcomeMessage .codeBox {
+    min-width: calc(95vw - 40px);
+    margin-left: -5px;
+    max-width: 400px;
+    background-color: rgba(0,0,0,.15);
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
 }
