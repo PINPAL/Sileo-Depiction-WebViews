@@ -274,12 +274,11 @@ a {
     background-color: #017AFF;
 }
 #welcomeMessage .codeBox {
-    min-width: calc(95vw - 40px);
-    margin-left: -5px;
-    max-width: 400px;
+    width: calc(95vw - 30px);
+    margin-left: -10px;
+    max-width: 380px;
     background-color: rgba(0,0,0,.15);
     padding: 10px;
     border-radius: 5px;
-    width: 100%;
     box-sizing: border-box;
 }

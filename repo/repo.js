@@ -23,10 +23,15 @@ async function getRepo(repoURL) {
     // Fetch Packages File from Repo
     var packages = null
     try {
-        packages = decodePackagesFile(await corsBypass(repoURL + "Packages"))
+        // Get Packages File from Repo
+        var packagesFile = await corsBypass(repoURL + "Packages")
+        // Decode Packages File into Object Array
+        packages = decodePackagesFile(packagesFile)
         // Render Packages Cateogories
         renderPackagesFile(packages)
-    } catch (error) {}
+    } catch (error) {
+        throw "Failed to load Packages"
+    }
     // Update Loading Progress Text
     reloadingRepoText.innerText = "Fetching Sileo Featured"
     // Fetch Sileo Featured JSON from Repo
@@ -69,7 +74,7 @@ function renderPackagesFile(packages) {
 
         // Render other categories and tweak counts
         var categories = returnCategoryCount(packages)
-        for (i=0; i<categories[0].length; i++) {
+        for (i=0; i<categories.length; i++) {
             // Define TableButtonView
             var tableButtonView = document.createElement("div")
             tableButtonView.className = "tableButtonView"
@@ -79,15 +84,15 @@ function renderPackagesFile(packages) {
             // Create Category Title
             var categoryTitle = document.createElement("span")
             categoryTitle.className = "left"
-            categoryTitle.innerText = categories[0][i]
+            categoryTitle.innerText = categories[i].name
             // Create Category Icon 
             var categoryIcon = document.createElement("img")
             categoryIcon.className = "tweakIcon"
-            categoryIcon.src = returnIcon(categories[0][i])       
+            categoryIcon.src = returnIcon(categories[i].name)       
             // Create Category Tweak Count
             var categoryTweakCount = document.createElement("span")
             categoryTweakCount.className = "right"
-            categoryTweakCount.innerText = categories[1][i]
+            categoryTweakCount.innerText = categories[i].tweakCount
             // Append TableButtonView to TableList
             tableButtonView.appendChild(categoryIcon)
             tableButtonView.appendChild(categoryTitle)
@@ -96,14 +101,14 @@ function renderPackagesFile(packages) {
         }
 
         // Render other categories sub pages
-        for (i=0; i<categories[0].length; i++) {
+        for (i=0; i<categories.length; i++) {
             var categorySubView = document.createElement("div")
             categorySubView.className = "categorySubView"
             categorySubView.id = "categorySubView" + i
             // Iterate through all packages
             for (j=0; j<packages.length; j++) {
                 // Select Packages that are of specific category
-                if (packages[j].Section == categories[0][i]) {
+                if (packages[j].Section == categories[i].name) {
                     // Define TableButtonView
                     var tableButtonView = document.createElement("div")
                     tableButtonView.className = "tableButtonView"
