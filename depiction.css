@@ -241,7 +241,9 @@
     padding-left: 10px;
     padding-right: 10px;
     overflow-y: hidden;
-    overflow-x: auto;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
     white-space: nowrap;
     object-fit: contain;
 }
