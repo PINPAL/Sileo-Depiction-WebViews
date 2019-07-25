@@ -23,7 +23,7 @@ function returnCategoryCount(packages) {
             categories.push(tempCategory)
         }
     }
-    // Sort categories alphabetically
+    // Sort categories alphabetically by name field
     categories.sort(function(a, b) {
         return a.name.localeCompare(b.name);
     });
