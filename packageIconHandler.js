@@ -16,7 +16,7 @@ function returnIcon(tweakSection) {
         return imagesDirectory + "Adult.png"
     } else if (tweakSection.match(/.*(alkaline).*/) ) {
         return imagesDirectory + "Alkaline.png"
-    } else if (tweakSection.match(/.*(applications)|(apps).*/) ) {
+    } else if (tweakSection.match(/.*(application)|(apps).*/) ) {
         return imagesDirectory + "Applications.png"
     } else if (tweakSection.match(/.*(archive)|(archiving).*/) ) {
         return imagesDirectory + "Archiving.png"
@@ -40,7 +40,7 @@ function returnIcon(tweakSection) {
         return imagesDirectory + "Education.png"
     } else if (tweakSection.match(/.*(entertain)|(entertainment).*/) ) {
         return imagesDirectory + "Entertainment.png"
-    } else if (tweakSection.match(/.*(fonts)|(bytafont).*/) ) {
+    } else if (tweakSection.match(/.*(font)|(bytafont).*/) ) {
         return imagesDirectory + "Fonts.png"
     } else if (tweakSection.match(/.*(game)|(gaming).*/) ) {
         return imagesDirectory + "Games.png"
