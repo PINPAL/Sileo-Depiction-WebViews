@@ -240,7 +240,7 @@ a {
     width: calc(95vw - 10px);
     max-width: 400px;
     position: absolute;
-    top: 50%;
+    top: calc(50% - 44px);
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 20px;
