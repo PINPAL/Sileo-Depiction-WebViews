@@ -201,6 +201,7 @@
     border-bottom-color: var(--border-color);
 }
 .pillText {
+    white-space: nowrap;
     left: 50%;
     cursor: pointer;
     padding-bottom: 10px;
