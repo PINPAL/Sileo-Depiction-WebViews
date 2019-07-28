@@ -18,6 +18,7 @@ function handleView(currentView,isStacked) {
                 }
             }
             if (currentView.hasOwnProperty("textAlign")) {
+                console.log(currentView.textAlign)
                 if (currentView.textAlign == 1) {
                     view.style.textAlign = "center"
                 } else if (currentView.textAlign == 2) {
