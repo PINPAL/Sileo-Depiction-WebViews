@@ -51,7 +51,7 @@ function handleView(currentView,isStacked) {
             }*/
             if (currentView.hasOwnProperty("fontWeight")) {
                 let fontWeightList = [
-                    {"name":"black","weight":"100"},
+                    {"name":"black","weight":"1000"},
                     {"name":"heavy","weight":"800"},
                     {"name":"bold","weight":"bold"},
                     {"name":"semibold","weight":"600"},
