@@ -120,7 +120,7 @@ function handleView(currentView,isStacked) {
             image.src = currentView.URL
             image.width = currentView.width
             image.height = currentView.height
-            image.style.borderRadius = currentView.cornerRadius
+            image.style.borderRadius = currentView.cornerRadius + "px"
             if (currentView.alignment == "1") {
                 view.style.textAlign = "center"
             } else if (currentView.alignment == "2") {
