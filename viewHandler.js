@@ -31,6 +31,12 @@ function handleView(currentView,isStacked) {
             if (currentView.useBoldText) {
                 view.style.fontWeight = "bold"
             }
+            if (currentView.hasOwnProperty("useMargins")) {
+                if (currentView.useMargins == false) {
+                    view.style.marginTop = 0
+                    view.style.marginBottom = 0
+                }
+            }
             break;
         //Handle Label View
         case "DepictionLabelView":
