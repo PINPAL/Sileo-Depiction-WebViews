@@ -6,8 +6,23 @@ function handleView(currentView,isStacked) {
         //Handle Header View
         case "DepictionHeaderView":
             view.innerText = currentView.title
-            if (currentView.useBoldText == false) {
-                view.style.fontWeight = "normal"
+            if (currentView.hasOwnProperty("useBoldText")) {
+                if (currentView.useBoldText == false) {
+                    view.style.fontWeight = "normal"
+                }
+            }
+            if (currentView.hasOwnProperty("useMargins")) {
+                if (currentView.useMargins == false) {
+                    view.style.marginTop = 0
+                    view.style.marginBottom = 0
+                }
+            }
+            if (currentView.hasOwnProperty("textAlign")) {
+                if (currentView.textAlign == 1) {
+                    view.style.textAlign = "center"
+                } else if (currentView.textAlign == 2) {
+                    view.style.textAlign = "right"
+                }
             }
             break;
         //Handle Subheader View
