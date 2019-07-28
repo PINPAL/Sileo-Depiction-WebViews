@@ -17,11 +17,10 @@ function handleView(currentView,isStacked) {
                     view.style.marginBottom = 0
                 }
             }
-            if (currentView.hasOwnProperty("textAlign")) {
-                console.log(currentView.textAlign)
-                if (currentView.textAlign == 1) {
+            if (currentView.hasOwnProperty("alignment")) {
+                if (currentView.alignment == 1) {
                     view.style.textAlign = "center"
-                } else if (currentView.textAlign == 2) {
+                } else if (currentView.alignment == 2) {
                     view.style.textAlign = "right"
                 }
             }
