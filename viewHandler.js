@@ -50,17 +50,30 @@ function handleView(currentView,isStacked) {
                 view.style.margin = marginString
             }*/
             if (currentView.hasOwnProperty("fontWeight")) {
-                if (currentView.fontWeight = "semibold") {
-                    view.style.fontWeight = 600
-                } else {
-                    view.style.fontWeight = currentView.fontWeight
+                let fontWeightList = [
+                    {"name":"black","weight":"100"},
+                    {"name":"heavy","weight":"800"},
+                    {"name":"bold","weight":"bold"},
+                    {"name":"semibold","weight":"600"},
+                    {"name":"regular","weight":"regular"},
+                    {"name":"thin","weight":"200"},
+                    {"name":"ultralight","weight":"100"},
+                ]
+                for (i=0; i<fontWeightList.length; i++) {
+                    if (fontWeightList[i].name == currentView.fontWeight) {
+                        view.style.fontWeight = fontWeightList[i].weight
+                    }
                 }
+            }
+            if (currentView.hasOwnProperty("usePadding")) {
+                view.style.paddingTop = "12px"
+                view.style.paddingBottom = "12px"
             }
             if (currentView.hasOwnProperty("textColor")) {
                 view.style.color = currentView.textColor
             }
             if (currentView.hasOwnProperty("fontSize")) {
-                view.style.fontSize = currentView.fontSize + "px"
+                view.style.fontSize = currentView.fontSize + "pt"
             }
             view.innerText = currentView.text
             break;
