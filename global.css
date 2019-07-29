@@ -9,6 +9,13 @@ html {
     --medium-text-color: #958E80;
     scroll-behavior: smooth;
 }
+.darkMode {
+    --bg-color: #282828;
+    --bg-opacity-color: rgba(35,35,35,.9);
+    --text-color: #FFFFFF;
+    --navbar-bg-color: #1E1E1E;
+    --border-color: #303030;
+}
 
 * {
     color: #000000; /*fallback for IE*/

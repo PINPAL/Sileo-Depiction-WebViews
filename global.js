@@ -46,21 +46,12 @@ function getCookie(name) {
 }
 
 //Function to enable/disable Dark Mode
-function toggleDarkMode(enable) {
+function toggleDarkMode(override) {
     //Check Browser is not IE
     if (navigator.userAgent.indexOf("Trident") < 0) {
-        if (enable) {
-            document.getElementsByTagName('html')[0].style.setProperty("--bg-color", "#282828")
-            document.getElementsByTagName('html')[0].style.setProperty("--bg-opacity-color", "rgba(35,35,35,.9)")
-            document.getElementsByTagName('html')[0].style.setProperty("--text-color", "#FFFFFF")
-            document.getElementsByTagName('html')[0].style.setProperty("--navbar-bg-color", "#1E1E1E")
-            document.getElementsByTagName('html')[0].style.setProperty("--border-color", "#303030")
-        } else {
-            document.getElementsByTagName('html')[0].style.setProperty("--bg-color", "#FFFFFF")
-            document.getElementsByTagName('html')[0].style.setProperty("--bg-opacity-color", "rgba(255,255,255,.9)")
-            document.getElementsByTagName('html')[0].style.setProperty("--text-color", "#000000")
-            document.getElementsByTagName('html')[0].style.setProperty("--navbar-bg-color", "#FEFEFE")
-            document.getElementsByTagName('html')[0].style.setProperty("--border-color", "#c5c5c5")
+        document.getElementsByTagName('html')[0].classList.toggle("darkMode")
+        if (override) {
+            document.getElementsByTagName('html')[0].classList.add("darkMode")
         }
     } else {
         alert("Sorry Internet Explorer does not support this feature!")
