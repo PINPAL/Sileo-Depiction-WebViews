@@ -308,18 +308,12 @@ function toggleSetting(element) {
     if (element.className == "toggleSwitch enabledToggle") {
         // Make Toggle Disabled
         element.classList.remove("enabledToggle")
-        // If Dark Mode
-        if (element.id == "enableDarkMode") {
-            setCookie("enableDarkMode",false)
-            refreshDarkMode()
-        }
     } else {
         // Make Toggle Enabled
         element.classList.add("enabledToggle")
-        // If Dark Mode
-        if (element.id == "enableDarkMode") {
-            setCookie("enableDarkMode",true)
-            refreshDarkMode()
-        }
+    }
+    // If Dark Mode
+    if (element.id == "enableDarkMode") {
+        toggleDarkMode()
     }
 }

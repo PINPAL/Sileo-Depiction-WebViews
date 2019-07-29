@@ -52,7 +52,18 @@ if (!document.cookie) {
     refreshDarkMode()
 }
 
-//Function to enable/disable Dark Mode
+// Function called by buttons that toggle dark mode on/off
+function toggleDarkMode() {
+    let darkModeStatus = getCookie("enableDarkMode")
+    if (darkModeStatus) {
+        setCookie("enableDarkMode",false)
+    } else {
+        setCookie("enableDarkMode",true)
+    }
+    refreshDarkMode()
+}
+
+// Function to enable/disable Dark Mode
 function refreshDarkMode() {
     let darkModeStatus = getCookie("enableDarkMode")
     //Check Browser is not IE
