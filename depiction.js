@@ -183,14 +183,10 @@ if (navigator.userAgent.toLowerCase().includes("cydia")) {
     popupButtonWrapper.style.bottom = "calc(100% - 300px)"
 }
 
-// Set Dark Mode Cookie if non-existant
-if (!document.cookie) {
-    setCookie("enableDarkMode",false)
-}
+
 // Load Dark Mode from Cookie
 if (getCookie("enableDarkMode")) {
     document.getElementById("enableDarkMode").classList.add("enabledToggle")
-    toggleDarkMode(true)
 }
 
 // Modify Button
@@ -315,7 +311,7 @@ function toggleSetting(element) {
         // If Dark Mode
         if (element.id == "enableDarkMode") {
             setCookie("enableDarkMode",false)
-            toggleDarkMode(false)
+            refreshDarkMode()
         }
     } else {
         // Make Toggle Enabled
@@ -323,7 +319,7 @@ function toggleSetting(element) {
         // If Dark Mode
         if (element.id == "enableDarkMode") {
             setCookie("enableDarkMode",true)
-            toggleDarkMode(true)
+            refreshDarkMode()
         }
     }
 }

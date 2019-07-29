@@ -45,13 +45,22 @@ function getCookie(name) {
     return null;
 }
 
+// Set Dark Mode Cookie if non-existant
+if (!document.cookie) {
+    setCookie("enableDarkMode",false)
+} else {
+    refreshDarkMode()
+}
+
 //Function to enable/disable Dark Mode
-function toggleDarkMode(override) {
+function refreshDarkMode() {
+    let darkModeStatus = getCookie("enableDarkMode")
     //Check Browser is not IE
     if (navigator.userAgent.indexOf("Trident") < 0) {
-        document.getElementsByTagName('html')[0].classList.toggle("darkMode")
-        if (override) {
+        if (darkModeStatus) {
             document.getElementsByTagName('html')[0].classList.add("darkMode")
+        } else {
+            document.getElementsByTagName('html')[0].classList.remove("darkMode")
         }
     } else {
         alert("Sorry Internet Explorer does not support this feature!")
