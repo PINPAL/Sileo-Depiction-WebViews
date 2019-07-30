@@ -191,6 +191,7 @@
 
 /*Header Pill Selector (Details/Changelog)*/
 .headerPillSelector {
+    background-color: var(--bg-color);
     visibility: hidden;
     position: relative;
     min-height: 30px;
