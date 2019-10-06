@@ -13,7 +13,7 @@ This can be used to generate a WebView depiction for Cydia using just your Sileo
 
 ### Repo Viewer
 
-Example Available: [Here](https://pinpal.github.io/Sileo-Depiction-WebViews/repo/?repo=https://repo.nepeta.me)
+Example Available: [Here](https://pinpal.github.io/Sileo-Depiction-WebViews/repo/?repo=https://repo.packix.com/)
 <br/><br/>
 This is a great place to set the landing page for your repo. It will automatically handle adding all your packages as well as adding links to their respective depiction pages complete with all the available arguements.
 <br/>
