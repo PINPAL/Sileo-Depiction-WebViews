@@ -24,7 +24,13 @@
             height: calc(100vh - 40px);
             border-radius: 8px;
             cursor: auto;
-        }  
+        } 
+        #debug {
+            position: absolute;
+            bottom: 0;
+            font-size: 7pt;
+            background-color: lightskyblue;
+        }
     </style>
     <body>
         <div class="navbar">
@@ -33,6 +39,7 @@
             </div>
         </div>
         <img class="screenshot" src="">
+        <p id=debug></p>
     </body>
     <script src="../global.js"></script>
     <script>
@@ -40,5 +47,6 @@
         function goBack() {
             window.location.href = decodeURI(getQueryVariable("back"))
         }
+        document.getElementById("debug").innerText = window.location.href
     </script>
 </html>
