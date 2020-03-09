@@ -317,5 +317,5 @@ if (navigator.userAgent.toLowerCase().includes("cydia")) {
     popupButtonWrapper.style.bottom = "calc(100% - 300px)"
 }
 function screenshotViewCydia(element) {
-    window.location.href = "https://pinpal.github.io/Sileo-Depiction-WebViews/"
+    window.location.href = "https://pinpal.github.io/Sileo-Depiction-WebViews/screenshotViewCydia/?image=" + element.src
 }
