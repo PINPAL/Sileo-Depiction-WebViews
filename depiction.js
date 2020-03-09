@@ -177,14 +177,6 @@ window.addEventListener('scroll', function updateNavbar() {
     }
 })
 
-// Fixes for Cydia's WebView
-if (navigator.userAgent.toLowerCase().includes("cydia")) {
-    document.getElementsByClassName("leftNavButton")[0].style.display = "none"
-    popupButtonWrapper.style.bottom = "calc(100% - 300px)"
-    document.getElementById("#overlayPopup")[0].style.height = "800px";
-}
-
-
 // Load Dark Mode from Cookie
 if (getCookie("enableDarkMode")) {
     document.getElementById("enableDarkMode").classList.add("enabledToggle")
@@ -317,4 +309,13 @@ function toggleSetting(element) {
     if (element.id == "enableDarkMode") {
         toggleDarkMode()
     }
+}
+
+// Fixes for Cydia's WebView
+if (navigator.userAgent.toLowerCase().includes("cydia")) {
+    document.getElementsByClassName("leftNavButton")[0].style.display = "none"
+    popupButtonWrapper.style.bottom = "calc(100% - 300px)"
+}
+function screenshotViewCydia(element) {
+    window.location.href = "/screenshotViewCydia/?image=" + element.src
 }

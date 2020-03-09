@@ -147,7 +147,11 @@ function handleView(currentView,isStacked) {
             if (currentView.hasOwnProperty('screenshots')) {
                 for (screenshotNum = 0; screenshotNum < currentView.screenshots.length; screenshotNum++) {
                     var screenshot = document.createElement("img")
-                    screenshot.setAttribute("onclick","displayOverlayPopup(this)")
+                    if (navigator.userAgent.toLowerCase().includes("cydia")) {
+                        screenshot.setAttribute("onclick","screenshotViewCydia(this)")
+                    } else {
+                        screenshot.setAttribute("onclick","displayOverlayPopup(this)")
+                    }
                     screenshot.style.height = screenshotViewHeight + "px"
                     screenshot.className = "screenshot"
                     screenshot.style.borderRadius = screenshotCornerRadius + "px"
