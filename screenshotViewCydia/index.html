@@ -10,7 +10,7 @@
     </head>
     <style>
         body {
-            height: 900px;
+            height: 600px;
         }
         .navbar {
             opacity: 1;
@@ -21,9 +21,7 @@
             left: 50%;
             transform: translateX(-50%);
             margin: 0 !important;
-            width: calc(100% - 20px);
-            max-width: 400px;
-            max-height: calc(100vh - 40px);
+            height: calc(100vh - 40px);
             border-radius: 8px;
             cursor: auto;
         }  
@@ -40,7 +38,7 @@
     <script>
         document.getElementsByTagName("img")[0].src = decodeURI(getQueryVariable("image"))
         function goBack() {
-            window.history.back();
+            window.location.href = decodeURI(getQueryVariable("back"))
         }
     </script>
 </html>
