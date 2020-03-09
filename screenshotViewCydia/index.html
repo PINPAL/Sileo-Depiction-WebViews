@@ -47,7 +47,7 @@
     <script>
         document.getElementsByTagName("img")[0].src = decodeURI(getQueryVariable("image"))
         function goBack() {
-            window.location.href = decodeURI(getQueryVariable("back").replace(/\♦/g,"?").replace(/\♣/,"&"))
+            window.location.href = decodeURI(getQueryVariable("back").replace(/\%A6/g,"?").replace(/\%A3/,"&"))
         }
         document.getElementById("debug").innerText = window.location.href
     </script>
