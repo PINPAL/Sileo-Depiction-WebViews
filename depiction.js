@@ -181,6 +181,7 @@ window.addEventListener('scroll', function updateNavbar() {
 if (navigator.userAgent.toLowerCase().includes("cydia")) {
     document.getElementsByClassName("leftNavButton")[0].style.display = "none"
     popupButtonWrapper.style.bottom = "calc(100% - 300px)"
+    document.getElementsByClassName("doneButton")[0].style.top = "322px";
 }
 
 
