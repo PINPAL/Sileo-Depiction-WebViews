@@ -321,5 +321,5 @@ function screenshotViewCydia(element) {
         "https://pinpal.github.io/Sileo-Depiction-WebViews/screenshotViewCydia/?image=" 
         + element.src 
         + "&back=" 
-        + window.location.href.replace(/\?/g,"♦").replace(/\&/,"♣")
+        + window.location.href
 }
