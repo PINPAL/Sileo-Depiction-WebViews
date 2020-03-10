@@ -51,6 +51,6 @@
         function goBack() {
             window.location.href = window.location.search.replace(/.*&back=/g,"")
         }
-        document.getElementById("debug").innerText = "v0.3"
+        document.getElementById("debug").innerHTML = "v0.3 </br>" + window.location.search.replace(/.*&back=/g,"")
     </script>
 </html>

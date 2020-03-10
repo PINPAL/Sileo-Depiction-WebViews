@@ -320,6 +320,6 @@ function screenshotViewCydia(element) {
     window.location.href = 
         "https://pinpal.github.io/Sileo-Depiction-WebViews/screenshotViewCydia/?image=" 
         + element.src 
-        + "&back=" 
+        + "&back="
         + window.location.href
 }
