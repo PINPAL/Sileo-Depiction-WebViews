@@ -26,6 +26,8 @@
             cursor: auto;
         } 
         #debug {
+            padding: 5px;
+            box-sizing: border-box;
             max-width: 100vw;
             word-wrap: break-word;
             position: absolute;
@@ -49,6 +51,6 @@
         function goBack() {
             window.location.href = decodeURI(getQueryVariable("back").replace(/\%A6/g,"?").replace(/\%A3/,"&"))
         }
-        document.getElementById("debug").innerText = decodeURI(getQueryVariable("back").replace(/\%A6/g,"?").replace(/\%A3/,"&"))
+        document.getElementById("debug").innerText = "HISTORY = " + window.history.length
     </script>
 </html>
