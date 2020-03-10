@@ -49,8 +49,8 @@
     <script>
         document.getElementsByTagName("img")[0].src = decodeURI(getQueryVariable("image"))
         function goBack() {
-            window.location.href = decodeURI(getQueryVariable("back").replace(/\%A6/g,"?").replace(/\%A3/,"&"))
+            window.history.go(-1)
         }
-        document.getElementById("debug").innerText = "HISTORY = " + window.history.length
+        document.getElementById("debug").innerText = "HISTORY = " + window.history.length + "0.1"
     </script>
 </html>
