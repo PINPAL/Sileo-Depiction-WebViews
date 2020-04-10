@@ -267,6 +267,10 @@ function displayOverlayPopup(element) {
         largerScreenshot.removeAttribute("onclick")
         largerScreenshot.style.cursor = "auto"
         largerScreenshot.classList.add("largerScreenshot")
+        // Fix Screenshot View inside Zebra
+        if (navigator.userAgent.toLowerCase().includes("zebra")) {
+            largerScreenshot.classList.add("largeZebraFix")
+        }
         document.getElementById("overlayPopupContent").appendChild(largerScreenshot)
     } else if (element.innerText == "Configure") {
         document.getElementById("configureSettings").style.display = "block"

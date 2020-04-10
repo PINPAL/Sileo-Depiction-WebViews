@@ -508,8 +508,13 @@ a {
     position: absolute;
     top: calc(50% + 18px);
     left: 50%;
-    min-height: calc(100% - 72px);
+    min-height: calc(100vh - 75px);
     transform: translate(-50%, -50%);
+}
+.largeZebraFix {
+    width: calc(100% - 20px);
+    max-width: 400px;
+    height: auto !important;
 }
 
 /*Wrapper for all content (excluding popups)*/
