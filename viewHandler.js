@@ -147,7 +147,8 @@ function handleView(currentView,isStacked) {
             if (currentView.hasOwnProperty('screenshots')) {
                 for (screenshotNum = 0; screenshotNum < currentView.screenshots.length; screenshotNum++) {
                     var screenshot = document.createElement("img")
-                    if (navigator.userAgent.toLowerCase().includes("cydia")) {
+                    // Handle Screenshots differently on Cydia (BUT NOT Zebra)
+                    if (navigator.userAgent.toLowerCase().includes("cydia") && !(navigator.userAgent.toLowerCase().includes("zebra"))) {
                         screenshot.setAttribute("onclick","screenshotViewCydia(this)")
                     } else {
                         screenshot.setAttribute("onclick","displayOverlayPopup(this)")
